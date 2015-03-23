@@ -49,7 +49,13 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 }
 </script>
 
-
+<style>
+ body {
+ background-color:light-blue;
+ color:black;
+ }
+ 
+</style>
 
 
 </HEAD>
