@@ -61,7 +61,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 
 
 <STRONG>Write a joke on Jack's page</STRONG>
-<FORM METHOD="POST" ACTION="new_joke.php?for=mahni">
+<FORM METHOD="POST" ACTION="new_joke.php?for=jack">
 <label for="name">Your Name: </label><input type="text" name="name" id="name" required><BR />
 <label for="secret" title="A secret word is a password shared by the page owner only to people they know">The secret word: </label><input type="text" name="secret" id="secret" required><BR />
 <label for="joke">Joke Question: </label><input type="text" name="joke" id="joke" required><BR />
