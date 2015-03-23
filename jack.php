@@ -51,7 +51,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 
 <style>
  body {
- background-color:light-blue;
+ background-color:lightblue;
  color:black;
  }
  
