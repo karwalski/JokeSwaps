@@ -50,7 +50,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 </script>
 <style>
  body {
- background-color:pink;
+ background-color:darkpink;
  color:white;
  }
  
