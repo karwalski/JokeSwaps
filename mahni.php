@@ -50,8 +50,8 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 </script>
 <style>
  body {
- background-color:deeppink;
- color:white;
+ background-color:darkmagenta;
+ color:cyan;
  }
  
 
