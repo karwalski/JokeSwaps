@@ -1,5 +1,5 @@
 # JokeSwaps.com
-A social media site created by kids for kids.
+A social media site created by kids for kids
 
 Parents create an account for their child, the signup allows for interaction with both the parent and child, ensuring the kids understand the rules, and if required the adult explains to them. The ACMA has published handy reference material and key points to teach younger kids how to behave online, these will be the guide for the rules and the joint signup. There will be a clearly marked trick question (or series of) in the signup form aimed at throwing off kids trying to signup without their parents permission, perhaps a simple problem solving issue (If *he* had 3 apples, dropped 2, how many did *she* have?), math (10 * 0 + 2) or very detailed instructions (check the box that says 'I am the childs guardian', then.... , now you must reverse your first action).
 
