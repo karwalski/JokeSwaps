@@ -60,7 +60,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 
 </HEAD>
 <BODY>
-<H1>Jack's Joke Swap </H1>
+<H1>Jax's Joke Swap </H1>
 
 <STRONG>A trial social media site created by kids for kids.</STRONG><BR />
 
