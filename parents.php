@@ -30,6 +30,7 @@ JokeSwaps - Parents Console
 <label for="password">Parents password: </label><input type="password" name="password" id="password"><br />
 <label for="password2">Renter Password: </label><input type="password" name="password2" id="password2"><br />
 
+<label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
 
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio"><br />
 Choose an avatar for your child<br />
@@ -42,7 +43,39 @@ I have read the rules and privacy policy for this website.<br />
 <input type="submit" value="Signup"><br />
 </FORM>
 
+<br /><br /><br />
+// If signed in<br />
+Childs username (cannot be changed): <br />
 
+<?PHP
+
+// Print jokes on users page
+$sql = "SELECT * FROM jokes WHERE forUser = 'felix' ORDER BY id DESC" ;
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">Here\'s the answer</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
+        echo $row["answer"] . '<BR /></div>';
+    }
+} else {
+    echo "No jokes yet, send " . $user . " a joke now";
+}
+$conn->close();
+
+
+?>
+
+Update settings<br />
+<FORM METHOD="POST" ACTION="?update=true">
+<label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
+<label for="bio">Childs bio: </label><input type="text" name="bio" id="bio"><br />
+Choose an avatar for your child<br />
+<br /><br /><br /><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2"><br />
+<input type="submit" value="Save"><br />
 
 
 
