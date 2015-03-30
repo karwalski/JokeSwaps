@@ -84,11 +84,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">Here\'s the answer</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
-        echo $row["answer"] . '<BR /></div>';
+        echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR />';
+        echo 'Answer: ' . $row["answer"] . '<BR />';
     }
 } else {
-    echo "No jokes yet, send " . $user . " a joke now";
+    echo "No jokes yet";
 }
 $conn->close();
 
