@@ -61,7 +61,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 
 </HEAD>
 <BODY>
-<IMG SRC="js_purple.jpg"><BR />
+<IMG SRC="js_purple.jpg" width="400px"><BR />
 <H1>Tammi's Joke Swap </H1>
 
 <STRONG>A trial social media site created by kids for kids.</STRONG><BR />

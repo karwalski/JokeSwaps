@@ -59,6 +59,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 
 </HEAD>
 <BODY>
+<IMG SRC="js_blue.jpg" width="400px"><BR />
 <H1>Jack's Joke Swap </H1>
 
 <STRONG>A trial social media site created by kids for kids.</STRONG><BR />
