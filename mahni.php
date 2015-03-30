@@ -7,7 +7,6 @@ $funcaptcha = new FUNCAPTCHA();
  $funcap = $funcaptcha->getFunCaptcha("A372E9C8-4DFC-E5D8-1EFF-C02CBF8FCE35");
 
 // Access the sql database
-require_once("funcaptcha.php");
 
 $servername = "localhost";
  $username = "root";
