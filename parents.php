@@ -1,8 +1,24 @@
 <?PHP
 
 
+$servername = "localhost";
+ $username = "root";
+// $username = "matt";
+$password = "YmQCl60qMwe2YpUn34k7";
+$dbname = "jokeswaps";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname );
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
 
 ?>
+
+
 
 
 
@@ -47,6 +63,18 @@ I have read the rules and privacy policy for this website.<br />
 // If signed in<br />
 Childs username (cannot be changed): <br />
 
+
+Update settings<br />
+<FORM METHOD="POST" ACTION="?update=true">
+<label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
+<label for="bio">Childs bio: </label><input type="text" name="bio" id="bio"><br />
+Choose an avatar for your child<br />
+<br /><br /><br /><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2"><br />
+<input type="submit" value="Save"><br />
+
+
 <?PHP
 
 // Print jokes on users page
@@ -66,18 +94,6 @@ $conn->close();
 
 
 ?>
-
-Update settings<br />
-<FORM METHOD="POST" ACTION="?update=true">
-<label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
-<label for="bio">Childs bio: </label><input type="text" name="bio" id="bio"><br />
-Choose an avatar for your child<br />
-<br /><br /><br /><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password"><br />
-<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2"><br />
-<input type="submit" value="Save"><br />
-
-
 
 </BODY>
 </HTML>
