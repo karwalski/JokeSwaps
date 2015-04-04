@@ -53,7 +53,7 @@ if ($conn->query($sql) === TRUE) {
 if (isset($_GET['update']) && $_GET['update'] == "true")
 {
 
-$username = $_POST["username"];
+$username = $_GET["username"];
  $username = mysqli_real_escape_string($conn, $username);
 $email = $_POST["email"];
  $email = mysqli_real_escape_string($conn, $email);
@@ -152,7 +152,7 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 
 
 Update settings<br />
-<FORM METHOD="POST" ACTION="?update=true">
+<FORM METHOD="POST" ACTION="?update=true&username=<?PHP echo $userInfo[0]["username"]; ?>">
 <label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"><br />
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme" value="<?PHP echo $userInfo[0]["theme"]; ?>"><br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
