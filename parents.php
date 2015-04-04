@@ -36,6 +36,17 @@ $password = $_POST["password"];
 // A higher "cost" is more secure but consumes more processing power
 $cost = 10;
 
+
+echo MCRYPT_DEV_URANDOM;
+echo mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
+echo base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
+
+
+
+
+
+
+
 // Create a random salt
 $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
 
