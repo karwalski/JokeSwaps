@@ -67,6 +67,9 @@ for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
 $hash = $userInfo[0]["password"];
 echo 'hash :' . $hash . '<BR />';
 echo 'Checkpoint 2';
+$hash2 = crypt($_POST["password"], $hash);
+
+echo 'hash2 :' . $hash2 . '<BR />';
 
 if ( hash_equals($hash, crypt($_POST["password"], $hash)) ) {
 
