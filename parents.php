@@ -64,9 +64,13 @@ $result = $conn->query($sql);
 
 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
 
-$hash = $userInfo[0]["email"];
+$hash = $userInfo[0]["password"];
+
+echo 'Checkpoint 2';
 
 if ( hash_equals($hash, crypt($_POST["password"], $hash)) ) {
+
+echo 'Checkpoint 3';
 
 $signedIn = 'true';
 
