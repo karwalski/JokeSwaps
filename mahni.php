@@ -73,6 +73,7 @@ Preset Joke Selection: <SELECT id="preset" name="preset">
 $sql = "SELECT * FROM PresetJokes" ;
 $result = $conn->query($sql);
 $count = $result->num_rows;
+$result->free();
 
 $rand1 = rand(1, $count);
 $rand2 = rand(1, $count);
@@ -95,7 +96,11 @@ while($row = $result->fetch_assoc()) {
 
 echo '<OPTION>' . $row['PresetID'] . '</OPTION>';
 
+
+
 }
+
+
 
 ?>
 
