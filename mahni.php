@@ -68,8 +68,8 @@ Preset Joke Selection: <SELECT id="preset" name="preset">
 
 <?PHP
 
-// Print jokes on users page
-$sql = "SELECT * FROM PresetJokes WHERE suitable = TRUE" ;
+// Print jokes on users page need to check suitable column
+$sql = "SELECT * FROM PresetJokes" ;
 $result = $conn->query($sql);
 
 $count = $result->num_rows;
@@ -80,7 +80,7 @@ $rand3 = rand(1, $count);
 $rand4 = rand(1, $count);
 $rand5 = rand(1, $count);
 
-
+echo '<OPTION>This is also a preset joke</OPTION>';
 echo '<OPTION>' . $result[$rand1]['joke'] . '</OPTION>';
 
 ?>
