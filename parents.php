@@ -32,13 +32,10 @@ $avatar = $_POST["avatar"];
 
 $hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
-echo 'checkpoint 2';
 
 // Save user
 $sql = "INSERT INTO users (username, password, email, theme, bio, avatar)
 VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar')";
-
-echo 'checkpoint 3';
 
 if ($conn->query($sql) === TRUE) {
     echo "Account created!";
