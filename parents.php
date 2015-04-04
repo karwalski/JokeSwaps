@@ -62,10 +62,9 @@ $sql = "SELECT * FROM users WHERE username = '$username'" ;
 $result = $conn->query($sql);
 echo 'Checkpoint 2';
 
-for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
-print_r($set);
+for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
 
-
+echo $userInfo[0]["email"];
 echo 'Checkpoint 3';
 
 
