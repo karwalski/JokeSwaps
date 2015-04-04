@@ -66,7 +66,26 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 
 Preset Joke Selection: <SELECT id="preset" name="preset">
 
-<OPTION>This is a preset joke</OPTION>
+<?PHP
+
+// Print jokes on users page
+$sql = "SELECT * FROM PresetJokes WHERE suitable = TRUE" ;
+$result = $conn->query($sql);
+
+$count = $result->num_rows;
+
+$rand1 = rand(1, $count);
+$rand2 = rand(1, $count);
+$rand3 = rand(1, $count);
+$rand4 = rand(1, $count);
+$rand5 = rand(1, $count);
+
+
+echo '<OPTION>' . $result[$rand1]['joke'] . '</OPTION>';
+
+?>
+
+
 <OPTION>This is also a preset joke</OPTION>
 
 
@@ -74,7 +93,7 @@ Preset Joke Selection: <SELECT id="preset" name="preset">
 
 
 
-
+<BR /><BR />
 <STRONG>Write a joke on Mahni's page</STRONG>
 <FORM METHOD="POST" ACTION="new_joke.php?for=mahni">
 <label for="name">Your Name: </label><input type="text" name="name" id="name" required><BR />
