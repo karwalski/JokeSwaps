@@ -15,6 +15,60 @@ if ($conn->connect_error) {
 }
 
 
+// Signup form submit
+if (isset($_GET['signup']) && $_GET['signup'] == "true")
+{
+
+$username = $_POST["username"];
+ $username = mysqli_real_escape_string($conn, $username);
+$email = $_POST["email"];
+ $email = mysqli_real_escape_string($conn, $email);
+$bio = $_POST["bio"];
+ $bio = mysqli_real_escape_string($conn, $bio);
+
+$theme = $_POST["theme"];
+$avatar = $_POST["avatar"];
+
+
+
+$hash = crypt($_POST["password"], sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.'));
+
+// Save user
+$sql = "INSERT INTO users (username, password, email, theme, bio, avatar)
+VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Account created!";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+
+}
+
+
+
+
+
+/*
+
+// Verify password
+
+// $hash is the value of the hash/password column relating to the user
+
+if ( hash_equals($hash, crypt($_POST["password"], $hash)) ) {
+  // Ok!
+}
+
+
+*/
+
+
+
+
+
+
+
 
 ?>
 
@@ -45,6 +99,9 @@ JokeSwaps - Parents Console
 <label for="username">Childs username: </label><input type="text" name="username" id="username"><br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password"><br />
 <label for="password2">Renter Password: </label><input type="password" name="password2" id="password2"><br />
+
+
+<label for="password">Parents email: </label><input type="email" name="email" id="email"><br />
 
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
 
