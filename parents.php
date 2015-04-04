@@ -58,7 +58,10 @@ $username = $_POST["username"];
 $sql = "SELECT * FROM users WHERE username = $username" ;
 $result = $conn->query($sql);
 
-print_r($result);
+
+    while($row = $result->fetch_assoc()) {
+echo $row["email"];
+}
 
 /*
 $hash = $result[0]["password"];
