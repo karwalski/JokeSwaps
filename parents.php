@@ -1,6 +1,5 @@
 <?PHP
 
-phpinfo();
 
 $servername = "localhost";
  $username = "root";
