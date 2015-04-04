@@ -89,7 +89,7 @@ $rand5 = rand(1, $count);
 
 function loadPreset() {
 
-selectedJoke = document.getElementById("preset").value;
+var selectedJoke = document.getElementById("preset").value;
 
 var jokes = [];
 var answer = [];
@@ -99,8 +99,8 @@ $sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3',
 $result = $conn->query($sql);
 
 while($row = $result->fetch_assoc()) {
-// echo 'jokes["id' . $row['PresetID'] . '"] = "' . $row['joke'] . '";';
-// echo 'answer["id' . $row['PresetID'] . '"] = "' . $row['answer'] . '";';
+echo 'jokes["id' . $row['PresetID'] . '"] = "' . $row['joke'] . '";';
+echo 'answer["id' . $row['PresetID'] . '"] = "' . $row['answer'] . '";';
 }
 ?>
 
