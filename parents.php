@@ -62,11 +62,10 @@ $sql = "SELECT * FROM users WHERE username = $username" ;
 $result = $conn->query($sql);
 echo 'Checkpoint 2';
 
-    while($row = $result->fetch_assoc()) {
-echo $row["email"];
-}
+echo $result[0]["email"];
 
 echo 'Checkpoint 3';
+
 
 /*
 $hash = $result[0]["password"];
