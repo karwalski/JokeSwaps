@@ -38,8 +38,8 @@ $cost = 10;
 
 
 echo MCRYPT_DEV_URANDOM;
-echo mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
-echo base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
+echo mcrypt_create_iv(16);
+echo base64_encode(mcrypt_create_iv(16));
 
 
 
