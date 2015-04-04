@@ -46,6 +46,8 @@ else
 document.getElementById("Answer" + jokeID).style.visibility = "visible";
 }
 }
+
+
 </script>
 <style>
  body {
@@ -64,7 +66,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 <STRONG>A trial social media site created by kids for kids.</STRONG><BR />
 
 
-Preset Joke Selection: <SELECT id="preset" name="preset">
+Preset Joke Selection: <SELECT id="preset" name="preset" onChange="loadPreset();">
 
 <?PHP
 
@@ -81,13 +83,11 @@ $rand4 = rand(1, $count);
 $rand5 = rand(1, $count);
 
 
-
-// Print jokes on users page need to check suitable column
 $sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3','$rand4','$rand5')" ;
 $result = $conn->query($sql);
 
 while($row = $result->fetch_assoc()) {
-echo '<OPTION>' . $row['joke'] . '</OPTION>';
+echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
 
 }
 
@@ -98,6 +98,39 @@ echo '<OPTION>' . $row['joke'] . '</OPTION>';
 
 
 </SELECT>
+
+
+<SCRIPT>
+
+
+function loadPreset() {
+
+selectedJoke = document.getElementById("preset").value;
+
+<?PHP
+
+$sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3','$rand4','$rand5')" ;
+$result = $conn->query($sql);
+
+while($row = $result->fetch_assoc()) {
+echo 'var joke"' . $row['PresetID'] . ' = "' . $row['joke'] . '";';
+echo 'var answer"' . $row['PresetID'] . ' = "' . $row['answer'] . '";';
+
+}
+
+
+document.getElementById("joke").value = ("joke" + selectedJoke);
+document.getElementById("answer").value = ("answer" + selectedJoke);
+
+
+?>
+
+}
+
+
+</SCRIPT>
+
+
 
 
 
