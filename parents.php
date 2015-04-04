@@ -53,15 +53,20 @@ if ($conn->query($sql) === TRUE) {
 if (isset($_GET['login']) && $_GET['login'] == "true")
 {
 
+echo 'Checkpoint 1';
+
 $username = $_POST["username"];
+ $username = mysqli_real_escape_string($conn, $username);
 
 $sql = "SELECT * FROM users WHERE username = $username" ;
 $result = $conn->query($sql);
-
+echo 'Checkpoint 2';
 
     while($row = $result->fetch_assoc()) {
 echo $row["email"];
 }
+
+echo 'Checkpoint 3';
 
 /*
 $hash = $result[0]["password"];
