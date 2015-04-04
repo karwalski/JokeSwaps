@@ -88,7 +88,7 @@ echo '<OPTION>' . $rand5 . '</OPTION>';
 
 
 // Print jokes on users page need to check suitable column
-$sql = "SELECT * FROM PresetJokes WHERE PresetID = '$rand1' OR '$rand2' OR '$rand3' OR '$rand4' OR '$rand5'" ;
+$sql = "SELECT * FROM PresetJokes WHERE PresetID = '$rand1','$rand2','$rand3','$rand4','$rand5'" ;
 $result = $conn->query($sql);
 
 while($row = $result->fetch_assoc()) {
