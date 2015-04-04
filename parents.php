@@ -37,9 +37,9 @@ $password = $_POST["password"];
 $cost = 10;
 
 
-echo MCRYPT_DEV_URANDOM;
-echo mcrypt_create_iv(16);
-echo base64_encode(mcrypt_create_iv(16));
+echo mcrypt_get_iv_size(MCRYPT_CAST_256, MCRYPT_MODE_CFB);
+echo mcrypt_create_iv($size, MCRYPT_DEV_URANDOM);
+echo base64_encode(mcrypt_create_iv($size, MCRYPT_DEV_URANDOM););
 
 
 
