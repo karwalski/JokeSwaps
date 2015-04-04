@@ -65,6 +65,25 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 
 <STRONG>A trial social media site created by kids for kids.</STRONG><BR />
 
+
+<?PHP
+
+
+// Print jokes on users page need to check suitable column
+$sql = "SELECT * FROM PresetJokes" ;
+$result = $conn->query($sql);
+$count = $result->num_rows;
+
+$rand1 = rand(1, $count);
+$rand2 = rand(1, $count);
+$rand3 = rand(1, $count);
+$rand4 = rand(1, $count);
+$rand5 = rand(1, $count);
+
+?>
+
+
+
 <SCRIPT>
 
 
@@ -94,20 +113,9 @@ document.getElementById("answer").value = ("answer" + selectedJoke);
 
 
 Preset Joke Selection: <SELECT id="preset" name="preset" onChange="loadPreset();">
+<OPTION value=""></OPTION>
 
 <?PHP
-
-
-// Print jokes on users page need to check suitable column
-$sql = "SELECT * FROM PresetJokes" ;
-$result = $conn->query($sql);
-$count = $result->num_rows;
-
-$rand1 = rand(1, $count);
-$rand2 = rand(1, $count);
-$rand3 = rand(1, $count);
-$rand4 = rand(1, $count);
-$rand5 = rand(1, $count);
 
 
 $sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3','$rand4','$rand5')" ;
