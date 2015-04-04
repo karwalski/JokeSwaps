@@ -39,9 +39,7 @@ if ($conn->connect_error) {
 
 
 $forUser =  $_GET['for'];
-echo $forUser;
  $forUser = mysqli_real_escape_string($conn, $forUser);
-echo $forUser;
 $fromName = $_POST['name'];
  $fromName = mysqli_real_escape_string($conn, $fromName);
 $joke = $_POST['joke'];
