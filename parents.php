@@ -38,7 +38,7 @@ $sql = "INSERT INTO users (username, password, email, theme, bio, avatar)
 VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Account created!";
+    echo 'Account created for ' . $username . '!';
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -49,16 +49,32 @@ if ($conn->query($sql) === TRUE) {
 
 
 
+// Login
+if (isset($_GET['login']) && $_GET['login'] == "true")
+{
 
-/*
+$username = $_POST["username"];
 
-// Verify password
+$sql = "SELECT * FROM users WHERE username = $username" ;
+$result = $conn->query($sql);
 
-// $hash is the value of the hash/password column relating to the user
+print_r($result);
+
+$hash = $result[0]["password"];
 
 if ( hash_equals($hash, crypt($_POST["password"], $hash)) ) {
-  // Ok!
+
+$signedIn = 'true';
+
+echo 'You are signed in as the parent for user :' . $username;
+
+
 }
+else
+{
+echo 'Incorrect password';
+}
+
 
 
 */
