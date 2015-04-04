@@ -165,8 +165,10 @@ Choose an avatar for your child<br />
 
 <?PHP
 
+$username = $userInfo[0]["username"];
+
 // Print jokes on users page
-$sql = "SELECT * FROM jokes WHERE forUser = '$userInfo[0]["username"]' ORDER BY id DESC" ;
+$sql = "SELECT * FROM jokes WHERE forUser = '$username' ORDER BY id DESC" ;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
