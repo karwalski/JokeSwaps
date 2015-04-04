@@ -64,6 +64,16 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 <STRONG>A trial social media site created by kids for kids.</STRONG><BR />
 
 
+Preset Joke Selection: <SELECT id="preset" name="preset">
+
+<OPTION>This is a preset joke</OPTION>
+<OPTION>This is also a preset joke</OPTION>
+
+
+</SELECT>
+
+
+
 
 <STRONG>Write a joke on Mahni's page</STRONG>
 <FORM METHOD="POST" ACTION="new_joke.php?for=mahni">
