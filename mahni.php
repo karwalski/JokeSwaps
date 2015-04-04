@@ -80,11 +80,6 @@ $rand3 = rand(1, $count);
 $rand4 = rand(1, $count);
 $rand5 = rand(1, $count);
 
-echo '<OPTION>' . $rand1 . '</OPTION>';
-echo '<OPTION>' . $rand2 . '</OPTION>';
-echo '<OPTION>' . $rand3 . '</OPTION>';
-echo '<OPTION>' . $rand4 . '</OPTION>';
-echo '<OPTION>' . $rand5 . '</OPTION>';
 
 
 // Print jokes on users page need to check suitable column
@@ -92,10 +87,7 @@ $sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3',
 $result = $conn->query($sql);
 
 while($row = $result->fetch_assoc()) {
-
-echo '<OPTION>' . $row['PresetID'] . '</OPTION>';
-
-
+echo '<OPTION>' . $row['joke'] . '</OPTION>';
 
 }
 
