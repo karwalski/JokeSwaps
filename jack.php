@@ -66,6 +66,64 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 
 
 
+
+<?PHP
+// Print jokes on users page.. need to check suitable column
+$sql = "SELECT * FROM PresetJokes" ;
+$result = $conn->query($sql);
+$count = $result->num_rows;
+
+$rand1 = rand(1, $count);
+$rand2 = rand(1, $count);
+$rand3 = rand(1, $count);
+$rand4 = rand(1, $count);
+$rand5 = rand(1, $count);
+?>
+
+
+
+<SCRIPT>
+function loadPreset() {
+
+var selectedJoke = document.getElementById("preset").value;
+
+var jokes = [];
+var answer = [];
+
+<?PHP
+$sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3','$rand4','$rand5')" ;
+$result = $conn->query($sql);
+
+while($row = $result->fetch_assoc()) {
+echo 'jokes["id' . $row['PresetID'] . '"] = "' . $row['joke'] . '";';
+echo 'answer["id' . $row['PresetID'] . '"] = "' . $row['answer'] . '";';
+}
+?>
+
+document.getElementById("joke").value = jokes["id" + selectedJoke];
+document.getElementById("answer").value = answer["id" + selectedJoke];
+}
+</SCRIPT>
+Preset Joke Selection: <SELECT id="preset" name="preset" onChange="loadPreset();">
+<OPTION value=""></OPTION>
+
+<?PHP
+
+
+$sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3','$rand4','$rand5')" ;
+$result = $conn->query($sql);
+
+while($row = $result->fetch_assoc()) {
+echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
+
+}
+?>
+</SELECT>
+<BR /><BR />
+
+
+
+
 <STRONG>Write a joke on Jack's page</STRONG>
 <FORM METHOD="POST" ACTION="new_joke.php?for=jack">
 <label for="name">Your Name: </label><input type="text" name="name" id="name" required><BR />
