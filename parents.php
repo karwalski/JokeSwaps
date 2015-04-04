@@ -31,7 +31,7 @@ $avatar = $_POST["avatar"];
 
 echo 'checkpoint 1';
 
-$hash = crypt($_POST["password"], sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.'));
+$hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
 echo 'checkpoint 2';
 
