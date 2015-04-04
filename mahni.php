@@ -73,6 +73,8 @@ $sql = "SELECT * FROM PresetJokes" ;
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
+print_r($row);
+
 $count = $result->num_rows;
 
 $rand1 = rand(1, $count);
