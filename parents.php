@@ -58,11 +58,13 @@ echo 'Checkpoint 1';
 $username = $_POST["username"];
  $username = mysqli_real_escape_string($conn, $username);
 
-$sql = "SELECT * FROM users WHERE username = $username" ;
+$sql = "SELECT * FROM users WHERE username = '$username'" ;
 $result = $conn->query($sql);
 echo 'Checkpoint 2';
 
-echo $result[0]["email"];
+for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
+print_r($set);
+
 
 echo 'Checkpoint 3';
 
