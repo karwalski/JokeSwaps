@@ -58,6 +58,9 @@ $username = $_POST["username"];
 $sql = "SELECT * FROM users WHERE username = $username" ;
 $result = $conn->query($sql);
 
+print_r($result);
+
+/*
 $hash = $result[0]["password"];
 
 if ( hash_equals($hash, crypt($_POST["password"], $hash)) ) {
@@ -72,6 +75,8 @@ else
 {
 echo 'Incorrect password';
 }
+*/
+
 
 }
 
