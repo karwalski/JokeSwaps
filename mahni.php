@@ -91,21 +91,21 @@ function loadPreset() {
 
 selectedJoke = document.getElementById("preset").value;
 
-var jokes[0] = "";
-var answer[0] = "";
+var jokes = [];
+var answer = [];
 
 <?PHP
 $sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3','$rand4','$rand5')" ;
 $result = $conn->query($sql);
 
 while($row = $result->fetch_assoc()) {
-echo 'jokes[' . $row['PresetID'] . '] = "' . $row['joke'] . '";';
-echo 'answer[' . $row['PresetID'] . '] = "' . $row['answer'] . '";';
+// echo 'jokes["id' . $row['PresetID'] . '"] = "' . $row['joke'] . '";';
+// echo 'answer["id' . $row['PresetID'] . '"] = "' . $row['answer'] . '";';
 }
 ?>
 
-document.getElementById("joke").value = jokes[selectedJoke];
-document.getElementById("answer").value = answer[selectedJoke];
+document.getElementById("joke").value = jokes["id" + selectedJoke];
+document.getElementById("answer").value = answer["id" + selectedJoke];
 
 
 }
