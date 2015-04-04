@@ -1,5 +1,6 @@
 <?PHP
 
+phpinfo();
 
 $servername = "localhost";
  $username = "root";
@@ -65,7 +66,7 @@ $result = $conn->query($sql);
 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
 
 $hash = $userInfo[0]["password"];
-
+echo 'hash :' . $hash . '<BR />';
 echo 'Checkpoint 2';
 
 if ( hash_equals($hash, crypt($_POST["password"], $hash)) ) {
