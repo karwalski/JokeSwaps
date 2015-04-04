@@ -60,16 +60,11 @@ $username = $_POST["username"];
 
 $sql = "SELECT * FROM users WHERE username = '$username'" ;
 $result = $conn->query($sql);
-echo 'Checkpoint 2';
+
 
 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
 
-echo $userInfo[0]["email"];
-echo 'Checkpoint 3';
-
-
-/*
-$hash = $result[0]["password"];
+$hash = $userInfo[0]["email"];
 
 if ( hash_equals($hash, crypt($_POST["password"], $hash)) ) {
 
@@ -83,7 +78,6 @@ else
 {
 echo 'Incorrect password';
 }
-*/
 
 
 }
