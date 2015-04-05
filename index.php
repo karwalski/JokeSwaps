@@ -1,3 +1,6 @@
+<HTML>
+<HEAD>
+
 <?PHP
 
 require_once("funcaptcha.php");
@@ -36,7 +39,10 @@ $result = $conn->query($sql);
 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
 
 if(empty($userInfo)) {
-
+<TITLE>
+JokeSwaps
+</TITLE>
+<BODY>
 echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Coming Soon!</H1>" ';
 
 
@@ -117,8 +123,7 @@ $funcaptcha = new FUNCAPTCHA();
 
 
 
-<HTML>
-<HEAD>
+
 <TITLE>
 JokeSwaps - <?PHP echo $user; ?>
 </TITLE>
@@ -276,8 +281,6 @@ About: When the 7 year old twins Tammi and <?PHP echo $user; ?> created their fi
 
 
 
-</BODY>
-</HTML>
 
 <?PHP
 
@@ -288,3 +291,8 @@ About: When the 7 year old twins Tammi and <?PHP echo $user; ?> created their fi
 
 
 ?>
+
+
+
+</BODY>
+</HTML>
