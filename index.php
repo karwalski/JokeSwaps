@@ -43,8 +43,6 @@ echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Coming Soon!</H1>" ';
 }
 else
 {
-echo '<BR /> User: ' . $user;
-
 if (isset($_GET['new']) && $_GET['new'] = "joke")
 {
 $funcaptcha = new FUNCAPTCHA();
@@ -143,8 +141,23 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 </script>
 <style>
  body {
- background-color:darkmagenta;
- color:cyan;
+ background-color:<?PHP echo $userInfo[0]["theme"]; ?>;
+ color:<?PHP
+
+if ($userInfo[0]["theme'] = "darkmagenta") {
+echo 'cyan';
+}
+else if ($userInfo[0]["theme'] = "magenta") {
+echo 'black';
+}
+else if ($userInfo[0]["theme'] = "lightblue") {
+echo 'black';
+}
+else {
+echo 'black';
+}
+
+?>;
  }
  
 
@@ -155,7 +168,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 <IMG SRC="js_pink.jpg" width="400px"><BR />
 <H1><?PHP echo $user; ?>'s Joke Swap </H1>
 
-<STRONG>A trial social media site created by kids for kids.</STRONG><BR />
+<STRONG><?PHP echo $userInfo[0]["bio"]; ?></STRONG><BR /><BR />
 
 
 
