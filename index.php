@@ -39,10 +39,10 @@ $result = $conn->query($sql);
 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
 
 if(empty($userInfo)) {
-<TITLE>
+echo '<TITLE>
 JokeSwaps
 </TITLE>
-<BODY>
+<BODY>';
 echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Coming Soon!</H1>" ';
 
 
