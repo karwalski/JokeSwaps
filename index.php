@@ -144,13 +144,13 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
  background-color:<?PHP echo $userInfo[0]["theme"]; ?>;
  color:<?PHP
 
-if ($userInfo[0]["theme'] = "darkmagenta") {
+if ($userInfo[0]["theme"] = "darkmagenta") {
 echo 'cyan';
 }
-elseif ($userInfo[0]["theme'] = "magenta") {
+elseif ($userInfo[0]["theme"] = "magenta") {
 echo 'black';
 }
-elseif ($userInfo[0]["theme'] = "lightblue") {
+elseif ($userInfo[0]["theme"] = "lightblue") {
 echo 'black';
 }
 else {
