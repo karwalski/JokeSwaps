@@ -49,7 +49,7 @@ echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Coming Soon!</H1>" ';
 }
 else
 {
-if (isset($_GET['new']) && $_GET['new'] = "joke")
+if (isset($_GET['new']) && $_GET['new'] == "joke")
 {
 $funcaptcha = new FUNCAPTCHA();
 $verified = $funcaptcha->checkResult("E1A7B6DB-4779-5670-933E-464FB325E22D");
@@ -91,9 +91,6 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
-
-
-echo '<script>window.location.href = "http://' . $forUser . '.jokeswaps.com/";</script>';
 
 
 }
@@ -149,13 +146,13 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
  background-color:<?PHP echo $userInfo[0]["theme"]; ?>;
  color:<?PHP
 
-if ($userInfo[0]["theme"] = "darkmagenta") {
+if ($userInfo[0]["theme"] == "darkmagenta") {
 echo 'cyan';
 }
-elseif ($userInfo[0]["theme"] = "magenta") {
+elseif ($userInfo[0]["theme"] == "magenta") {
 echo 'black';
 }
-elseif ($userInfo[0]["theme"] = "lightblue") {
+elseif ($userInfo[0]["theme"] == "lightblue") {
 echo 'black';
 }
 else {
