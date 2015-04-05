@@ -266,6 +266,7 @@ About: When the 7 year old twins Tammi and <?PHP echo $user; ?> created their fi
 </BODY>
 </HTML>
 
+<?PHP
 
 
 }
