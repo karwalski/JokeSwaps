@@ -167,7 +167,22 @@ echo 'black';
 
 </HEAD>
 <BODY>
-<IMG SRC="js_pink.jpg" width="400px"><BR />
+<IMG SRC="js_<?PHP
+
+if ($userInfo[0]["theme"] == "darkmagenta") {
+echo 'pink';
+}
+elseif ($userInfo[0]["theme"] == "magenta") {
+echo 'purple';
+}
+elseif ($userInfo[0]["theme"] == "lightblue") {
+echo 'blue';
+}
+else {
+echo 'blue';
+}
+
+?>.jpg" width="400px"><BR />
 <H1><?PHP echo $user; ?>'s Joke Swap </H1>
 
 <STRONG><?PHP echo $userInfo[0]["bio"]; ?></STRONG><BR /><BR />
