@@ -147,10 +147,10 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 if ($userInfo[0]["theme'] = "darkmagenta") {
 echo 'cyan';
 }
-else if ($userInfo[0]["theme'] = "magenta") {
+elseif ($userInfo[0]["theme'] = "magenta") {
 echo 'black';
 }
-else if ($userInfo[0]["theme'] = "lightblue") {
+elseif ($userInfo[0]["theme'] = "lightblue") {
 echo 'black';
 }
 else {
