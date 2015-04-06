@@ -134,6 +134,8 @@ echo 'Incorrect password';
 JokeSwaps - Parents Console
 </TITLE>
 
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
 </HEAD>
 <BODY>
 <H1>This is the parents Console</H1>
@@ -216,6 +218,9 @@ I declare I am a responsible adult, parent or guardian giving permission for thi
 I declare I have discussed the site rules with the child, and they understand the rules.<br />
 I declare I will be supervising the child when using this website.<br />
 I have read the rules and privacy policy for this website.<br />
+
+<div class="g-recaptcha" data-sitekey="6Le44QQTAAAAAEy-cOwETZWZ9cKBNZZAhQP4d91C"></div>
+
 <input type="submit" value="Signup"><br />
 </FORM>
 
