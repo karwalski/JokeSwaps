@@ -27,7 +27,7 @@ if(isset($_POST['g-recaptcha-response'])){
       echo '<h2>Please check the the captcha form.</h2>';
       exit;
     }
-    $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=YOUR_SECRET_KEY&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+    $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le44QQTAAAAALSxrlG4JJes_KkBDh308YpOiquR&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
     if($response.success==true)            
     {
 
