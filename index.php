@@ -149,7 +149,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 if ($userInfo[0]["theme"] == "darkmagenta") {
 echo 'cyan';
 }
-elseif ($userInfo[0]["theme"] == "magenta") {
+elseif ($userInfo[0]["theme"] == "magenta;background-image: url("flower.jpg")") {
 echo 'black';
 }
 elseif ($userInfo[0]["theme"] == "lightblue") {
