@@ -19,6 +19,19 @@ if ($conn->connect_error) {
 if (isset($_GET['signup']) && $_GET['signup'] == "true")
 {
 
+$captcha;
+if(isset($_POST['g-recaptcha-response'])){
+      $captcha=$_POST['g-recaptcha-response'];
+    }
+    else {
+      echo '<h2>Please check the the captcha form.</h2>';
+      exit;
+    }
+    $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=YOUR_SECRET_KEY&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+    if($response.success==true)            
+    {
+
+
 $username = $_POST["username"];
  $username = mysqli_real_escape_string($conn, $username);
 $email = $_POST["email"];
@@ -45,7 +58,7 @@ if ($conn->query($sql) === TRUE) {
 
 
 }
-
+}
 
 
 
