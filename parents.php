@@ -45,7 +45,7 @@ $sql = "UPDATE tokens SET status='1' WHERE username='$username'";
 if ($conn->query($sql) === TRUE) {
 $sql = "UPDATE users SET verified='1' WHERE username='$username'";
 if ($conn->query($sql) === TRUE) {
-echo 'Your email address has been verified and your account has been enabled at <a href="http://' . $username . '.jokeswaps.com">http://' . $username . 'jokeswaps.com</a>';
+echo 'Your email address has been verified and your account has been enabled at <a href="http://' . $username . '.jokeswaps.com">http://' . $username . '.jokeswaps.com</a>';
 }
 }
 }
@@ -146,7 +146,7 @@ if ($conn->query($sql) === TRUE) {
 
 echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username;
 
-$to      = $email;
+
 $subject = 'Please confirm your email address';
 $message = 'Someone has signed up to JokeSwaps.com using your email address, if it was not you no action is required and you can ignore this email.' . 
 '\r\nIf you did sign up to JokeSwaps.com, please confirm your email address by click <a href="http://www.jokeswaps.com/?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
@@ -158,7 +158,7 @@ $headers = 'From: JokeSwaps Robot <robot@jokeswaps.com>' . "\r\n" .
     'Reply-To: admin@jokeswaps.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-if (mail($to, $subject, $message, $headers))
+if (mail($email, $subject, $message, $headers))
 {
 echo 'Verification email sent';
 }
