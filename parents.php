@@ -126,13 +126,12 @@ VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar', '$secret', 
 if ($conn->query($sql) === TRUE) {
     echo 'Account created for ' . $username . '!';
 
-$randomString = rand() + date(U);
 $expires = date("Y-m-d H:i:s");
 $expires->add(new DateInterval('P7D'));
 
 echo 'Checkpoint 1';
 
-$tokenHash = urlencode(crypt($randomString, strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
+$tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 echo 'Checkpoint 2';
 // Save token
 $sql = "INSERT INTO tokens (type, hash, expires, status, username)
