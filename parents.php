@@ -25,12 +25,17 @@ if (isset($_GET['signup']) && $_GET['signup'] == "true")
 $captcha;
 if(isset($_POST['g-recaptcha-response'])){
       $captcha=$_POST['g-recaptcha-response'];
+echo $captcha
+
     }
     else {
       echo '<h2>Please check the the captcha form.</h2>';
       exit;
     }
     $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le44QQTAAAAALSxrlG4JJes_KkBDh308YpOiquR&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+
+print_r($response);
+
     if($response.success==true)            
     {
 
@@ -213,7 +218,7 @@ else
 
 <FORM METHOD="POST" ACTION="?login=true">
 <STRONG>Login</STRONG><BR />
-<label for="username">Childs username: </label><input type="text" name="username" id="username" required="required" value="<?PHP if(empty($user)) {} elseif ($user == "www") {} else { echo $user; } ?>"><br />
+<label for="username">Childs username: </label><input type="text" name="username" id="username" required="required" value="<?PHP if(empty($user)) {} elseif ($user == "www") {} elseif ($user == "jokeswaps") {} else { echo $user; } ?>"><br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
 <input type="submit" value="Login"><br />
 </FORM>
