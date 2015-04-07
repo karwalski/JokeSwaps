@@ -25,7 +25,7 @@ if (isset($_GET['signup']) && $_GET['signup'] == "true")
 $captcha;
 if(isset($_POST['g-recaptcha-response'])){
       $captcha=$_POST['g-recaptcha-response'];
-echo $captcha
+echo $captcha;
 
     }
     else {
