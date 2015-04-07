@@ -127,8 +127,8 @@ if ($conn->query($sql) === TRUE) {
     echo 'Account created for ' . $username . '!';
 
 
-$expires = date ("Y-m-d H:i:s", mktime(0, 0, 0, date("m")  , date("d")+8, date("Y")));
-
+$expires = date("Y-m-d H:i:s");
+echo $expires;
 
 echo 'Checkpoint 1';
 
@@ -137,6 +137,8 @@ echo 'Checkpoint 2';
 // Save token
 $sql = "INSERT INTO tokens (type, hash, expires, status, username)
 VALUES ('verify', '$tokenHash', '$expires', '0', '$username')";
+
+echo $mysqli->error;
 
 echo 'Checkpoint 3';
 
