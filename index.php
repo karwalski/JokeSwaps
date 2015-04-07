@@ -103,7 +103,6 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-$conn->close();
 
 
 }
@@ -289,7 +288,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "No jokes yet, send " . $user . " a joke now";
 }
-$conn->close();
+
 
 
 ?>
@@ -316,7 +315,7 @@ About: When the 7 year old twins Tammi and <?PHP echo $user; ?> created their fi
 
 
 ?>
-
+$conn->close();
 
 
 </BODY>
