@@ -18,6 +18,53 @@ if ($conn->connect_error) {
 $user = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
  $user = mysqli_real_escape_string($conn, $user);
 
+// Verify email address
+if (isset($_GET['v']) && isset($_GET['username']))
+{
+$username = $_GET['username']
+$sql = "SELECT * FROM tokens WHERE username = '$username' ORDER BY TokenID DESC " ;
+$result = $conn->query($sql);
+
+for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+$tokeHash = $userInfo[0]["hash"];
+$tokenExpires = $userInfo[0]["expires"];
+$tokenStatus = $userInfo[0]["status"];
+
+if ($tokeHash == $_GET['v'])
+{
+
+if ($tokenExpires < date("now"))
+{
+echo 'Valid token';
+
+if ($tokenStatus = '0')
+{
+
+// Save token
+$sql = "UPDATE tokens SET status='1' WHERE username='$username'";
+}
+else
+{
+echo 'Email address already verified';
+}
+
+}
+else
+{
+echo 'Token expired';
+}
+
+}
+else 
+{
+echo 'Invalid token.';
+
+}
+
+}
+
+
+
 // Signup form submit
 if (isset($_POST['signup']) && $_POST['signup'] == "true")
 {
@@ -63,6 +110,37 @@ VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar', '$secret', 
 
 if ($conn->query($sql) === TRUE) {
     echo 'Account created for ' . $username . '!';
+
+$randomString = rand() + date(U);
+$expires = date("Y-m-d H:i:s");
+$expires->add(new DateInterval('P7D'));
+
+$tokenHash = urlencode(crypt($randomString, strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
+
+// Save token
+$sql = "INSERT INTO tokens (type, hash, expires, status, username)
+VALUES ('verify', '$tokenHash', '$expires', '0', '$username')";
+
+
+
+$to      = $email;
+$subject = 'Please confirm your email address';
+$message = 'Someone has signed up to JokeSwaps.com using your email address, if it was not you no action is required and you can ignore this email.' . 
+'\r\nIf you did sign up to JokeSwaps.com, please confirm your email address by click <a href="http://www.jokeswaps.com/?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
+' or copy and pasting the following link into your browser: ' .
+'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . 
+'\r\n\r\nFrom the Friendly JokeSwaps Robot';
+$message = wordwrap($message, 70, "\r\n");
+$headers = 'From: JokeSwaps Robot <robot@jokeswaps.com>' . "\r\n" .
+    'Reply-To: admin@jokeswaps.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
+
+
+
+
+
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
