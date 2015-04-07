@@ -1,5 +1,8 @@
 <?PHP
 
+$user = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
+ $user = mysqli_real_escape_string($conn, $user);
+
 
 $servername = "localhost";
  $username = "root";
@@ -200,7 +203,7 @@ if ($result->num_rows > 0) {
     echo "No jokes yet";
 }
 
-$conn->close();
+
 
 
 }
@@ -210,7 +213,7 @@ else
 
 <FORM METHOD="POST" ACTION="?login=true">
 <STRONG>Login</STRONG><BR />
-<label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
+<label for="username">Childs username: </label><input type="text" name="username" id="username" required="required" value="<?PHP if(empty($user)) {} elseif ($user == "www") {} else { echo $user; } ?>"><br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
 <input type="submit" value="Login"><br />
 </FORM>
@@ -243,6 +246,8 @@ I have read the rules and privacy policy for this website.<br />
 
 <?PHP
 }
+
+$conn->close();
 ?>
 
 
