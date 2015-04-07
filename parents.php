@@ -19,7 +19,7 @@ $user = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
  $user = mysqli_real_escape_string($conn, $user);
 
 // Signup form submit
-if (isset($_GET['signup']) && $_GET['signup'] == "true")
+if (isset($_POST['signup']) && $_POST['signup'] == "true")
 {
 
 $captcha;
@@ -74,10 +74,10 @@ if ($conn->query($sql) === TRUE) {
 
 
 // Update form submit
-if (isset($_GET['update']) && $_GET['update'] == "true")
+if (isset($_POST['update']) && $_POST['update'] == "true")
 {
 
-$username = $_GET["username"];
+$username = $_POST["username"];
  $username = mysqli_real_escape_string($conn, $username);
 $email = $_POST["email"];
  $email = mysqli_real_escape_string($conn, $email);
@@ -109,7 +109,7 @@ if ($conn->query($sql) === TRUE) {
 
 
 // Login
-if (isset($_GET['login']) && $_GET['login'] == "true")
+if (isset($_POST['login']) && $_POST['login'] == "true")
 {
 
 
@@ -180,7 +180,9 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 
 
 Update settings<br />
-<FORM METHOD="POST" ACTION="?update=true&username=<?PHP echo $userInfo[0]["username"]; ?>">
+<FORM METHOD="POST" ACTION="#">
+<input type="hidden" name="update" id="update" value="true">
+<input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"><br />
 <label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"><br />
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme" value="<?PHP echo $userInfo[0]["theme"]; ?>"><br />
@@ -218,16 +220,18 @@ else
 {
 ?>
 
-<FORM METHOD="POST" ACTION="?login=true">
+<FORM METHOD="POST" ACTION="#">
 <STRONG>Login</STRONG><BR />
+<input type="hidden" name="login" id="login" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required" value="<?PHP if(empty($user)) {} elseif ($user == "www") {} elseif ($user == "jokeswaps") {} else { echo $user; } ?>"><br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
 <input type="submit" value="Login"><br />
 </FORM>
 
 
-<FORM METHOD="POST" ACTION="?signup=true">
+<FORM METHOD="POST" ACTION="#">
 <STRONG>Signup</STRONG><BR />
+<input type="hidden" name="signup" id="signup" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
 <label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required"><br />

@@ -62,7 +62,7 @@ echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Your parent needs to verify
 else
 {
 
-if (isset($_GET['new']) && $_GET['new'] == "joke")
+if (isset($_POST['new']) && $_POST['new'] == "joke")
 {
 $funcaptcha = new FUNCAPTCHA();
 $verified = $funcaptcha->checkResult("E1A7B6DB-4779-5670-933E-464FB325E22D");
@@ -258,7 +258,8 @@ echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
 
 
 <STRONG>Write a joke on <?PHP echo $user; ?>'s page</STRONG>
-<FORM METHOD="POST" ACTION="?new=joke">
+<FORM METHOD="POST" ACTION="#">
+<input type="hidden" name="new" id="new" value="joke">
 <label for="name">Your Name: </label><input type="text" name="name" id="name" required><BR />
 <label for="secret" title="A secret word is a password shared by the page owner only to people they know">The secret word: </label><input type="text" name="secret" id="secret" required><BR />
 <label for="joke">Joke Question: </label><input type="text" name="joke" id="joke" required><BR />
