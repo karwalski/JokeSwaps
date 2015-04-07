@@ -34,7 +34,7 @@ if(isset($_POST['g-recaptcha-response'])){
 
 $response = explode(",", $response);
 $response = explode(":", $response[0]);
-$response = str_replace(' ', '', $response[1])
+$response = str_replace(' ', '', $response[1]);
     if($response == "false")
 {
 echo 'Error: We think you are a robot! You didn\'t complete the verification';
