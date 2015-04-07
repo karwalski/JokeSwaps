@@ -32,7 +32,7 @@ if(isset($_POST['g-recaptcha-response'])){
     }
     $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le44QQTAAAAALSxrlG4JJes_KkBDh308YpOiquR&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
 
-var_dump($response);
+var_dump($response.success);
 
     if($response.success == "false")
 {
