@@ -37,7 +37,7 @@ if ($tokenExpires < date("now"))
 {
 echo 'Valid token';
 
-if ($tokenStatus = '0')
+if ($tokenStatus == '0')
 {
 
 // Save token
