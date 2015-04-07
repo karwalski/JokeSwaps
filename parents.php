@@ -42,6 +42,12 @@ if ($tokenStatus == '0')
 
 // Save token
 $sql = "UPDATE tokens SET status='1' WHERE username='$username'";
+if ($conn->query($sql) === TRUE) {
+$sql = "UPDATE users SET verified='1' WHERE username='$username'";
+if ($conn->query($sql) === TRUE) {
+echo 'Your email address has been verified and your account has been enabled at <a href="http://' . $username . '.jokeswaps.com">http://' . $username . 'jokeswaps.com</a>';
+}
+}
 }
 else
 {
