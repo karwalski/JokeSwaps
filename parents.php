@@ -161,7 +161,40 @@ JokeSwaps - Parents Console
 </TITLE>
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script>
+function checkPasswdMatch(form)
+{
 
+if (form = "signup")
+{
+
+	if (signup.password.value == signup.password2.value)
+	{
+		document.getElementById("passwordMisMatch_signup").innerHTML = "";
+	}
+	else
+	{
+		document.getElementById("passwordMisMatch_signup").innerHTML = "Passwords do not match";
+		signup.password.focus();
+	}
+}
+else if (form = "update")
+{
+
+	if (update.password.value == update.password2.value)
+	{
+		document.getElementById("passwordMisMatch_update").innerHTML = "";
+	}
+	else
+	{
+		document.getElementById("passwordMisMatch_update").innerHTML = "Passwords do not match";
+	}
+}
+ 
+
+
+}
+</script>
 </HEAD>
 <BODY>
 <H1>This is the parents Console</H1>
@@ -180,7 +213,7 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 
 
 Update settings<br />
-<FORM METHOD="POST" ACTION="#">
+<FORM METHOD="POST" ACTION="#" name="update">
 <input type="hidden" name="update" id="update" value="true">
 <input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"><br />
@@ -189,8 +222,9 @@ Update settings<br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
 Choose an avatar for your child<br />
 <br /><br /><br /><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
-<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required"><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onChange="checkPasswdMatch(update);"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onChange="checkPasswdMatch(update);"><span id="passwordMisMatch_update"> </span><br />
+
 <input type="submit" value="Save"><br />
 
 
@@ -233,8 +267,10 @@ else
 <STRONG>Signup</STRONG><BR />
 <input type="hidden" name="signup" id="signup" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
-<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required"><br />
+<label for="secret">Secret word: </label><input type="text" name="secret" id="secret"><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onChange="checkPasswdMatch(signup);"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onChange="checkPasswdMatch(signup);"><span id="passwordMisMatch_signup"> </span><br />
+
 
 
 <label for="email">Parents email: </label><input type="email" name="email" id="email" required="required"><br />
