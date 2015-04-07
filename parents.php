@@ -36,7 +36,7 @@ echo $captcha;
 
 print_r($response);
 
-    if($response.success==true)            
+    if($response["success"] == "true")            
     {
 
 
