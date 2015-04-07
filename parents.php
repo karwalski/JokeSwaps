@@ -21,7 +21,7 @@ $user = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
 // Verify email address
 if (isset($_GET['v']) && isset($_GET['username']))
 {
-$username = $_GET['username']
+$username = $_GET['username'];
 $sql = "SELECT * FROM tokens WHERE username = '$username' ORDER BY TokenID DESC " ;
 $result = $conn->query($sql);
 
