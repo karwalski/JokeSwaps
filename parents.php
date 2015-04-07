@@ -104,6 +104,21 @@ $avatar = $_POST["avatar"];
 
 $hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
+// Check username availability
+$sql = "SELECT * FROM users WHERE username = '$username'" ;
+$result = $conn->query($sql);
+$count = $result->num_rows;
+
+if ($count > 1)
+{
+echo 'Username already taken, please try a new username';
+
+//Need to add a prefill with other entered data
+
+}
+else
+{
+
 // Save user
 $sql = "INSERT INTO users (username, password, email, theme, bio, avatar, secret, verified)
 VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar', '$secret', '0')";
@@ -149,7 +164,7 @@ mail($to, $subject, $message, $headers);
 }
 }
 
-
+}
 
 // Update form submit
 if (isset($_POST['update']) && $_POST['update'] == "true")
