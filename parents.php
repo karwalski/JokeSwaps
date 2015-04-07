@@ -128,12 +128,9 @@ if ($conn->query($sql) === TRUE) {
 
 
 $expires = date("Y-m-d H:i:s");
-echo $expires;
 
-echo 'Checkpoint 1';
 
 $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
-echo 'Checkpoint 2';
 // Save token
 $sql = "INSERT INTO tokens (type, hash, expires, status, username)
 VALUES ('verify', '$tokenHash', '$expires', '0', '$username')";
@@ -141,7 +138,7 @@ VALUES ('verify', '$tokenHash', '$expires', '0', '$username')";
 if ($conn->query($sql) === TRUE) {
 
 
-echo 'Checkpoint 3';
+echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username';
 
 $to      = $email;
 $subject = 'Please confirm your email address';
@@ -164,7 +161,7 @@ else
 echo 'Error sending verification email';
 }
 
-echo 'Checkpoint 4';
+
 
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
