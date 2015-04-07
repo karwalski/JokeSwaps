@@ -138,7 +138,7 @@ VALUES ('verify', '$tokenHash', '$expires', '0', '$username')";
 if ($conn->query($sql) === TRUE) {
 
 
-echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username';
+echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username;
 
 $to      = $email;
 $subject = 'Please confirm your email address';
