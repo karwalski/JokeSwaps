@@ -34,7 +34,7 @@ if(isset($_POST['g-recaptcha-response'])){
 
 $response = json_decode($response);
 
-echo 'decoded :' . $response["success"];
+print_r($response);
 
     if($response["success"] == "false")
 {
