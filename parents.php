@@ -263,7 +263,7 @@ else
 </FORM>
 
 
-<FORM METHOD="POST" ACTION="#">
+<FORM METHOD="POST" ACTION="#" name="signup">
 <STRONG>Signup</STRONG><BR />
 <input type="hidden" name="signup" id="signup" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
