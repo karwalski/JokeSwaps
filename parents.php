@@ -138,7 +138,8 @@ echo 'Checkpoint 2';
 $sql = "INSERT INTO tokens (type, hash, expires, status, username)
 VALUES ('verify', '$tokenHash', '$expires', '0', '$username')";
 
-echo $mysqli->error;
+if ($conn->query($sql) === TRUE) {
+
 
 echo 'Checkpoint 3';
 
@@ -154,10 +155,20 @@ $headers = 'From: JokeSwaps Robot <robot@jokeswaps.com>' . "\r\n" .
     'Reply-To: admin@jokeswaps.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-mail($to, $subject, $message, $headers);
+if (mail($to, $subject, $message, $headers);)
+{
+echo 'Verification email sent';
+}
+else
+{
+echo 'Error sending verification email';
+}
 
 echo 'Checkpoint 4';
 
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
 
 } else {
