@@ -167,6 +167,9 @@ echo 'black';
 elseif ($userInfo[0]["theme"] == "lightblue") {
 echo 'black';
 }
+elseif ($userInfo[0]["theme"] == "black") {
+echo 'white';
+}
 else {
 echo 'black';
 }
@@ -182,6 +185,9 @@ echo 'black';
 <IMG SRC="js_<?PHP
 
 if ($userInfo[0]["theme"] == "darkmagenta") {
+echo 'pink';
+}
+elseif ($userInfo[0]["theme"] == "black") {
 echo 'pink';
 }
 elseif ($userInfo[0]["theme"] == 'magenta;background-image: url("flower.jpg")') {
