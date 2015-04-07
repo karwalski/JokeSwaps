@@ -172,7 +172,7 @@ echo 'black';
 if ($userInfo[0]["theme"] == "darkmagenta") {
 echo 'pink';
 }
-elseif ($userInfo[0]["theme"] == "magenta") {
+elseif ($userInfo[0]["theme"] == 'magenta;background-image: url("flower.jpg")') {
 echo 'purple';
 }
 elseif ($userInfo[0]["theme"] == "lightblue") {
