@@ -43,7 +43,7 @@ echo '<TITLE>
 JokeSwaps
 </TITLE>
 <BODY>';
-echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Coming Soon!</H1>" ';
+echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Coming Soon!</H1>';
 
 
 }
