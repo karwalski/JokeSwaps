@@ -109,7 +109,7 @@ $sql = "SELECT * FROM users WHERE username = '$username'" ;
 $result = $conn->query($sql);
 $count = $result->num_rows;
 
-if ($count > 1)
+if ($count > 0)
 {
 echo 'Username already taken, please try a new username';
 
@@ -130,13 +130,15 @@ $randomString = rand() + date(U);
 $expires = date("Y-m-d H:i:s");
 $expires->add(new DateInterval('P7D'));
 
-$tokenHash = urlencode(crypt($randomString, strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
+echo 'Checkpoint 1';
 
+$tokenHash = urlencode(crypt($randomString, strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
+echo 'Checkpoint 2';
 // Save token
 $sql = "INSERT INTO tokens (type, hash, expires, status, username)
 VALUES ('verify', '$tokenHash', '$expires', '0', '$username')";
 
-
+echo 'Checkpoint 3';
 
 $to      = $email;
 $subject = 'Please confirm your email address';
@@ -152,7 +154,7 @@ $headers = 'From: JokeSwaps Robot <robot@jokeswaps.com>' . "\r\n" .
 
 mail($to, $subject, $message, $headers);
 
-
+echo 'Checkpoint 4';
 
 
 
