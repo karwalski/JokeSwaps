@@ -180,15 +180,31 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 
 
 Update settings<br />
-<FORM METHOD="POST" ACTION="?update=true&username=<?PHP echo $userInfo[0]["username"]; ?>">
+<FORM METHOD="POST" ACTION="?update=true&username=<?PHP echo $userInfo[0]["username"]; ?>" name=>
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"><br />
 <label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"><br />
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme" value="<?PHP echo $userInfo[0]["theme"]; ?>"><br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
 Choose an avatar for your child<br />
 <br /><br /><br /><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
-<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required"><br />
+
+<script>
+function checkPasswdMatch()
+{
+	if (form.pwd1.focus(); == document.getElementById("password2"))
+	{
+		document.getElementById("passwordMisMatch").innerHTML = "";
+	}
+	else
+	{
+		document.getElementById("passwordMisMatch").innerHTML = "Passwords do not match";
+		form.password.focus();
+	}
+}
+</script>
+
+<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onChange="checkPasswdMatch();"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onChange="checkPasswdMatch();"><span id="passwordMisMatch"> </span><br />
 <input type="submit" value="Save"><br />
 
 
@@ -229,6 +245,7 @@ else
 <FORM METHOD="POST" ACTION="?signup=true">
 <STRONG>Signup</STRONG><BR />
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
+<label for="secret">Secret word: </label><input type="text" name="secret" id="secret"><br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
 <label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required"><br />
 
@@ -244,7 +261,7 @@ Choose an avatar for your child<br />
 I declare I am a responsible adult, parent or guardian giving permission for this child to receive a JokeSwaps profile page.<br />
 I declare I have discussed the site rules with the child, and they understand the rules.<br />
 I declare I will be supervising the child when using this website.<br />
-I have read the rules and privacy policy for this website.<br />
+I have read the rules and privacy policy for this website.(Coming Soon)<br />
 
 <div class="g-recaptcha" data-sitekey="6Le44QQTAAAAAEy-cOwETZWZ9cKBNZZAhQP4d91C"></div>
 

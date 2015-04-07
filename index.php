@@ -55,7 +55,7 @@ echo '<TITLE>
 JokeSwaps
 </TITLE>
 <BODY>';
-echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Your parent needs to verify their email address, please click the link in the email we sent out.</H1>" ';
+echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Your parent needs to verify their email address, please click the link in the email we sent out.</H1> ';
 
 
 }
