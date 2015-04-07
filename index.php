@@ -49,6 +49,19 @@ echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Coming Soon!</H1>" ';
 }
 else
 {
+
+if($userInfo[0]["verified"] == "0") {
+echo '<TITLE>
+JokeSwaps
+</TITLE>
+<BODY>';
+echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Your parent needs to verify their email address, please click the link in the email we sent out.</H1>" ';
+
+
+}
+else
+{
+
 if (isset($_GET['new']) && $_GET['new'] == "joke")
 {
 $funcaptcha = new FUNCAPTCHA();
@@ -56,7 +69,7 @@ $verified = $funcaptcha->checkResult("E1A7B6DB-4779-5670-933E-464FB325E22D");
 
 if ($verified)
 {
-if ($_POST['secret'] == 'bee')
+if ($_POST['secret'] == $userInfo[0]["secret"])
 {
 
 
@@ -299,7 +312,7 @@ About: When the 7 year old twins Tammi and <?PHP echo $user; ?> created their fi
 
 }
 
-
+}
 
 
 ?>

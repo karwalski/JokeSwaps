@@ -45,10 +45,13 @@ $avatar = $_POST["avatar"];
 
 $hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
+$secret = crypt($_POST["secret"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
+
+
 
 // Save user
-$sql = "INSERT INTO users (username, password, email, theme, bio, avatar)
-VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar')";
+$sql = "INSERT INTO users (username, password, email, theme, bio, avatar, secret, verified)
+VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar', '$secret', '0')";
 
 if ($conn->query($sql) === TRUE) {
     echo 'Account created for ' . $username . '!';
@@ -79,9 +82,11 @@ $avatar = $_POST["avatar"];
 
 $hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
+$secret = crypt($_POST["secret"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
+
 
 // Save user
-$sql = "UPDATE users SET password='$hash', email='$email', theme='$theme', bio='$bio', avatar='$avatar' WHERE username='$username'";
+$sql = "UPDATE users SET password='$hash', email='$email', theme='$theme', bio='$bio', avatar='$avatar', secret='$secret' WHERE username='$username'";
 
 if ($conn->query($sql) === TRUE) {
     echo 'Account updated for ' . $username . '!';
@@ -168,13 +173,14 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 
 Update settings<br />
 <FORM METHOD="POST" ACTION="?update=true&username=<?PHP echo $userInfo[0]["username"]; ?>">
+<label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"><br />
 <label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"><br />
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme" value="<?PHP echo $userInfo[0]["theme"]; ?>"><br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
 Choose an avatar for your child<br />
 <br /><br /><br /><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password"><br />
-<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2"><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required"><br />
 <input type="submit" value="Save"><br />
 
 
@@ -206,20 +212,20 @@ else
 
 <FORM METHOD="POST" ACTION="?login=true">
 <STRONG>Login</STRONG><BR />
-<label for="username">Childs username: </label><input type="text" name="username" id="username"><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password"><br />
+<label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
 <input type="submit" value="Login"><br />
 </FORM>
 
 
 <FORM METHOD="POST" ACTION="?signup=true">
 <STRONG>Signup</STRONG><BR />
-<label for="username">Childs username: </label><input type="text" name="username" id="username"><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password"><br />
-<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2"><br />
+<label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required"><br />
 
 
-<label for="email">Parents email: </label><input type="email" name="email" id="email"><br />
+<label for="email">Parents email: </label><input type="email" name="email" id="email" required="required"><br />
 
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
 
