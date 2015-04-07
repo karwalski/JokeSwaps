@@ -32,8 +32,9 @@ if(isset($_POST['g-recaptcha-response'])){
     }
     $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le44QQTAAAAALSxrlG4JJes_KkBDh308YpOiquR&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
 
+$response = json_decode($response);
 
-echo 'original jsonesque: ' . $response.success;
+echo 'decoded :' . $response["success"];
 
     if($response["success"] == "false")
 {
