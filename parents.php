@@ -155,7 +155,7 @@ $headers = 'From: JokeSwaps Robot <robot@jokeswaps.com>' . "\r\n" .
     'Reply-To: admin@jokeswaps.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-if (mail($to, $subject, $message, $headers);)
+if (mail($to, $subject, $message, $headers))
 {
 echo 'Verification email sent';
 }
