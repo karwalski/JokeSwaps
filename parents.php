@@ -1,7 +1,5 @@
 <?PHP
 
-$user = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
- $user = mysqli_real_escape_string($conn, $user);
 
 
 $servername = "localhost";
@@ -17,6 +15,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$user = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
+ $user = mysqli_real_escape_string($conn, $user);
 
 // Signup form submit
 if (isset($_GET['signup']) && $_GET['signup'] == "true")
