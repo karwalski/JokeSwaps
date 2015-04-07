@@ -38,16 +38,14 @@ $email = $_POST["email"];
  $email = mysqli_real_escape_string($conn, $email);
 $bio = $_POST["bio"];
  $bio = mysqli_real_escape_string($conn, $bio);
+$secret = $_POST["secret"];
+ $secret = mysqli_real_escape_string($conn, $secret);
 
 $theme = $_POST["theme"];
 $avatar = $_POST["avatar"];
 
 
 $hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
-
-$secret = crypt($_POST["secret"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
-
-
 
 // Save user
 $sql = "INSERT INTO users (username, password, email, theme, bio, avatar, secret, verified)
@@ -75,14 +73,14 @@ $email = $_POST["email"];
  $email = mysqli_real_escape_string($conn, $email);
 $bio = $_POST["bio"];
  $bio = mysqli_real_escape_string($conn, $bio);
+$secret = $_POST["secret"];
+ $secret = mysqli_real_escape_string($conn, $secret);
 
 $theme = $_POST["theme"];
 $avatar = $_POST["avatar"];
 
 
 $hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
-
-$secret = crypt($_POST["secret"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
 
 // Save user
