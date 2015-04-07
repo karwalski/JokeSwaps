@@ -223,8 +223,8 @@ Update settings<br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
 Choose an avatar for your child<br />
 <br /><br /><br /><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onChange="checkPasswdMatch(update');"><br />
-<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onChange="checkPasswdMatch('update');"><span id="passwordMisMatch_update"> </span><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onInput="checkPasswdMatch(update');"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onInput="checkPasswdMatch('update');"><span id="passwordMisMatch_update" style="color:red;"> </span><br />
 
 <input type="submit" value="Save"><br />
 
@@ -269,8 +269,8 @@ else
 <input type="hidden" name="signup" id="signup" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret"><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onChange="checkPasswdMatch('signup');"><br />
-<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onChange="checkPasswdMatch('signup');"><span id="passwordMisMatch_signup"> </span><br />
+<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onInput="checkPasswdMatch('signup');"><br />
+<label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onInput="checkPasswdMatch('signup');"><span id="passwordMisMatch_signup" style="color:red;"> </span><br />
 
 
 
