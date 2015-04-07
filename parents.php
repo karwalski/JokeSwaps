@@ -33,16 +33,11 @@ if(isset($_POST['g-recaptcha-response'])){
     $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le44QQTAAAAALSxrlG4JJes_KkBDh308YpOiquR&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
 
 $response = explode(",", $response);
-echo $response[0] . '<BR />';
 $response = explode(":", $response[0]);
-echo $response[0] . '<BR />';
-echo $response[1] . '<BR />';
-
-    if($response[1] == "false")
+$response = str_replace(' ', '', $response[1])
+    if($response == "false")
 {
-
 echo 'Error: We think you are a robot! You didn\'t complete the verification';
-
 }
 else
 {
