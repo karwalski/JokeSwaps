@@ -165,10 +165,10 @@ JokeSwaps - Parents Console
 function checkPasswdMatch(form)
 {
 
-if (form = "signup")
+if (form == "signup")
 {
 
-	if (signup.password.value == signup.password2.value)
+	if (signupForm.password.value == signupForm.password2.value)
 	{
 		document.getElementById("passwordMisMatch_signup").innerHTML = "";
 	}
@@ -178,16 +178,17 @@ if (form = "signup")
 		signup.password.focus();
 	}
 }
-else if (form = "update")
+else if (form == "update")
 {
 
-	if (update.password.value == update.password2.value)
+	if (updateForm.password.value == updateForm.password2.value)
 	{
 		document.getElementById("passwordMisMatch_update").innerHTML = "";
 	}
 	else
 	{
 		document.getElementById("passwordMisMatch_update").innerHTML = "Passwords do not match";
+		update.password.focus();
 	}
 }
  
@@ -213,7 +214,7 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 
 
 Update settings<br />
-<FORM METHOD="POST" ACTION="#" name="update">
+<FORM METHOD="POST" ACTION="#" name="updateForm">
 <input type="hidden" name="update" id="update" value="true">
 <input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"><br />
@@ -263,7 +264,7 @@ else
 </FORM>
 
 
-<FORM METHOD="POST" ACTION="#" name="signup">
+<FORM METHOD="POST" ACTION="#" name="signupForm">
 <STRONG>Signup</STRONG><BR />
 <input type="hidden" name="signup" id="signup" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />
