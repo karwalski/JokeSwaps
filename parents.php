@@ -126,8 +126,7 @@ VALUES ('$username', '$hash', '$email', '$theme', '$bio', '$avatar', '$secret', 
 if ($conn->query($sql) === TRUE) {
     echo 'Account created for ' . $username . '!';
 
-$expires = date("Y-m-d H:i:s");
-$expires->add(new DateInterval('P7D'));
+$expires = mktime(0, 0, 0, date("m")  , date("d")+8, date("Y"));
 
 echo 'Checkpoint 1';
 
