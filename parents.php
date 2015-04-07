@@ -25,8 +25,6 @@ if (isset($_GET['signup']) && $_GET['signup'] == "true")
 $captcha;
 if(isset($_POST['g-recaptcha-response'])){
       $captcha=$_POST['g-recaptcha-response'];
-echo $captcha;
-
     }
     else {
       echo '<h2>Please check the the captcha form.</h2>';
@@ -34,11 +32,17 @@ echo $captcha;
     }
     $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le44QQTAAAAALSxrlG4JJes_KkBDh308YpOiquR&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
 
-print_r($response);
+echo 'array: ' . $response["success"];
+echo 'original jsonesque: ' . $response.success;
 
-    if($response["success"] == "true")            
-    {
+    if($response["success"] == "false")
+{
 
+echo 'Error: We think you are a robot! You didn\'t complete the verification';
+
+}
+else
+{
 
 $username = $_POST["username"];
  $username = mysqli_real_escape_string($conn, $username);
