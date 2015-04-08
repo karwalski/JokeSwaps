@@ -511,7 +511,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     echo '<FORM METHOD="POST" ACTION="#" name="editJokes">
 		<input type="hidden" name="editJokes" id="editJokes" value="true">
-		<input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
+		<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
 	<table>
 	    <tr>
 	      <th>From</th>
