@@ -73,7 +73,7 @@ echo 'Invalid token.';
 
 
 // Verify password reset
-if (isset($_GET['r']) && isset($_GET['username']))
+if (isset($_GET['r']) && isset($_GET['username']) && empty($_POST['update']))
 {
 $username = $_GET['username'];
 $sql = "SELECT * FROM tokens WHERE username = '$username' AND type = 'reset' ORDER BY TokenID DESC " ;
