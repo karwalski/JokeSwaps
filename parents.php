@@ -35,7 +35,6 @@ if ($tokeHash == $_GET['v'])
 
 if ($tokenExpires < date("now"))
 {
-echo 'Valid token';
 
 if ($tokenStatus == '0')
 {
@@ -70,6 +69,9 @@ echo 'Invalid token.';
 }
 
 
+
+
+
 // Verify password reset
 if (isset($_GET['r']) && isset($_GET['username']))
 {
@@ -87,7 +89,6 @@ if ($tokeHash == $_GET['r'])
 
 if ($tokenExpires < date("now"))
 {
-echo 'Valid token';
 
 if ($tokenStatus == '0')
 {
@@ -116,7 +117,7 @@ if ($conn->query($sql) === TRUE) {
 }
 else
 {
-echo 'Email address already verified';
+echo 'Password already reset using this token.';
 }
 
 }
@@ -214,6 +215,59 @@ echo 'Invalid token.';
 	 }
 		
 		
+	}
+
+
+	// Edit and delete jokes
+if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
+	{
+		/* For reference
+        echo '<td><input type="text" name="joke[' . $row["JokeID"] . ']" value="' . $row["joke"] . '"></td>';
+        echo '<td><input type="text" name="answer[' . $row["JokeID"] . ']" value="' . $row["answer"] . '"></td>';
+        echo '<td><input type="checkbox" name="delete[' . $row["JokeID"] . ']" value="true"></td></tr>';
+	*/
+		$forUser = $_POST['username'];
+		
+		foreach ($_POST['joke'] as $JokeID => $joke)
+		{
+			$joke = $_POST['joke'];
+			 $joke = mysqli_real_escape_string($conn, $joke);
+
+			// Update joke
+			$sql = "UPDATE jokes SET joke= '$joke' WHERE JokeID= '$JokeID' AND forUser = '$forUser'";
+		
+			if ($conn->query($sql) === TRUE) {
+			} else {
+			    echo "Error: " . $sql . "<br>" . $conn->error;
+			}	
+		}		
+		
+		foreach ($_POST['answer'] as $JokeID => $answer)
+		{
+			$answer = $_POST['answer'];
+			 $answer = mysqli_real_escape_string($conn, $answer);
+
+			// Update joke
+			$sql = "UPDATE jokes SET answer= '$answer' WHERE JokeID= '$JokeID' AND forUser = '$forUser'";
+		
+			if ($conn->query($sql) === TRUE) {
+			} else {
+			    echo "Error: " . $sql . "<br>" . $conn->error;
+			}	
+		}
+		
+		foreach ($_POST['delete'] as $JokeID => $delete)
+		{
+			if (isset($delete) && $delete == 'true')
+
+			// Update joke
+			$sql = "DELETE FROM jokes WHERE JokeID= '$JokeID' AND forUser = '$forUser'";
+		
+			if ($conn->query($sql) === TRUE) {
+			} else {
+			    echo "Error: " . $sql . "<br>" . $conn->error;
+			}	
+		}	
 	}
 
 
@@ -485,7 +539,7 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 
 
 Update settings<br />
-<FORM METHOD="POST" ACTION="#" name="updateForm">
+<FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" name="updateForm">
 <input type="hidden" name="update" id="update" value="true">
 <input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"  required="required"><br />
@@ -509,7 +563,7 @@ $sql = "SELECT * FROM jokes WHERE forUser = '$username' ORDER BY id DESC" ;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo '<FORM METHOD="POST" ACTION="#" name="editJokes">
+    echo '<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="editJokes">
 		<input type="hidden" name="editJokes" id="editJokes" value="true">
 		<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
 	<table>
@@ -523,10 +577,10 @@ if ($result->num_rows > 0) {
 	
 	// output data of each row
     while($row = $result->fetch_assoc()) {
-        echo '<tr><td><input type="text" name="fromName[' . $row["JokeID"] . ']" value="' . $row["fromName"] . '"></td>';
-        echo '<tr><td><input type="text" name="joke[' . $row["JokeID"] . ']" value="' . $row["joke"] . '"></td>';
-        echo '<tr><td><input type="text" name="answer[' . $row["JokeID"] . ']" value="' . $row["answer"] . '"></td>';
-        echo '<tr><td><input type="checkbox" name="delete[' . $row["JokeID"] . ']" value="true"></td></tr>';
+        echo '<tr><td><input type="text" name="fromName[' . $row["JokeID"] . ']" value="' . $row["fromName"] . '" disabled="disabled"></td>';
+        echo '<td><input type="text" name="joke[' . $row["JokeID"] . ']" value="' . $row["joke"] . '"></td>';
+        echo '<td><input type="text" name="answer[' . $row["JokeID"] . ']" value="' . $row["answer"] . '"></td>';
+        echo '<td><input type="checkbox" name="delete[' . $row["JokeID"] . ']" value="true"></td></tr>';
 
     }
 	
@@ -553,7 +607,7 @@ else
 {
 ?>
 
-<FORM METHOD="POST" ACTION="#" name="login">
+<FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" name="login">
 <STRONG>Login</STRONG><BR />
 <input type="hidden" name="login" id="login" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required" value="<?PHP if(empty($user)) {} elseif ($user == "www") {} elseif ($user == "jokeswaps") {} else { echo $user; } ?>"><br />
@@ -561,7 +615,7 @@ else
 <input type="submit" value="Login"><br />
 </FORM>
 
-<FORM METHOD="POST" ACTION="#" name="forgotPassword">
+<FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" name="forgotPassword">
 <STRONG>Forgotten Password</STRONG><BR />
 <input type="hidden" name="forgotPassword" id="forgotPassword" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required" value="<?PHP if(empty($user)) {} elseif ($user == "www") {} elseif ($user == "jokeswaps") {} else { echo $user; } ?>"><br />
@@ -570,7 +624,7 @@ else
 </FORM>
 
 
-<FORM METHOD="POST" ACTION="#" name="signupForm">
+<FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" name="signupForm">
 <STRONG>Signup</STRONG><BR />
 <input type="hidden" name="signup" id="signup" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required"><br />

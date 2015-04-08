@@ -264,7 +264,7 @@ echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
 
 
 <STRONG>Write a joke on <?PHP echo $user; ?>'s page</STRONG>
-<FORM METHOD="POST" ACTION="#">
+<FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>">
 <input type="hidden" name="new" id="new" value="joke">
 <label for="name">Your Name: </label><input type="text" name="name" id="name" required><BR />
 <label for="secret" title="A secret word is a password shared by the page owner only to people they know">The secret word: </label><input type="text" name="secret" id="secret" required><BR />
