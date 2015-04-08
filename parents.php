@@ -509,7 +509,7 @@ $sql = "SELECT * FROM jokes WHERE forUser = '$username' ORDER BY id DESC" ;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    <FORM METHOD="POST" ACTION="#" name="editJokes">
+    echo '<FORM METHOD="POST" ACTION="#" name="editJokes">
 		<input type="hidden" name="editJokes" id="editJokes" value="true">
 		<input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
 	<table>
@@ -518,7 +518,7 @@ if ($result->num_rows > 0) {
 	      <th>Joke</th> 
 	      <th>Answer</th>
 	      <th>Delete</th>
-	    </tr>
+	    </tr>';
 	
 	
 	// output data of each row
@@ -530,7 +530,7 @@ if ($result->num_rows > 0) {
 
     }
 	
-    <tr>
+   echo ' <tr>
       <th>From</th>
       <th>Joke</th> 
       <th>Answer</th>
@@ -539,7 +539,7 @@ if ($result->num_rows > 0) {
 		  
 	</table>
 		  <input type="submit" value="Save">
-		  </form>
+		  </form>';
 				
 } else {
     echo "No jokes yet";
