@@ -82,7 +82,7 @@ $tokeHash = $userInfo[0]["hash"];
 $tokenExpires = $userInfo[0]["expires"];
 $tokenStatus = $userInfo[0]["status"];
 
-if ($tokeHash == $_GET['v'])
+if ($tokeHash == $_GET['r'])
 {
 
 if ($tokenExpires < date("now"))
@@ -173,7 +173,7 @@ echo 'Invalid token.';
 		 $mail->IsSendmail(); // telling the class to use SendMail transport
 
 		 $body             = 'Someone has requested a password reset for the JokeSwaps.com account "' . $username . '", which is associated with your email address, if it was not you no action is required and you can ignore this email, the account will remain secure.' . 
-		 '\r\nIf you did request a password reset, please confirm by clicking <a href="http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username . '">here</a>' . 
+		 ' <BR />If you did request a password reset, please confirm by clicking <a href="http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username . '">here</a>' . 
 		 ' or copy and pasting the following link into your browser: ' .
 		 'http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username . 
 		 ' <BR /><BR />From the Friendly JokeSwaps Robot';
