@@ -147,6 +147,41 @@ if ($conn->query($sql) === TRUE) {
 echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username;
 
 
+require_once('class.phpmailer.php');
+
+$mail             = new PHPMailer(); // defaults to using php "mail()"
+
+$mail->IsSendmail(); // telling the class to use SendMail transport
+
+$body             = 'Someone has signed up to JokeSwaps.com using your email address, if it was not you no action is required and you can ignore this email.' . 
+'\r\nIf you did sign up to JokeSwaps.com, please confirm your email address by click <a href="http://www.jokeswaps.com/?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
+' or copy and pasting the following link into your browser: ' .
+'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . 
+'\r\n\r\nFrom the Friendly JokeSwaps Robot';
+
+$mail->AddReplyTo("admin@jokeswaps.com","JokeSwaps");
+
+$mail->SetFrom('robot@jokeswaps.com', 'JokeSwaps Robot');
+
+$mail->AddAddress($email, "JokeSwaps Parent");
+
+$mail->Subject    = "Please confirm your email address";
+
+$mail->AltBody    = 'Someone has signed up to JokeSwaps.com using your email address, if it was not you no action is required and you can ignore this email.' . 
+'\r\nIf you did sign up to JokeSwaps.com, please confirm your email address by copy and pasting the following link into your browser: ' .
+'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . 
+'\r\n\r\nFrom the Friendly JokeSwaps Robot';
+
+$mail->MsgHTML($body);
+
+if(!$mail->Send()) {
+  echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+  echo "Message sent!";
+}
+    
+
+/* disable mail() and testing phpmailer
 $subject = 'Please confirm your email address';
 $message = 'Someone has signed up to JokeSwaps.com using your email address, if it was not you no action is required and you can ignore this email.' . 
 '\r\nIf you did sign up to JokeSwaps.com, please confirm your email address by click <a href="http://www.jokeswaps.com/?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
@@ -166,7 +201,7 @@ else
 {
 echo 'Error sending verification email';
 }
-
+*/
 
 
 } else {
