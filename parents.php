@@ -226,7 +226,7 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 		
 		foreach ($_POST['joke'] as $id => $joke)
 		{
-			$joke = $_POST['joke'];
+			
 			 $joke = mysqli_real_escape_string($conn, $joke);
 
 			// Update joke
@@ -240,7 +240,7 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 		
 		foreach ($_POST['answer'] as $id => $answer)
 		{
-			$answer = $_POST['answer'];
+			
 			 $answer = mysqli_real_escape_string($conn, $answer);
 
 			// Update joke
@@ -548,7 +548,7 @@ Choose an avatar for your child<br />
 <label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onInput="checkPasswdMatch('update');"><span id="passwordMisMatch_update" style="color:red;"> </span><br />
 
 <input type="submit" value="Save"><br />
-
+</form>
 
 <?PHP
 
