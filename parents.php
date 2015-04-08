@@ -221,20 +221,16 @@ echo 'Invalid token.';
 	// Edit and delete jokes
 if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 	{
-		/* For reference
-        echo '<td><input type="text" name="joke[' . $row["JokeID"] . ']" value="' . $row["joke"] . '"></td>';
-        echo '<td><input type="text" name="answer[' . $row["JokeID"] . ']" value="' . $row["answer"] . '"></td>';
-        echo '<td><input type="checkbox" name="delete[' . $row["JokeID"] . ']" value="true"></td></tr>';
-	*/
+
 		$forUser = $_POST['username'];
 		
-		foreach ($_POST['joke'] as $JokeID => $joke)
+		foreach ($_POST['joke'] as $id => $joke)
 		{
 			$joke = $_POST['joke'];
 			 $joke = mysqli_real_escape_string($conn, $joke);
 
 			// Update joke
-			$sql = "UPDATE jokes SET joke= '$joke' WHERE JokeID= '$JokeID' AND forUser = '$forUser'";
+			$sql = "UPDATE jokes SET joke= '$joke' WHERE id= '$id' AND forUser = '$forUser'";
 		
 			if ($conn->query($sql) === TRUE) {
 			} else {
@@ -242,13 +238,13 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 			}	
 		}		
 		
-		foreach ($_POST['answer'] as $JokeID => $answer)
+		foreach ($_POST['answer'] as $id => $answer)
 		{
 			$answer = $_POST['answer'];
 			 $answer = mysqli_real_escape_string($conn, $answer);
 
 			// Update joke
-			$sql = "UPDATE jokes SET answer= '$answer' WHERE JokeID= '$JokeID' AND forUser = '$forUser'";
+			$sql = "UPDATE jokes SET answer= '$answer' WHERE id= '$id' AND forUser = '$forUser'";
 		
 			if ($conn->query($sql) === TRUE) {
 			} else {
@@ -256,12 +252,12 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 			}	
 		}
 		
-		foreach ($_POST['delete'] as $JokeID => $delete)
+		foreach ($_POST['delete'] as $id => $delete)
 		{
 			if (isset($delete) && $delete == 'true')
 
 			// Update joke
-			$sql = "DELETE FROM jokes WHERE JokeID= '$JokeID' AND forUser = '$forUser'";
+			$sql = "DELETE FROM jokes WHERE id= '$id' AND forUser = '$forUser'";
 		
 			if ($conn->query($sql) === TRUE) {
 			} else {
@@ -577,10 +573,10 @@ if ($result->num_rows > 0) {
 	
 	// output data of each row
     while($row = $result->fetch_assoc()) {
-        echo '<tr><td><input type="text" name="fromName[' . $row["JokeID"] . ']" value="' . $row["fromName"] . '" disabled="disabled"></td>';
-        echo '<td><input type="text" name="joke[' . $row["JokeID"] . ']" value="' . $row["joke"] . '"></td>';
-        echo '<td><input type="text" name="answer[' . $row["JokeID"] . ']" value="' . $row["answer"] . '"></td>';
-        echo '<td><input type="checkbox" name="delete[' . $row["JokeID"] . ']" value="true"></td></tr>';
+        echo '<tr><td><input type="text" name="fromName[' . $row["id"] . ']" value="' . $row["fromName"] . '" disabled="disabled"></td>';
+        echo '<td><input type="text" name="joke[' . $row["id"] . ']" value="' . $row["joke"] . '"></td>';
+        echo '<td><input type="text" name="answer[' . $row["id"] . ']" value="' . $row["answer"] . '"></td>';
+        echo '<td><input type="checkbox" name="delete[' . $row["id"] . ']" value="true"></td></tr>';
 
     }
 	
