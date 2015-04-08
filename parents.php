@@ -1,6 +1,6 @@
 <?PHP
 
-
+		 require_once('class.phpmailer.php');
 
 $servername = "localhost";
  $username = "root";
@@ -22,7 +22,7 @@ $user = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
 if (isset($_GET['v']) && isset($_GET['username']))
 {
 $username = $_GET['username'];
-$sql = "SELECT * FROM tokens WHERE username = '$username' ORDER BY TokenID DESC " ;
+$sql = "SELECT * FROM tokens WHERE username = '$username' AND type = 'verify' ORDER BY TokenID DESC " ;
 $result = $conn->query($sql);
 
 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
@@ -68,6 +68,153 @@ echo 'Invalid token.';
 }
 
 }
+
+
+// Verify password reset
+if (isset($_GET['r']) && isset($_GET['username']))
+{
+$username = $_GET['username'];
+$sql = "SELECT * FROM tokens WHERE username = '$username' AND type = 'reset' ORDER BY TokenID DESC " ;
+$result = $conn->query($sql);
+
+for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+$tokeHash = $userInfo[0]["hash"];
+$tokenExpires = $userInfo[0]["expires"];
+$tokenStatus = $userInfo[0]["status"];
+
+if ($tokeHash == $_GET['v'])
+{
+
+if ($tokenExpires < date("now"))
+{
+echo 'Valid token';
+
+if ($tokenStatus == '0')
+{
+
+// Save token
+$sql = "UPDATE tokens SET status='1' WHERE username='$username'";
+if ($conn->query($sql) === TRUE) {
+
+
+	$sql = "SELECT * FROM users WHERE username = '$username'" ;
+	$result = $conn->query($sql);
+
+
+	for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+
+	$hash = $userInfo[0]["password"];
+
+
+	$signedIn = 'true';
+
+	echo 'You are signed in as the parent for user :' . $username;
+	echo '<BR />Please use the update form to save a new password.';
+
+
+}
+}
+else
+{
+echo 'Email address already verified';
+}
+
+}
+else
+{
+echo 'Token expired';
+}
+
+}
+else 
+{
+echo 'Invalid token.';
+
+}
+
+}
+
+
+	// Forgotten Password form submit
+	if (isset($_POST['forgotPassword']) && $_POST['forgotPassword'] == "true")
+	{
+		
+		$username = $_POST["username"];
+		 $username = mysqli_real_escape_string($conn, $username);
+		$email = $_POST["email"];
+		 $email = mysqli_real_escape_string($conn, $email);
+		
+		 // Check username and email match
+		 $sql = "SELECT * FROM users WHERE username = '$username'" ;
+		 $result = $conn->query($sql);
+		 
+		 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+
+		 if ($userInfo[0]["email"] == $email)
+		 {
+		
+		 $expires = date("Y-m-d H:i:s");
+
+		 $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
+		 // Save token
+		 $sql = "INSERT INTO tokens (type, hash, expires, status, username)
+		 VALUES ('reset', '$tokenHash', '$expires', '0', '$username')";
+
+		 if ($conn->query($sql) === TRUE) {
+
+
+		 echo 'http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username;
+		 
+		 
+
+
+		 $mail             = new PHPMailer(); // defaults to using php "mail()"
+
+		 $mail->IsSendmail(); // telling the class to use SendMail transport
+
+		 $body             = 'Someone has requested a password reset for the JokeSwaps.com account "' . $username . '", which is associated with your email address, if it was not you no action is required and you can ignore this email, the account will remain secure.' . 
+		 '\r\nIf you did request a password reset, please confirm by clicking <a href="http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username . '">here</a>' . 
+		 ' or copy and pasting the following link into your browser: ' .
+		 'http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username . 
+		 ' <BR /><BR />From the Friendly JokeSwaps Robot';
+
+		 $mail->AddReplyTo("admin@jokeswaps.com","JokeSwaps");
+
+		 $mail->SetFrom('robot@jokeswaps.com', 'JokeSwaps Robot');
+
+		 $mail->AddAddress($email, "JokeSwaps Parent");
+
+		 $mail->Subject    = "Password reset";
+
+		 $mail->AltBody    = 'Someone has requested a password reset for the JokeSwaps.com account "' . $username . '", which is associated with your email address, if it was not you no action is required and you can ignore this email, the account will remain secure.' . 
+		 '\r\nIf you did request a password reset, please confirm by copy and pasting the following link into your browser: ' .
+		 'http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username . 
+		 '\r\n\r\nFrom the Friendly JokeSwaps Robot';
+
+		 $mail->MsgHTML($body);
+
+		 if(!$mail->Send()) {
+		   echo "Mailer Error: " . $mail->ErrorInfo;
+		 } else {
+		   echo "Message sent!";
+		 }
+    
+
+
+
+		 } else {
+		     echo "Error: " . $sql . "<br>" . $conn->error;
+		 }
+		 
+	 }
+	 else
+	 {
+		 echo 'Username and email do not match.';
+		
+	 }
+		
+		
+	}
 
 
 
@@ -147,14 +294,13 @@ if ($conn->query($sql) === TRUE) {
 echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username;
 
 
-require_once('class.phpmailer.php');
 
 $mail             = new PHPMailer(); // defaults to using php "mail()"
 
 $mail->IsSendmail(); // telling the class to use SendMail transport
 
 $body             = 'Someone has signed up to JokeSwaps.com using your email address, if it was not you no action is required and you can ignore this email.' . 
-' <BR /><BR />If you did sign up to JokeSwaps.com, please confirm your email address by click <a href="http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
+' <BR /><BR />If you did sign up to JokeSwaps.com, please confirm your email address by clicking <a href="http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
 ' or copy and pasting the following link into your browser: ' .
 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . 
 ' <BR /><BR />From the Friendly JokeSwaps Robot';
@@ -181,27 +327,6 @@ if(!$mail->Send()) {
 }
     
 
-/* disable mail() and testing phpmailer
-$subject = 'Please confirm your email address';
-$message = 'Someone has signed up to JokeSwaps.com using your email address, if it was not you no action is required and you can ignore this email.' . 
-'\r\nIf you did sign up to JokeSwaps.com, please confirm your email address by click <a href="http://www.jokeswaps.com/?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
-' or copy and pasting the following link into your browser: ' .
-'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . 
-'\r\n\r\nFrom the Friendly JokeSwaps Robot';
-$message = wordwrap($message, 70, "\r\n");
-$headers = 'From: JokeSwaps Robot <robot@jokeswaps.com>' . "\r\n" .
-    'Reply-To: admin@jokeswaps.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-if (mail($email, $subject, $message, $headers))
-{
-echo 'Verification email sent';
-}
-else
-{
-echo 'Error sending verification email';
-}
-*/
 
 
 } else {
@@ -363,8 +488,8 @@ Update settings<br />
 <FORM METHOD="POST" ACTION="#" name="updateForm">
 <input type="hidden" name="update" id="update" value="true">
 <input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
-<label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"><br />
-<label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"><br />
+<label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"  required="required"><br />
+<label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"  required="required"><br />
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme" value="<?PHP echo $userInfo[0]["theme"]; ?>"><br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
 Choose an avatar for your child<br />
@@ -384,11 +509,38 @@ $sql = "SELECT * FROM jokes WHERE forUser = '$username' ORDER BY id DESC" ;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // output data of each row
+    <FORM METHOD="POST" ACTION="#" name="editJokes">
+		<input type="hidden" name="editJokes" id="editJokes" value="true">
+		<input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
+	<table>
+	    <tr>
+	      <th>From</th>
+	      <th>Joke</th> 
+	      <th>Answer</th>
+	      <th>Delete</th>
+	    </tr>
+	
+	
+	// output data of each row
     while($row = $result->fetch_assoc()) {
-        echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR />';
-        echo 'Answer: ' . $row["answer"] . '<BR />';
+        echo '<tr><td><input type="text" name="fromName[' . $row["JokeID"] . ']" value="' . $row["fromName"] . '"></td>';
+        echo '<tr><td><input type="text" name="joke[' . $row["JokeID"] . ']" value="' . $row["joke"] . '"></td>';
+        echo '<tr><td><input type="text" name="answer[' . $row["JokeID"] . ']" value="' . $row["answer"] . '"></td>';
+        echo '<tr><td><input type="checkbox" name="delete[' . $row["JokeID"] . ']" value="true"></td></tr>';
+
     }
+	
+    <tr>
+      <th>From</th>
+      <th>Joke</th> 
+      <th>Answer</th>
+      <th>Delete</th>
+    </tr>
+		  
+	</table>
+		  <input type="submit" value="Save">
+		  </form>
+				
 } else {
     echo "No jokes yet";
 }
@@ -401,12 +553,20 @@ else
 {
 ?>
 
-<FORM METHOD="POST" ACTION="#">
+<FORM METHOD="POST" ACTION="#" name="login">
 <STRONG>Login</STRONG><BR />
 <input type="hidden" name="login" id="login" value="true">
 <label for="username">Childs username: </label><input type="text" name="username" id="username" required="required" value="<?PHP if(empty($user)) {} elseif ($user == "www") {} elseif ($user == "jokeswaps") {} else { echo $user; } ?>"><br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password" required="required"><br />
 <input type="submit" value="Login"><br />
+</FORM>
+
+<FORM METHOD="POST" ACTION="#" name="forgotPassword">
+<STRONG>Forgotten Password</STRONG><BR />
+<input type="hidden" name="forgotPassword" id="forgotPassword" value="true">
+<label for="username">Childs username: </label><input type="text" name="username" id="username" required="required" value="<?PHP if(empty($user)) {} elseif ($user == "www") {} elseif ($user == "jokeswaps") {} else { echo $user; } ?>"><br />
+<label for="email">Parents email: </label><input type="email" name="email" id="email" required="required"><br />
+<input type="submit" value="Reset"><br />
 </FORM>
 
 
