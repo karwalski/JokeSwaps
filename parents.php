@@ -154,10 +154,10 @@ $mail             = new PHPMailer(); // defaults to using php "mail()"
 $mail->IsSendmail(); // telling the class to use SendMail transport
 
 $body             = 'Someone has signed up to JokeSwaps.com using your email address, if it was not you no action is required and you can ignore this email.' . 
-'\r\nIf you did sign up to JokeSwaps.com, please confirm your email address by click <a href="http://www.jokeswaps.com/?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
+' <BR /><BR />If you did sign up to JokeSwaps.com, please confirm your email address by click <a href="http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . '">here</a>' . 
 ' or copy and pasting the following link into your browser: ' .
 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username . 
-'\r\n\r\nFrom the Friendly JokeSwaps Robot';
+' <BR /><BR />From the Friendly JokeSwaps Robot';
 
 $mail->AddReplyTo("admin@jokeswaps.com","JokeSwaps");
 
