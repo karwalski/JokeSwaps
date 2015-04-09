@@ -36,7 +36,7 @@ function mailReset($username, $email, $tokenHash) {
 	
 }
 
-mailVerify($username, $email, $tokenHash)
+function mailVerify($username, $email, $tokenHash)
 	
 {
 	$mail             = new PHPMailer(); // defaults to using php "mail()"
