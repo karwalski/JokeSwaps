@@ -43,6 +43,7 @@
 					 
  				 	$tokenHash = $tokenInfo[0]["hash"];
 				 	$username = $tokenInfo[0]["username"];
+				 	$tokenType = $tokenInfo[0]["type"];
 				 
 		   		 $sql = "SELECT * FROM users WHERE username = '$username'" ;
 		   		 $usersresult = $conn->query($sql);
