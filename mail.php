@@ -143,6 +143,7 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 	} else {
 	  $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
 	  $conn->query($sql);
+	  echo 'Succes: Email ID -> ' . $EmailID . ' Sent to the user';
 	}
 	
 }
