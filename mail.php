@@ -114,7 +114,9 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 
   echo 'Preparing to email: Email ID -> ' . $EmailID . ' Sent to the user';
   $sql = "UPDATE emailQueue SET sent=4 WHERE EmailID='$EmailID'";
-  $conn->query($sql);
+  if ($conn->query($sql) === TRUE) {
+	  echo 'saved to DB';
+  }
 	
 	$mail             = new PHPMailer(); // defaults to using php "mail()"
 
