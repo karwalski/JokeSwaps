@@ -67,10 +67,13 @@ else
 {
 echo '
 <form action="#" method="post">
-<input type="hidden" name="a" value="runDBscript"
+<input type="hidden" name="a" value="runDBscript">
 <input type="submit" value="Run script">
 </form>';
 
 }
 
 ?>
+
+</BODY>
+</HTML>
