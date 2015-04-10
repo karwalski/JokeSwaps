@@ -112,14 +112,14 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 	
 {
 
-  echo 'Preparing to email: Email ID -> ' . $EmailID . ' Sent to the user';
+  echo 'Preparing to email: Email ID -> ' . $EmailID ;
   $sql = "UPDATE emailQueue SET sent=4 WHERE EmailID='$EmailID'";
   if ($conn->query($sql) === TRUE) {
 	  echo 'saved to DB';
   } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
   }
-	  
+  echo 'Checkpoint post sql update';
 	
 	$mail             = new PHPMailer(); // defaults to using php "mail()"
 
