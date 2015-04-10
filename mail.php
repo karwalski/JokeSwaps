@@ -17,14 +17,57 @@
 
 
 		function ProcessMailQueue{
-			// This is the mail queue function to be called e
+			// This is the mail queue function to be called when new tokens created
 			
+			exec("wget -qO- http://jokeswaps.com/mail.php?process_email_queue=true &> /dev/null &");
+			
+		}
+
+		if (isset($_GET["process_email_queue"]) && $_GET["process_email_queue"] == 'true')
+		{
+   		 $sql = "SELECT * FROM emailQueue WHERE sent = '0'" ;
+   		 $result = $conn->query($sql);
+		 
+		 if ($result->num_rows > 0) {
+		 	// output data of each row
+		     while($row = $result->fetch_assoc()) {
+				 
+				 // Read email data
+				 $TokenID = $row["TokenID"]
+				 $EmailID = $row["EmailID"]
+					 
+			   		 $sql = "SELECT * FROM tokens WHERE TokenID = '$TokenID'" ;
+			   		 $result = $conn->query($sql);
+					 
+					 for ($tokenInfo = array (); $row = $result->fetch_assoc(); $tokenInfo[] = $row); 
+					 
+ 				 	$tokenHash = $tokenInfo[0]["hash"];
+				 	$username = $tokenInfo[0]["username"];
+				 
+		   		 $sql = "SELECT * FROM users WHERE username = '$username'" ;
+		   		 $result = $conn->query($sql);
+				 
+				 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row); 
+ 
+			 	$email = $userInfo[0]["email"];
+				 
+				 // Send email
+				 if ($tokenType == 'reset')
+					 { mailReset($username, $email, $tokenHash, $EmailID); }
+				 elseif ($tokenType == 'verify')
+					 { mailVerify($username, $email, $tokenHash, $EmailID); }
+				 
+				 
+			 }
+			 
+		 }
 			
 		}
 
 
 
-function mailReset($username, $email, $tokenHash) {
+
+function mailReset($username, $email, $tokenHash, $EmailID) {
 	// New script
 	
 	
@@ -56,15 +99,17 @@ function mailReset($username, $email, $tokenHash) {
 
  $mail->MsgHTML($body);
 
- if(!$mail->Send()) {
-   echo "Mailer Error: " . $mail->ErrorInfo;
- } else {
-   echo "Message sent!";
- }
+if(!$mail->Send()) {
+  $errorMessage = $mail->ErrorInfo;
+  $sql = "UPDATE emailQueue SET sent='3', error='$errorMessage' WHERE EmailID='$EmailID'";
+} else {
+  $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
+}
+
 	
 }
 
-function mailVerify($username, $email, $tokenHash)
+function mailVerify($username, $email, $tokenHash, $EmailID)
 	
 {
 	$mail             = new PHPMailer(); // defaults to using php "mail()"
@@ -93,13 +138,31 @@ function mailVerify($username, $email, $tokenHash)
 	$mail->MsgHTML($body);
 
 	if(!$mail->Send()) {
-	  echo "Mailer Error: " . $mail->ErrorInfo;
+	  $errorMessage = $mail->ErrorInfo;
+	  $sql = "UPDATE emailQueue SET sent='3', error='$errorMessage' WHERE EmailID='$EmailID'";
 	} else {
-	  echo "Message sent!";
+	  $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
 	}
 	
 }
 
 
+
+/*
+
+				 // Mark as sent in mail queue table
+				 if ($conn->query($sql) === TRUE) {
+				 $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
+			 }
+			 else
+			 {
+				 $errorMessage = $conn->error;
+
+				 $sql = "UPDATE emailQueue SET sent='3' error='$errorMessage' WHERE EmailID='$EmailID'";	
+			 }
+
+*/
+
+$conn->close();
 
 ?>
