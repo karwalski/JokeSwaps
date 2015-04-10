@@ -111,7 +111,7 @@ if(!$mail->Send()) {
 function mailVerify($username, $email, $tokenHash, $EmailID)
 	
 {
-
+	global $conn;
   echo 'Preparing to email: Email ID -> ' . $EmailID ;
   $sql = "UPDATE emailQueue SET sent = '4' WHERE EmailID = '$EmailID' " ;
   if ($conn->query($sql) === TRUE) {
