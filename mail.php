@@ -113,7 +113,7 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 {
 
   echo 'Preparing to email: Email ID -> ' . $EmailID . ' Sent to the user';
-  $sql = "UPDATE emailQueue SET sent='4' WHERE EmailID='$EmailID'";
+  $sql = "UPDATE emailQueue SET sent=4 WHERE EmailID='$EmailID'";
   $conn->query($sql);
 	
 	$mail             = new PHPMailer(); // defaults to using php "mail()"
@@ -143,10 +143,10 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 
 	if(!$mail->Send()) {
 	  $errorMessage = $mail->ErrorInfo;
-	  $sql = "UPDATE emailQueue SET sent='3', error='$errorMessage' WHERE EmailID='$EmailID'";
+	  $sql = "UPDATE emailQueue SET sent=3, error='$errorMessage' WHERE EmailID='$EmailID'";
 	  $conn->query($sql);
 	} else {
-	  $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
+	  $sql = "UPDATE emailQueue SET sent=1 WHERE EmailID='$EmailID'";
 	  $conn->query($sql);
 	  echo 'Succes: Email ID -> ' . $EmailID . ' Sent to the user';
 	}
