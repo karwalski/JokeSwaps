@@ -33,8 +33,8 @@
 		     while($row = $result->fetch_assoc()) {
 				 
 				 // Read email data
-				 $TokenID = $row["TokenID"]
-				 $EmailID = $row["EmailID"]
+				 $TokenID = $row["TokenID"];
+				 $EmailID = $row["EmailID"];
 					 
 			   		 $sql = "SELECT * FROM tokens WHERE TokenID = '$TokenID'" ;
 			   		 $tokensresult = $conn->query($sql);
