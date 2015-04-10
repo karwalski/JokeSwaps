@@ -116,7 +116,10 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
   $sql = "UPDATE emailQueue SET sent=4 WHERE EmailID='$EmailID'";
   if ($conn->query($sql) === TRUE) {
 	  echo 'saved to DB';
+  } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
   }
+	  
 	
 	$mail             = new PHPMailer(); // defaults to using php "mail()"
 
