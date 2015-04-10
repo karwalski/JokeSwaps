@@ -13,7 +13,6 @@ echo 'This is the temp DB Editor script, take caution in using';
 
 if (!isset($_POST["a"]))
 {
-e
 
 
 
@@ -66,7 +65,7 @@ $conn->close();
 }
 else
 {
-cho '
+echo '
 <form action="#" method="post">
 <input type="hidden" name="a" value="runDBscript"
 <input type="submit" value="Run script">
