@@ -111,6 +111,9 @@ if(!$mail->Send()) {
 function mailVerify($username, $email, $tokenHash, $EmailID)
 	
 {
+  $sql = "UPDATE emailQueue SET sent='4' WHERE EmailID='$EmailID'";
+  $conn->query($sql);
+	
 	$mail             = new PHPMailer(); // defaults to using php "mail()"
 
 	$mail->IsSendmail(); // telling the class to use SendMail transport
