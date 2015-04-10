@@ -2,7 +2,35 @@
 
 		require_once('class.phpmailer.php');
 
+		$servername = "localhost";
+		 $username = "root";
+		// $username = "matt";
+		$password = "YmQCl60qMwe2YpUn34k7";
+		$dbname = "jokeswaps";
+
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname );
+		// Check connection
+		if ($conn->connect_error) {
+		    die("Connection failed: " . $conn->connect_error);
+		}
+
+
+		function ProcessMailQueue{
+			// This is the mail queue function to be called e
+			
+			
+		}
+
+
+
 function mailReset($username, $email, $tokenHash) {
+	// New script
+	
+	
+	
+	// Old script
+	
  $mail             = new PHPMailer(); // defaults to using php "mail()"
 
  $mail->IsSendmail(); // telling the class to use SendMail transport

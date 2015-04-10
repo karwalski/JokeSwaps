@@ -166,9 +166,16 @@ echo 'Invalid token.';
 
 
 		 echo 'http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username;
+
+ 		$TokenID =	 mysql_insert_id();
 		 
-		 
-		 mailReset($username, $email, $tokenHash);
+		 $sql = "INSERT INTO emailQueue (TokenID, sent)
+			 VALUES ('$TokenID', '0')";
+		 if ($conn->query($sql) === TRUE) {
+			 ProcessMailQueue();
+		 } else {
+		     echo "Error: " . $sql . "<br>" . $conn->error;
+		 }
 
 
 
@@ -312,10 +319,16 @@ if ($conn->query($sql) === TRUE) {
 
 echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username;
 
+ 		$TokenID =	 mysql_insert_id();
 
-		 mailVerify($username, $email, $tokenHash);
-
-    
+		 
+ 		 $sql = "INSERT INTO emailQueue (TokenID, sent)
+ 			 VALUES ('$TokenID', '0')";
+ 		 if ($conn->query($sql) === TRUE) {
+ 			 ProcessMailQueue();
+ 		 } else {
+ 		     echo "Error: " . $sql . "<br>" . $conn->error;
+ 		 }
 
 
 
