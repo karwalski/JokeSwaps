@@ -70,6 +70,12 @@
 
 function mailReset($username, $email, $tokenHash, $EmailID) {
 
+	global $conn;
+  $sql = "UPDATE emailQueue SET sent = 4, error='sending' WHERE EmailID = '$EmailID' " ;
+  if ($conn->query($sql) === TRUE) {
+	  // Visual feedback if required
+  }
+	
 	
  $mail             = new PHPMailer(); // defaults to using php "mail()"
 
@@ -98,10 +104,10 @@ function mailReset($username, $email, $tokenHash, $EmailID) {
 
 if(!$mail->Send()) {
   $errorMessage = $mail->ErrorInfo;
-  $sql = "UPDATE emailQueue SET sent='3', error='$errorMessage' WHERE EmailID='$EmailID'";
+  $sql = "UPDATE emailQueue SET sent=3, error='$errorMessage' WHERE EmailID='$EmailID'";
   $conn->query($sql);
 } else {
-  $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
+  $sql = "UPDATE emailQueue SET sent=1, error='sent' WHERE EmailID='$EmailID'";
   $conn->query($sql);
 }
 
@@ -112,14 +118,10 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 	
 {
 	global $conn;
-  echo 'Preparing to email: Email ID -> ' . $EmailID ;
-  $sql = "UPDATE emailQueue SET sent = '4' WHERE EmailID = '$EmailID' " ;
+  $sql = "UPDATE emailQueue SET sent = 4, error='sending' WHERE EmailID = '$EmailID' " ;
   if ($conn->query($sql) === TRUE) {
-	  echo 'saved to DB';
-  } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+	  // Visual feedback if required
   }
-  echo 'Checkpoint post sql update';
 	
 	$mail             = new PHPMailer(); // defaults to using php "mail()"
 
@@ -151,9 +153,8 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 	  $sql = "UPDATE emailQueue SET sent=3, error='$errorMessage' WHERE EmailID='$EmailID'";
 	  $conn->query($sql);
 	} else {
-	  $sql = "UPDATE emailQueue SET sent=1 WHERE EmailID='$EmailID'";
+	  $sql = "UPDATE emailQueue SET sent=1, error='sent' WHERE EmailID='$EmailID'";
 	  $conn->query($sql);
-	  echo 'Succes: Email ID -> ' . $EmailID . ' Sent to the user';
 	}
 	
 }
