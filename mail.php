@@ -113,7 +113,7 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 {
 
   echo 'Preparing to email: Email ID -> ' . $EmailID ;
-  $sql = "UPDATE emailQueue SET sent=4 WHERE EmailID='$EmailID'";
+  $sql = "UPDATE emailQueue SET sent = '4' WHERE EmailID = '$EmailID' " ;
   if ($conn->query($sql) === TRUE) {
 	  echo 'saved to DB';
   } else {
