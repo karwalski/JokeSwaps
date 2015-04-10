@@ -37,7 +37,7 @@ if ($conn->connect_error) {
 
 
 
-
+/*
 // sql to create table
 $sql = "CREATE TABLE emailQueue (
 EmailID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
@@ -46,7 +46,7 @@ TokenID INT,
 sent TINYINT,
 LastModified TIMESTAMP
 )";
-
+*/
 
 
 if ($conn->query($sql) === TRUE) {
