@@ -35,7 +35,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "ALTER TABLE emailQueue ADD COLUMN error";
+$sql = "ALTER TABLE emailQueue ADD COLUMN error VARCHAR(255)";
 
 /*
 // sql to create table
