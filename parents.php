@@ -1,7 +1,7 @@
 <?PHP
 
 
-		// require_once('mail.php');
+		require_once('mail.php');
 
 $servername = "localhost";
  $username = "root";
@@ -172,7 +172,7 @@ echo 'Invalid token.';
 		 $sql = "INSERT INTO emailQueue (TokenID, sent)
 			 VALUES ('$TokenID', '0')";
 		 if ($conn->query($sql) === TRUE) {
-			 // ProcessMailQueue();
+			 ProcessMailQueue();
 		 } else {
 		     echo "Error: " . $sql . "<br>" . $conn->error;
 		 }
@@ -325,7 +325,7 @@ echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $us
  		 $sql = "INSERT INTO emailQueue (TokenID, sent)
  			 VALUES ('$TokenID', '0')";
  		 if ($conn->query($sql) === TRUE) {
- 			 // ProcessMailQueue();
+ 			 ProcessMailQueue();
  		 } else {
  		     echo "Error: " . $sql . "<br>" . $conn->error;
  		 }

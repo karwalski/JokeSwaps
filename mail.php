@@ -16,7 +16,7 @@
 		}
 
 
-		function ProcessMailQueue{
+		function ProcessMailQueue(){
 			// This is the mail queue function to be called when new tokens created
 			
 			exec("wget -qO- http://jokeswaps.com/mail.php?process_email_queue=true &> /dev/null &");
@@ -47,7 +47,7 @@
 		   		 $sql = "SELECT * FROM users WHERE username = '$username'" ;
 		   		 $usersresult = $conn->query($sql);
 				 
-				 for ($userInfo = array (); $usersrow = $result->fetch_assoc(); $userInfo[] = $usersrow); 
+				 for ($userInfo = array (); $usersrow = $usersresult->fetch_assoc(); $userInfo[] = $usersrow); 
  
 			 	$email = $userInfo[0]["email"];
 				 
