@@ -167,7 +167,7 @@ echo 'Invalid token.';
 
 		 echo 'http://www.jokeswaps.com/parents.php?r=' . $tokenHash . '&username=' . $username;
 
- 		$TokenID =	 mysql_insert_id();
+ 		$TokenID =	 mysqli_insert_id($conn);
 		 
 		 $sql = "INSERT INTO emailQueue (TokenID, sent)
 			 VALUES ('$TokenID', '0')";
@@ -319,7 +319,7 @@ if ($conn->query($sql) === TRUE) {
 
 echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $username;
 
- 		$TokenID =	 mysql_insert_id();
+ 		$TokenID =	 mysqli_insert_id($conn);
 
 		 
  		 $sql = "INSERT INTO emailQueue (TokenID, sent)
