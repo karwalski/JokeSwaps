@@ -111,6 +111,8 @@ if(!$mail->Send()) {
 function mailVerify($username, $email, $tokenHash, $EmailID)
 	
 {
+
+  echo 'Preparing to email: Email ID -> ' . $EmailID . ' Sent to the user';
   $sql = "UPDATE emailQueue SET sent='4' WHERE EmailID='$EmailID'";
   $conn->query($sql);
 	
