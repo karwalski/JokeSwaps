@@ -11,7 +11,7 @@
 
 echo 'This is the temp DB Editor script, take caution in using';
 
-if (!isset($_POST["a"]))
+if (isset($_POST["a"]))
 {
 
 
