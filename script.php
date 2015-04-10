@@ -9,7 +9,7 @@
 
 // Temp DB editor script
 
-echo 'This is the temp DB Editor script, take caution in using';
+echo 'This is the temp DB Editor script, take caution in using<BR /> <BR />';
 
 if (isset($_POST["a"]))
 {
@@ -20,7 +20,7 @@ if (isset($_POST["a"]))
 	
 	
 // Script running
-echo 'The script is running';
+echo 'The script is running....<BR /> <BR />';
 
 $servername = "localhost";
  $username = "root";
@@ -35,22 +35,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "ALTER TABLE emailQueue ADD COLUMN error VARCHAR(255)";
 
 /*
-// sql to create table
-$sql = "CREATE TABLE emailQueue (
-EmailID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-username VARCHAR(255),
-TokenID INT,
-sent TINYINT,
-LastModified TIMESTAMP
-)";
+// sql command
+$sql = "";
 */
 
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table emailQueue created successfully";
+    echo "SQL command ran successfully";
 } else {
     echo "Error creating table: " . $conn->error;
 }
