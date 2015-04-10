@@ -37,17 +37,17 @@
 				 $EmailID = $row["EmailID"]
 					 
 			   		 $sql = "SELECT * FROM tokens WHERE TokenID = '$TokenID'" ;
-			   		 $result = $conn->query($sql);
+			   		 $tokensresult = $conn->query($sql);
 					 
-					 for ($tokenInfo = array (); $row = $result->fetch_assoc(); $tokenInfo[] = $row); 
+					 for ($tokenInfo = array (); $tokensrow = $tokensresult->fetch_assoc(); $tokenInfo[] = $tokensrow); 
 					 
  				 	$tokenHash = $tokenInfo[0]["hash"];
 				 	$username = $tokenInfo[0]["username"];
 				 
 		   		 $sql = "SELECT * FROM users WHERE username = '$username'" ;
-		   		 $result = $conn->query($sql);
+		   		 $usersresult = $conn->query($sql);
 				 
-				 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row); 
+				 for ($userInfo = array (); $usersrow = $result->fetch_assoc(); $userInfo[] = $usersrow); 
  
 			 	$email = $userInfo[0]["email"];
 				 
@@ -68,11 +68,7 @@
 
 
 function mailReset($username, $email, $tokenHash, $EmailID) {
-	// New script
-	
-	
-	
-	// Old script
+
 	
  $mail             = new PHPMailer(); // defaults to using php "mail()"
 
@@ -102,8 +98,10 @@ function mailReset($username, $email, $tokenHash, $EmailID) {
 if(!$mail->Send()) {
   $errorMessage = $mail->ErrorInfo;
   $sql = "UPDATE emailQueue SET sent='3', error='$errorMessage' WHERE EmailID='$EmailID'";
+  $conn->query($sql);
 } else {
   $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
+  $conn->query($sql);
 }
 
 	
@@ -140,28 +138,16 @@ function mailVerify($username, $email, $tokenHash, $EmailID)
 	if(!$mail->Send()) {
 	  $errorMessage = $mail->ErrorInfo;
 	  $sql = "UPDATE emailQueue SET sent='3', error='$errorMessage' WHERE EmailID='$EmailID'";
+	  $conn->query($sql);
 	} else {
 	  $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
+	  $conn->query($sql);
 	}
 	
 }
 
 
 
-/*
-
-				 // Mark as sent in mail queue table
-				 if ($conn->query($sql) === TRUE) {
-				 $sql = "UPDATE emailQueue SET sent='1' WHERE EmailID='$EmailID'";
-			 }
-			 else
-			 {
-				 $errorMessage = $conn->error;
-
-				 $sql = "UPDATE emailQueue SET sent='3' error='$errorMessage' WHERE EmailID='$EmailID'";	
-			 }
-
-*/
 
 $conn->close();
 
