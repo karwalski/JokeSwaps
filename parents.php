@@ -440,12 +440,12 @@ $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MC
 
 echo 'checkpoint1';
 
-$expires = new DateTime('now');
+$expires = new DateTime("Y-m-d H:i:s");
 echo 'checkpoint2';
 $expires->modify('+2 days');
 echo 'checkpoint3';
-$expires = $expires->format("Y-m-d H:i:s");
-echo 'checkpoint4';
+// $expires = $expires->format("Y-m-d H:i:s");
+// echo 'checkpoint4';
 echo $expires;
 
  // Save token
