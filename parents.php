@@ -609,7 +609,7 @@ if ($result->num_rows > 0) {
     echo '<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="editJokes">
 		<input type="hidden" name="editJokes" id="editJokes" value="true">
 		<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
-		<input type="hidden" name="session" id="session" value="<?PHP echo $tokenHash; ?>">
+		<input type="hidden" name="session" id="session" value="' . $tokenHash . '">
 	<table>
 	    <tr>
 	      <th>From</th>
