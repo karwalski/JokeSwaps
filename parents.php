@@ -440,7 +440,7 @@ $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MC
 
 echo 'checkpoint1';
 
-$expires = new DateTime();
+$expires = new DateTime('now');
 echo 'checkpoint2';
 $expires->modify('+2 days');
 echo 'checkpoint3';
