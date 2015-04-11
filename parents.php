@@ -155,8 +155,10 @@ echo 'Invalid token.';
 		 if ($userInfo[0]["email"] == $email)
 		 {
 		
-		 $expires = date("Y-m-d H:i:s");
-		 $expires->modify('+2 days');
+			 $dtz = new DateTimeZone("UTC"); //Your timezone
+			 $now = new DateTime(date("Y-m-d"), $dtz);
+			 $expires = $now->modify('+4 days');
+			 $expires = $expires->format("Y-m-d H:i:s");
 
 		 $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 		 // Save token
@@ -307,8 +309,10 @@ if ($conn->query($sql) === TRUE) {
     echo 'Account created for ' . $username . '!';
 
 
-$expires = date("Y-m-d H:i:s");
-$expires->modify('+2 days');
+	$dtz = new DateTimeZone("UTC"); //Your timezone
+	$now = new DateTime(date("Y-m-d"), $dtz);
+	$expires = $now->modify('+4 days');
+	$expires = $expires->format("Y-m-d H:i:s");
 
 $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 // Save token
@@ -438,25 +442,10 @@ $signedIn = 'true';
 
 $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
-echo 'checkpoint1';
-
 $dtz = new DateTimeZone("UTC"); //Your timezone
 $now = new DateTime(date("Y-m-d"), $dtz);
-$expires = $now->modify('+2 days');
+$expires = $now->modify('+4 days');
 $expires = $expires->format("Y-m-d H:i:s");
-
-/*
-$expires = new DateTime();
-echo 'checkpoint2';
-$expires->modify('+2 days');
-echo 'checkpoint3';
-// $expires = $expires->format("Y-m-d H:i:s");
-// echo 'checkpoint4';
-
-*/
-
-
-echo $expires;
 
  // Save token
  $sql = "INSERT INTO tokens (type, hash, expires, status, username)
@@ -464,8 +453,6 @@ echo $expires;
 
  if ($conn->query($sql) === TRUE) {
 
-
-$TokenID =	 mysqli_insert_id($conn);
 
 echo 'You are signed in as the parent for user :' . $username . '<BR />';
 
@@ -557,7 +544,7 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 Update settings<br />
 <FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" name="updateForm">
 
-<input type="hidden" name="session" id="session" value="<?PHP echo $TokenID; ?>">
+<input type="hidden" name="session" id="session" value="<?PHP echo $tokenHash; ?>">
 <input type="hidden" name="update" id="update" value="true">
 <input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"  required="required"><br />
@@ -584,7 +571,7 @@ if ($result->num_rows > 0) {
     echo '<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="editJokes">
 		<input type="hidden" name="editJokes" id="editJokes" value="true">
 		<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
-		<input type="hidden" name="session" id="session" value="<?PHP echo $TokenID; ?>">
+		<input type="hidden" name="session" id="session" value="<?PHP echo $tokenHash; ?>">
 	<table>
 	    <tr>
 	      <th>From</th>
