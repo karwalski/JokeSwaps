@@ -438,8 +438,9 @@ $signedIn = 'true';
 
 $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
-$expires = date("Y-m-d H:i:s");
+$expires = new DateTime();
 $expires->modify('+2 days');
+$expires->format("Y-m-d H:i:s");
 
 
  // Save token
