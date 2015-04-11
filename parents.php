@@ -203,6 +203,28 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 
 		$forUser = $_POST['username'];
 		
+		// Check session token
+
+
+		$sql = "SELECT * FROM tokens WHERE username = '$forUser' AND type = 'login' ORDER BY TokenID DESC " ;
+		$result = $conn->query($sql);
+
+		for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+		$tokeHash = $userInfo[0]["hash"];
+		$tokenExpires = $userInfo[0]["expires"];
+		$tokenStatus = $userInfo[0]["status"];
+		
+
+		$session = $_POST["session"];
+		 $session = mysqli_real_escape_string($conn, $session);
+
+		if ($tokeHash == $session)
+		{
+
+		if ($tokenExpires < date("now"))
+		{
+		
+		
 		foreach ($_POST['joke'] as $id => $joke)
 		{
 			
@@ -243,6 +265,22 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 			    echo "Error: " . $sql . "<br>" . $conn->error;
 			}	
 		}	
+		
+
+	}
+	else
+	{
+	echo 'Token expired';
+	}
+
+	}
+	else 
+	{
+	echo 'Invalid token.';
+
+	}
+		
+		
 	}
 
 
