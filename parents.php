@@ -34,7 +34,7 @@ $tokenStatus = $userInfo[0]["status"];
 if ($tokeHash == $_GET['v'])
 {
 
-if ($tokenExpires < date("now"))
+if ($tokenExpires > date("now"))
 {
 
 if ($tokenStatus == '0')
@@ -88,7 +88,7 @@ $tokenStatus = $userInfo[0]["status"];
 if ($tokeHash == $_GET['r'])
 {
 
-if ($tokenExpires < date("now"))
+if ($tokenExpires > date("now"))
 {
 
 if ($tokenStatus == '0')
@@ -156,6 +156,7 @@ echo 'Invalid token.';
 		 {
 		
 		 $expires = date("Y-m-d H:i:s");
+		 $expires->modify('+2 days');
 
 		 $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 		 // Save token
@@ -307,7 +308,7 @@ if ($conn->query($sql) === TRUE) {
 
 
 $expires = date("Y-m-d H:i:s");
-
+$expires->modify('+2 days');
 
 $tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 // Save token
@@ -359,6 +360,8 @@ $bio = $_POST["bio"];
  $bio = mysqli_real_escape_string($conn, $bio);
 $secret = $_POST["secret"];
  $secret = mysqli_real_escape_string($conn, $secret);
+$session = $_POST["session"];
+ $session = mysqli_real_escape_string($conn, $session);
 
 $theme = $_POST["theme"];
 $avatar = $_POST["avatar"];
@@ -366,6 +369,22 @@ $avatar = $_POST["avatar"];
 
 $hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
 
+// Check session token
+
+
+$sql = "SELECT * FROM tokens WHERE username = '$username' AND type = 'login' ORDER BY TokenID DESC " ;
+$result = $conn->query($sql);
+
+for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+$tokeHash = $userInfo[0]["hash"];
+$tokenExpires = $userInfo[0]["expires"];
+$tokenStatus = $userInfo[0]["status"];
+
+if ($tokeHash == $session)
+{
+
+if ($tokenExpires > date("now"))
+{
 
 // Save user
 $sql = "UPDATE users SET password='$hash', email='$email', theme='$theme', bio='$bio', avatar='$avatar', secret='$secret' WHERE username='$username'";
@@ -376,6 +395,19 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+
+}
+else
+{
+echo 'Token expired';
+}
+
+}
+else 
+{
+echo 'Invalid token.';
+
+}
 
 }
 
@@ -402,7 +434,26 @@ if ( hash_equals($hash, crypt($_POST["password"], $hash)) ) {
 
 $signedIn = 'true';
 
-echo 'You are signed in as the parent for user :' . $username;
+// Create login token
+
+$tokenHash = urlencode(crypt(rand(), strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.')));
+
+$expires = date("Y-m-d H:i:s");
+$expires->modify('+2 days');
+
+
+ // Save token
+ $sql = "INSERT INTO tokens (type, hash, expires, status, username)
+ VALUES ('login', '$tokenHash', '$expires', '0', '$username')";
+
+ if ($conn->query($sql) === TRUE) {
+
+
+$TokenID =	 mysqli_insert_id($conn);
+
+echo 'You are signed in as the parent for user :' . $username . '<BR />';
+
+}
 
 
 }
@@ -489,6 +540,8 @@ Childs username (cannot be changed): <?PHP echo $userInfo[0]["username"]; ?><br 
 
 Update settings<br />
 <FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" name="updateForm">
+
+<input type="hidden" name="session" id="session" value="<?PHP echo $TokenID; ?>">
 <input type="hidden" name="update" id="update" value="true">
 <input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"  required="required"><br />
@@ -515,6 +568,7 @@ if ($result->num_rows > 0) {
     echo '<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="editJokes">
 		<input type="hidden" name="editJokes" id="editJokes" value="true">
 		<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
+		<input type="hidden" name="session" id="session" value="<?PHP echo $TokenID; ?>">
 	<table>
 	    <tr>
 	      <th>From</th>
