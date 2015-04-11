@@ -34,7 +34,7 @@ $tokenStatus = $userInfo[0]["status"];
 if ($tokeHash == $_GET['v'])
 {
 
-if ($tokenExpires > date("now"))
+if ($tokenExpires < date("now"))
 {
 
 if ($tokenStatus == '0')
@@ -88,7 +88,7 @@ $tokenStatus = $userInfo[0]["status"];
 if ($tokeHash == $_GET['r'])
 {
 
-if ($tokenExpires > date("now"))
+if ($tokenExpires < date("now"))
 {
 
 if ($tokenStatus == '0')
@@ -387,7 +387,7 @@ $tokenStatus = $userInfo[0]["status"];
 if ($tokeHash == $session)
 {
 
-if ($tokenExpires > date("now"))
+if ($tokenExpires < date("now"))
 {
 
 // Save user
