@@ -151,7 +151,18 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 }
 }
 
-function setFlag(jokeid, reason){
+function showFlagSelect(FlagSelectDiv)
+{
+	if (document.getElementById(FlagSelectDiv).style.visibility == "visible"){
+	document.getElementById(FlagSelectDiv).style.visibility = "hidden"
+	}
+	else
+	{
+	document.getElementById(FlagSelectDiv).style.visibility = "visible";
+	}
+}
+
+function setFlag(jokeid){
     var ajaxRequest;  // The variable that makes Ajax possible!
     //Set AjaxRequest for all Major browsers, nothing to do here, this is standard
     try{
@@ -174,14 +185,19 @@ function setFlag(jokeid, reason){
     // When the Ajax Request waits for php you get some status codes, everything is done when it reaches 4. Add your javascript events etc here...
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState < 4){
-        //document.getElementById('ajaxCatchbox').innerHTML = "Load...";
+        document.getElementById("FlagSelect_" + jokeid).innerHTML = "Notifying the JokeSwaps Robot";
         }
         if(ajaxRequest.readyState == 4){
     // Some Javascript to change your flag colour image
+			showFlagSelect("FlagSelect_" + jokeid);
+			document.getElementById("FlagButton_" + jokeid).value = "Reported";
+			document.getElementById("FlagButton_" + jokeid).disabled=true;
     }
     }
 
     // this is here your php happens without page reload. (In the php file)
+	var reason = document.getElementById("FlagReason_" + jokeid).value;
+	
     var queryString = "?jokeid=" + jokeid + "&reason=" + reason;
     ajaxRequest.open("GET", "flag.php" + queryString, true);
     ajaxRequest.send(null);
@@ -328,7 +344,19 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">Here\'s the answer</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
         echo $row["answer"] . '<BR /></div>';
-		echo '<button onClick="setFlag(' . $row["id"] . ', 1)">Report joke</button><BR /><BR />';
+		echo '<button onClick="showFlagSelect(FlagSelect_' . $row["id"] . ')" id="FlagButton_' . $row["id"] . ')">Report joke</button>';
+		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;">Select reason for reporting: ';
+		echo '<select name="FlagReason_' . $row["id"] . '" onChange="setFlag(' . $row["id"] . ')">
+<option value="0"></option>
+<option value="1">Annoying, not interested or you don\'t understand</option>
+<option value="2">It is not a joke</option>
+<option value="3">It is bullying</option>
+<option value="4">It is rude</option>
+<option value="5">I don\'t think it should be on jokeswaps</option>
+<option value="6">Spam written by a robot</option>
+</select></div>';
+		
+		echo '<BR /><BR />';
     }
 } else {
     echo "No jokes yet, send " . $user . " a joke now";
