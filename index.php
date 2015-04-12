@@ -409,7 +409,7 @@ if ($result->num_rows > 0) {
 		}
 		else
 		{
-		echo 'Here\'s the answer';'
+		echo 'Here\'s the answer';
 		}
 		echo '</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
         echo $row["answer"] . '<BR /></div>';
