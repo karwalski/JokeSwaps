@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 // Script to process flagged jokes
 
 
-if(isset($_GET["jokeID"]) && isset($_GET["reason"]))
+if(isset($_GET["jokeid"]) && isset($_GET["reason"]))
 {
 
 	echo 'checkpoint 2';
