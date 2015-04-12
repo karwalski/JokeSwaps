@@ -266,6 +266,8 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 			}	
 		}	
 		
+		echo 'Jokes updated';
+		
 
 	}
 	else

@@ -151,6 +151,43 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 }
 }
 
+function setFlag(jokeID, reason){
+    var ajaxRequest;  // The variable that makes Ajax possible!
+    //Set AjaxRequest for all Major browsers, nothing to do here, this is standard
+    try{
+        // Opera 8.0+, Firefox, Safari
+        ajaxRequest = new XMLHttpRequest();
+    } catch (e){
+        // Internet Explorer Browsers
+        try{
+            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            try{
+                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e){
+                // Something went wrong
+                alert("Your browser does not support flagging jokes");
+                return false;
+            }
+        }
+    }
+    // When the Ajax Request waits for php you get some status codes, everything is done when it reaches 4. Add your javascript events etc here...
+    ajaxRequest.onreadystatechange = function(){
+        if(ajaxRequest.readyState < 4){
+        //document.getElementById('ajaxCatchbox').innerHTML = "Load...";
+        }
+        if(ajaxRequest.readyState == 4){
+    // Some Javascript to change your flag colour image
+    }
+    }
+
+    // this is here your php happens without page reload. (In the php file)
+    var queryString = "?jokeid=" + jokeID + "&reason=" + reason;
+    ajaxRequest.open("GET", "flag.php" + queryString, true);
+    ajaxRequest.send(null);
+}
+
+
 
 </script>
 <style>
@@ -291,6 +328,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">Here\'s the answer</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
         echo $row["answer"] . '<BR /></div>';
+		echo '<div onClick="setFlag(' . $row["id"] . ', 1)">Report joke</div><BR /><BR />';
     }
 } else {
     echo "No jokes yet, send " . $user . " a joke now";

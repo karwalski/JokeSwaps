@@ -41,11 +41,18 @@ if ($conn->connect_error) {
 $sql = "";
 */
 
+$sql = "CREATE TABLE flags
+(
+FlagID int AUTO INCREMENT PRIMARY KEY,
+JokeID int,
+reason varchar(255)
+);";
+
 
 if ($conn->query($sql) === TRUE) {
     echo "SQL command ran successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error running SQL command: " . $conn->error;
 }
 
 $conn->close();
