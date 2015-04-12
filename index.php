@@ -405,7 +405,7 @@ if ($result->num_rows > 0) {
 		echo $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">';
 		if ($row["type"] == "knock")
 		{
-		echo $row["joke"] . ' who?';'
+		echo $row["joke"] . ' who?';
 		}
 		else
 		{
