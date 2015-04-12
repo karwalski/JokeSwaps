@@ -161,6 +161,11 @@ if(document.getElementById("type").value == "knock")
 {
 	var who = document.getElementById("joke").value;
 	document.getElementById("line3").innerHTML = who + " who?: ";
+	
+	if(document.getElementById("answer").value == "")
+	{
+		document.getElementById("answer").value = who + " ";
+	}
 }
 }
 
