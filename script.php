@@ -40,11 +40,11 @@ if ($conn->connect_error) {
 // sql command
 $sql = "";
 
-*/
+
 
 $sql = "ALTER TABLE jokes ADD type varchar(255);";
 
-
+*/
 
 if ($conn->query($sql) === TRUE) {
     echo "SQL command ran successfully";
