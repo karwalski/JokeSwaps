@@ -91,11 +91,18 @@ $answer = $_POST['answer'];
 $fromIP = $_SERVER['REMOTE_ADDR'];
  $fromIP = mysqli_real_escape_string($conn, $fromIP);
 
-
+if (isset($_POST['knock'])
+{
+$type = "knock";
+}
+else
+{
+	$type = "question";	
+}
 
 // Insert new joke
-$sql = "INSERT INTO jokes (forUser, fromName, joke, answer, fromIP)
-VALUES ('$user', '$fromName', '$joke', '$answer', '$fromIP')";
+$sql = "INSERT INTO jokes (forUser, fromName, joke, answer, fromIP, type)
+VALUES ('$user', '$fromName', '$joke', '$answer', '$fromIP', '$type')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New joke saved successfully";
@@ -389,7 +396,22 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">Here\'s the answer</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
+        echo '<strong>' . $row["fromName"] . ':</strong> ';
+		if ($row["type"] == "knock")
+		{
+			echo 'Knock knock<BR />Who\'s there?<BR />';
+		}
+		
+		echo $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">';
+		if ($row["type"] == "knock")
+		{
+		echo $row["joke"] . ' who?';'
+		}
+		else
+		{
+		echo 'Here\'s the answer';'
+		}
+		echo '</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
         echo $row["answer"] . '<BR /></div>';
 		echo '<button onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
 		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;">Select reason for reporting: ';
