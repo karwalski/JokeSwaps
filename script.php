@@ -43,7 +43,7 @@ $sql = "";
 
 $sql = "CREATE TABLE flags
 (
-FlagID int AUTO INCREMENT PRIMARY KEY,
+FlagID int AUTO_INCREMENT PRIMARY KEY,
 JokeID int,
 reason varchar(255)
 );";
