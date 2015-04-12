@@ -29,11 +29,13 @@ if(isset($_GET["jokeID"]) && isset($_GET["reason"]))
 
  if ($conn->query($sql) === TRUE) {
 	 // Insert success, return ajax response
+echo 'success';
+} else {
+		     echo "Error: " . $sql . "<br>" . $conn->error;
+		 }
+
 	
-	
-}
-	
-	
+	echo 'completed script';
 	
 	
 ?>
