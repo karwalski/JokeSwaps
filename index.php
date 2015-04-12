@@ -155,19 +155,30 @@ else
 }
 }
 
-function jokeChange()
+function jokeInput()
 {
 if(document.getElementById("type").value == "knock")
 {
 	var who = document.getElementById("joke").value;
 	document.getElementById("line3").innerHTML = who + " who?: ";
 	
+}
+}
+
+function jokeChange()
+{
+	if(document.getElementById("type").value == "knock")
+	{
+		var who = document.getElementById("joke").value;
+		document.getElementById("line3").innerHTML = who + " who?: ";
+		
 	if(document.getElementById("answer").value == "")
 	{
 		document.getElementById("answer").value = who + " ";
 	}
 }
 }
+
 
 
 function showAnswer(jokeID) {
@@ -355,7 +366,7 @@ echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
 <label for="name">Is your joke a Knock Knock joke? </label><input type="checkbox" name="type" id="type" value="knock" onChange="jokeType()"><BR />
 <span id="line1"></span><BR />
 
-<label for="joke"><span id="line2">Joke Question: </span></label><textarea rows="3" cols="50" name="joke" id="joke" required onInput="jokeChange();"></textarea><BR />
+<label for="joke"><span id="line2">Joke Question: </span></label><textarea rows="3" cols="50" name="joke" id="joke" required onChange="jokeChange();" onInput="jokeInput();"></textarea><BR />
 <label for="answer"><span id="line3">Answer: </span></label><textarea rows="3" cols="50" name="answer" id="answer" required></textarea><BR />
 
 <?php 
