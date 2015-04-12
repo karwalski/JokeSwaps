@@ -189,7 +189,7 @@ function setFlag(jokeid){
         }
         if(ajaxRequest.readyState == 4){
     // Some Javascript to change your flag colour image
-			showFlagSelect("FlagSelect_" + jokeid);
+			showFlagSelect(jokeid);
 			document.getElementById("FlagButton_" + jokeid).value = "Reported";
 			document.getElementById("FlagButton_" + jokeid).disabled=true;
     }
