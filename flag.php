@@ -1,3 +1,7 @@
+<HTML>
+<BODY>
+<H1> Flag Script </H1>
+
 <?PHP
 	
 
@@ -47,3 +51,6 @@ echo 'success';
 $conn->close();
 	
 ?>
+
+</BODY>
+</HTML>
