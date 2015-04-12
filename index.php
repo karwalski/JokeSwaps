@@ -346,7 +346,7 @@ if ($result->num_rows > 0) {
         echo $row["answer"] . '<BR /></div>';
 		echo '<button onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
 		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;">Select reason for reporting: ';
-		echo '<select name="FlagReason_' . $row["id"] . '" onChange="setFlag(' . $row["id"] . ')">
+		echo '<select name="FlagReason_' . $row["id"] . '" id="FlagReason_' . $row["id"] . '" onChange="setFlag(' . $row["id"] . ')">
 <option value="0"></option>
 <option value="1">Annoying, not interested or you don\'t understand</option>
 <option value="2">It is not a joke</option>
