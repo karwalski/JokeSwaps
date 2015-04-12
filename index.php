@@ -328,7 +328,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">Here\'s the answer</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
         echo $row["answer"] . '<BR /></div>';
-		echo '<div onClick="setFlag(' . $row["id"] . ', 1)">Report joke</div><BR /><BR />';
+		echo '<button onClick="setFlag(' . $row["id"] . ', 1)">Report joke</button><BR /><BR />';
     }
 } else {
     echo "No jokes yet, send " . $user . " a joke now";
