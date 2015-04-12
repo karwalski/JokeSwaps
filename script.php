@@ -40,16 +40,11 @@ if ($conn->connect_error) {
 // sql command
 $sql = "";
 
-
-$sql = "CREATE TABLE flags
-(
-FlagID int AUTO_INCREMENT PRIMARY KEY,
-JokeID int,
-reason varchar(255)
-);";
-
-
 */
+
+$sql = "ALTER TABLE jokes ADD type varchar(255);";
+
+
 
 if ($conn->query($sql) === TRUE) {
     echo "SQL command ran successfully";
