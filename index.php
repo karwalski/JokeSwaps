@@ -141,7 +141,7 @@ JokeSwaps - <?PHP echo $user; ?>
 
 function jokeType()
 {
-	if(document.getElementById("type").value == "knock")
+	if(document.getElementById("knock").checked)
 	{
 	document.getElementById("line1").innerHTML = "Knock Knock";
 	document.getElementById("line2").innerHTML = "Who's there?: ";
@@ -157,7 +157,7 @@ else
 
 function jokeInput()
 {
-if(document.getElementById("type").value == "knock")
+if(document.getElementById("knock").checked)
 {
 	var who = document.getElementById("joke").value;
 	document.getElementById("line3").innerHTML = who + " who?: ";
@@ -167,7 +167,7 @@ if(document.getElementById("type").value == "knock")
 
 function jokeChange()
 {
-	if(document.getElementById("type").value == "knock")
+	if(document.getElementById("knock").checked)
 	{
 		var who = document.getElementById("joke").value;
 		document.getElementById("line3").innerHTML = who + " who?: ";
@@ -363,7 +363,7 @@ echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
 <label for="name">Your Name: </label><input type="text" name="name" id="name" required><BR />
 <label for="secret" title="A secret word is a password shared by the page owner only to people they know">The secret word: </label><input type="text" name="secret" id="secret" required><BR />
 
-<label for="name">Is your joke a Knock Knock joke? </label><input type="checkbox" name="type" id="type" value="knock" onChange="jokeType()"><BR />
+<label for="name">Is your joke a Knock Knock joke? </label><input type="checkbox" name="knock" id="knock" value="knock" onChange="jokeType()"><BR />
 <span id="line1"></span><BR />
 
 <label for="joke"><span id="line2">Joke Question: </span></label><textarea rows="3" cols="50" name="joke" id="joke" required onChange="jokeChange();" onInput="jokeInput();"></textarea><BR />
