@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 	
-	
+	echo 'Running flag script';
 	
 // Script to process flagged jokes
 
@@ -21,8 +21,8 @@ if ($conn->connect_error) {
 if(isset($_GET["jokeID"]) && isset($_GET["reason"]))
 {
 	
-	$JokeID = $_GET["jokeID"];
-	$reason = $_GET["reason"];
+	$JokeID = mysqli_real_escape_string($conn, $_GET["jokeID"]);
+	$reason = mysqli_real_escape_string($conn, $_GET["reason"]);
 	
  $sql = "INSERT INTO flags (JokeID, reason)
  VALUES ('$JokeID', '$reason')";
