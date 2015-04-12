@@ -1,5 +1,9 @@
 <?PHP
 	
+
+
+	echo 'Running flag script';
+
 $servername = "localhost";
  $username = "root";
 // $username = "matt";
@@ -13,13 +17,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 	
-	echo 'Running flag script';
+	echo 'checkpoint 1';
 	
 // Script to process flagged jokes
 
 
 if(isset($_GET["jokeID"]) && isset($_GET["reason"]))
 {
+
+	echo 'checkpoint 2';
 	
 	$JokeID = mysqli_real_escape_string($conn, $_GET["jokeID"]);
 	$reason = mysqli_real_escape_string($conn, $_GET["reason"]);
