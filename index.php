@@ -151,7 +151,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 }
 }
 
-function setFlag(jokeID, reason){
+function setFlag(jokeid, reason){
     var ajaxRequest;  // The variable that makes Ajax possible!
     //Set AjaxRequest for all Major browsers, nothing to do here, this is standard
     try{
@@ -182,7 +182,7 @@ function setFlag(jokeID, reason){
     }
 
     // this is here your php happens without page reload. (In the php file)
-    var queryString = "?jokeid=" + jokeID + "&reason=" + reason;
+    var queryString = "?jokeid=" + jokeid + "&reason=" + reason;
     ajaxRequest.open("GET", "flag.php" + queryString, true);
     ajaxRequest.send(null);
 }

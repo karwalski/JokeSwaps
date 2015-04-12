@@ -31,7 +31,7 @@ if(isset($_GET["jokeid"]) && isset($_GET["reason"]))
 
 	echo 'checkpoint 2';
 	
-	$JokeID = mysqli_real_escape_string($conn, $_GET["jokeID"]);
+	$JokeID = mysqli_real_escape_string($conn, $_GET["jokeid"]);
 	$reason = mysqli_real_escape_string($conn, $_GET["reason"]);
 	
  $sql = "INSERT INTO flags (JokeID, reason)
