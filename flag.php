@@ -37,5 +37,7 @@ echo 'success';
 	
 	echo 'completed script';
 	
+
+$conn->close();
 	
 ?>
