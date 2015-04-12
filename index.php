@@ -91,7 +91,7 @@ $answer = $_POST['answer'];
 $fromIP = $_SERVER['REMOTE_ADDR'];
  $fromIP = mysqli_real_escape_string($conn, $fromIP);
 
-if (isset($_POST['knock'])
+if (isset($_POST['knock']))
 {
 $type = "knock";
 }
