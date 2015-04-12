@@ -350,8 +350,8 @@ echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
 <label for="name">Is your joke a Knock Knock joke? </label><input type="checkbox" name="type" id="type" value="knock" onChange="jokeType()"><BR />
 <span id="line1"></span><BR />
 
-<label for="joke"><span id="line2">Joke Question: </span></label><textarea rows="3" cols="50" name="joke" id="joke" required onInput="jokeChange();"><BR />
-<label for="answer"><span id="line3">Answer: </span></label><textarea rows="3" cols="50" name="answer" id="answer" required><BR />
+<label for="joke"><span id="line2">Joke Question: </span></label><textarea rows="3" cols="50" name="joke" id="joke" required onInput="jokeChange();"></textarea><BR />
+<label for="answer"><span id="line3">Answer: </span></label><textarea rows="3" cols="50" name="answer" id="answer" required></textarea><BR />
 
 <?php 
 echo $funcap; 
