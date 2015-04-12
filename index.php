@@ -139,11 +139,36 @@ JokeSwaps - <?PHP echo $user; ?>
 <script>
 
 
+function jokeType()
+{
+	if(document.getElementById("type").value == "knock")
+	{
+	document.getElementById("line1").innerHTML = "Knock Knock";
+	document.getElementById("line2").innerHTML = "Who's there?: ";
+	document.getElementById("line3").innerHTML = ".... who?: ";
+}
+else
+{
+	document.getElementById("line2").innerHTML = "Joke Question: ";
+	document.getElementById("line3").innerHTML = "Answer: ";
+	
+}
+}
+
+function jokeChange()
+{
+if(document.getElementById("type").value == "knock")
+{
+	var who = document.getElementById("joke").value;
+	document.getElementById("line3").innerHTML = who + " who?: ";
+}
+}
+
 
 function showAnswer(jokeID) {
 
 if (document.getElementById("Answer" + jokeID).style.visibility == "visible"){
-document.getElementById("Answer" + jokeID).style.visibility = "hidden"
+	document.getElementById("Answer" + jokeID).style.visibility = "hidden";
 }
 else
 {
@@ -154,7 +179,7 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 function showFlagSelect(jokeid)
 {
 	if (document.getElementById("FlagSelect_" + jokeid).style.visibility == "visible"){
-	document.getElementById("FlagSelect_" + jokeid).style.visibility = "hidden"
+		document.getElementById("FlagSelect_" + jokeid).style.visibility = "hidden";
 	}
 	else
 	{
@@ -190,7 +215,7 @@ function setFlag(jokeid){
         if(ajaxRequest.readyState == 4){
     // Some Javascript to change your flag colour image
 			showFlagSelect(jokeid);
-			document.getElementById("FlagButton_" + jokeid).value = "Reported";
+			document.getElementById("FlagButton_" + jokeid).innerHTML = "Reported";
 			document.getElementById("FlagButton_" + jokeid).disabled=true;
     }
     }
@@ -321,8 +346,12 @@ echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
 <input type="hidden" name="new" id="new" value="joke">
 <label for="name">Your Name: </label><input type="text" name="name" id="name" required><BR />
 <label for="secret" title="A secret word is a password shared by the page owner only to people they know">The secret word: </label><input type="text" name="secret" id="secret" required><BR />
-<label for="joke">Joke Question: </label><input type="text" name="joke" id="joke" required><BR />
-<label for="answer">Answer: </label><input type="text" name="answer" id="answer" required><BR />
+
+<label for="name">Is your joke a Knock Knock joke? </label><input type="checkbox" name="type" id="type" value="knock" onChange="jokeType()"><BR />
+<span id="line1"></span><BR />
+
+<label for="joke"><span id="line2">Joke Question: </span></label><textarea rows="3" cols="50" name="joke" id="joke" required onInput="jokeChange();"><BR />
+<label for="answer"><span id="line3">Answer: </span></label><textarea rows="3" cols="50" name="answer" id="answer" required><BR />
 
 <?php 
 echo $funcap; 
