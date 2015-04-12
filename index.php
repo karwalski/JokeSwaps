@@ -151,14 +151,14 @@ document.getElementById("Answer" + jokeID).style.visibility = "visible";
 }
 }
 
-function showFlagSelect(FlagSelectDiv)
+function showFlagSelect(jokeid)
 {
-	if (document.getElementById(FlagSelectDiv).style.visibility == "visible"){
-	document.getElementById(FlagSelectDiv).style.visibility = "hidden"
+	if (document.getElementById("FlagSelect_" + jokeid).style.visibility == "visible"){
+	document.getElementById("FlagSelect_" + jokeid).style.visibility = "hidden"
 	}
 	else
 	{
-	document.getElementById(FlagSelectDiv).style.visibility = "visible";
+	document.getElementById("FlagSelect_" + jokeid).style.visibility = "visible";
 	}
 }
 
@@ -344,7 +344,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo '<strong>' . $row["fromName"] . ':</strong> ' . $row["joke"] . '<BR /><button onClick="showAnswer(' . $row["id"] . ');">Here\'s the answer</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
         echo $row["answer"] . '<BR /></div>';
-		echo '<button onClick="showFlagSelect(FlagSelect_' . $row["id"] . ')" id="FlagButton_' . $row["id"] . ')">Report joke</button>';
+		echo '<button onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
 		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;">Select reason for reporting: ';
 		echo '<select name="FlagReason_' . $row["id"] . '" onChange="setFlag(' . $row["id"] . ')">
 <option value="0"></option>
