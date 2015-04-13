@@ -40,11 +40,11 @@ if ($conn->connect_error) {
 // sql command
 $sql = "";
 
-*/
+
 
 $sql = "UPDATE jokes SET type = 'question' WHERE type IS NULL;";
 
-
+*/
 
 if ($conn->query($sql) === TRUE) {
     echo "SQL command ran successfully";
