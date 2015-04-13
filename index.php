@@ -27,7 +27,7 @@ if ($conn->connect_error) {
 // Check SQL user
 
  
- $user = strtolower(mysqli_real_escape_string($conn, substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
+ $user = strtolower(mysqli_real_escape_string($conn, substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."))));
 
 $sql = "SELECT * FROM users WHERE username = '$user'" ;
 $result = $conn->query($sql);
