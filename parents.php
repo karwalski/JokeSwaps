@@ -201,7 +201,7 @@ echo 'Invalid token.';
 if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 	{
 
-		$forUser = $_POST['username'];
+		$forUser = mysqli_real_escape_string($conn, $_POST['username']);
 		
 		// Check session token
 
@@ -286,7 +286,7 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 		$signedIn = 'true';
 		$tokenHash = $tokeHash;
 
-		$sql = "SELECT * FROM users WHERE username = '$username'" ;
+		$sql = "SELECT * FROM users WHERE username = '$forUser'" ;
 		$result = $conn->query($sql);
 
 
