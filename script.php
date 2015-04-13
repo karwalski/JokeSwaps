@@ -53,7 +53,7 @@ JokeID INT
 $sql = "SELECT * FROM funny" ;
 $result = $conn->query($sql);
 
-echo '<BR />List Funnys<BR />'
+echo '<BR />List Funnys<BR />';
     while($row = $result->fetch_assoc()) {
 		echo $row["JokeID"];
 	}
