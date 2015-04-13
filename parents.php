@@ -291,6 +291,8 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 
 
 		for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+		
+		echo 'You are signed in as the parent for user :' . $forUser . '<BR />';
 
 
 	}
@@ -474,6 +476,7 @@ $result = $conn->query($sql);
 
 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
 
+echo 'You are signed in as the parent for user :' . $username . '<BR />';
 
 }
 else
@@ -490,6 +493,21 @@ echo 'Invalid token.';
 
 }
 
+
+// Logout
+if (isset($_POST['logout']) && $_POST['logout'] == "true")
+{
+	$username = $_POST["username"];
+	 $username = mysqli_real_escape_string($conn, $username);
+	 
+	 $sql = "UPDATE tokens SET status = '1' WHERE username = '$username' AND type = 'login'";
+
+	 if ($conn->query($sql) === TRUE) {
+		 echo 'Signout success'
+	 }
+	 
+	 
+}
 
 
 
@@ -682,6 +700,18 @@ if ($result->num_rows > 0) {
 } else {
     echo "No jokes yet";
 }
+
+
+// Logout
+
+echo '
+<FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" name="logout">
+<input type="hidden" name="logout" id="logout" value="true">
+<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
+<input type="hidden" name="session" id="session" value="' . $tokenHash . '">
+<input type="submit" value="Logout"><br />
+</FORM>
+';
 
 
 
