@@ -49,6 +49,16 @@ JokeID INT
 )";
 */
 
+// Print funnys
+$sql = "SELECT * FROM funny" ;
+$result = $conn->query($sql);
+
+echo '<BR />List Funnys<BR />'
+    while($row = $result->fetch_assoc()) {
+		echo $row["JokeID"];
+	}
+
+
 if ($conn->query($sql) === TRUE) {
     echo "SQL command ran successfully";
 } else {
