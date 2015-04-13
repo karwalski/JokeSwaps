@@ -41,10 +41,13 @@ if ($conn->connect_error) {
 $sql = "";
 
 
-
-$sql = "UPDATE jokes SET type = 'question' WHERE type IS NULL;";
-
 */
+
+$sql = "CREATE TABLE funny (
+FunnyID INT AUTO_INCREMENT PRIMARY KEY,
+JokeID INT
+)";
+
 
 if ($conn->query($sql) === TRUE) {
     echo "SQL command ran successfully";

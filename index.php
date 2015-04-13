@@ -208,6 +208,9 @@ function showFlagSelect(jokeid)
 	}
 }
 
+
+
+
 function setFlag(jokeid){
     var ajaxRequest;  // The variable that makes Ajax possible!
     //Set AjaxRequest for all Major browsers, nothing to do here, this is standard
@@ -231,7 +234,7 @@ function setFlag(jokeid){
     // When the Ajax Request waits for php you get some status codes, everything is done when it reaches 4. Add your javascript events etc here...
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState < 4){
-        document.getElementById("FlagSelect_" + jokeid).innerHTML = "Notifying the JokeSwaps Robot";
+        document.getElementById("FlagSelect_" + jokeid).innerHTML = "Telling the JokeSwaps Robot...";
         }
         if(ajaxRequest.readyState == 4){
     // Some Javascript to change your flag colour image
@@ -249,6 +252,47 @@ function setFlag(jokeid){
     ajaxRequest.send(null);
 }
 
+
+
+function funnyButton(jokeid){
+    var ajaxRequest;  // The variable that makes Ajax possible!
+    //Set AjaxRequest for all Major browsers, nothing to do here, this is standard
+    try{
+        // Opera 8.0+, Firefox, Safari
+        ajaxRequest = new XMLHttpRequest();
+    } catch (e){
+        // Internet Explorer Browsers
+        try{
+            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            try{
+                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e){
+                // Something went wrong
+                alert("Your browser does not support voting for funny jokes");
+                return false;
+            }
+        }
+    }
+    // When the Ajax Request waits for php you get some status codes, everything is done when it reaches 4. Add your javascript events etc here...
+    ajaxRequest.onreadystatechange = function(){
+        if(ajaxRequest.readyState < 4){
+			document.getElementById("funnyButton_" + jokeid).innerHTML = "Telling the JokeSwaps Robot...";
+			document.getElementById("funnyButton_" + jokeid).disabled=true;
+        }
+        if(ajaxRequest.readyState == 4){
+    // Some Javascript to change your flag colour image
+			document.getElementById("funnyButton_" + jokeid).innerHTML = "FUNNY!";
+			document.getElementById("funnyButton_" + jokeid).disabled=true;
+    }
+    }
+
+    // this is here your php happens without page reload. (In the php file)
+	
+    var queryString = "?jokeid=" + jokeid;
+    ajaxRequest.open("GET", "funny.php" + queryString, true);
+    ajaxRequest.send(null);
+}
 
 
 </script>
@@ -409,6 +453,7 @@ if ($result->num_rows > 0) {
 		}
 		echo '</button><BR/><div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
         echo $row["answer"] . '<BR /></div>';
+		echo '<button onClick="funnyButton(' . $row["id"] . ');" id="funnyButton_' . $row["id"] . '">This is funny</button>';
 		echo '<button onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
 		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;">Select reason for reporting: ';
 		echo '<select name="FlagReason_' . $row["id"] . '" id="FlagReason_' . $row["id"] . '" onChange="setFlag(' . $row["id"] . ')">
