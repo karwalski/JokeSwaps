@@ -282,6 +282,9 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 		
 		echo 'Jokes updated';
 		
+		
+		$signedIn = 'true';
+		$tokenHash = $tokeHash;
 
 	}
 	else
@@ -453,6 +456,9 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+
+$signedIn = 'true';
+$tokenHash = $tokeHash;
 
 }
 else
