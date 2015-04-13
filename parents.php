@@ -253,6 +253,20 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 			}	
 		}
 		
+		foreach ($_POST['type'] as $id => $type)
+		{
+			
+			 $type = mysqli_real_escape_string($conn, $type);
+
+			// Update joke
+			$sql = "UPDATE jokes SET type= '$type' WHERE id= '$id' AND forUser = '$forUser'";
+		
+			if ($conn->query($sql) === TRUE) {
+			} else {
+			    echo "Error: " . $sql . "<br>" . $conn->error;
+			}	
+		}
+		
 		foreach ($_POST['delete'] as $id => $delete)
 		{
 			if (isset($delete) && $delete == 'true')
@@ -617,6 +631,7 @@ if ($result->num_rows > 0) {
 	      <th>From</th>
 	      <th>Joke</th> 
 	      <th>Answer</th>
+	      <th>Type</th>
 	      <th>Delete</th>
 	    </tr>';
 	
@@ -626,6 +641,7 @@ if ($result->num_rows > 0) {
         echo '<tr><td><input type="text" name="fromName[' . $row["id"] . ']" value="' . $row["fromName"] . '" disabled="disabled"></td>';
         echo '<td><input type="text" name="joke[' . $row["id"] . ']" value="' . $row["joke"] . '"></td>';
         echo '<td><input type="text" name="answer[' . $row["id"] . ']" value="' . $row["answer"] . '"></td>';
+        echo '<td><input type="text" name="type[' . $row["id"] . ']" value="' . $row["type"] . '"></td>';
         echo '<td><input type="checkbox" name="delete[' . $row["id"] . ']" value="true"></td></tr>';
 
     }
@@ -634,6 +650,7 @@ if ($result->num_rows > 0) {
       <th>From</th>
       <th>Joke</th> 
       <th>Answer</th>
+	  <th>Type</th>
       <th>Delete</th>
     </tr>
 		  
