@@ -504,6 +504,7 @@ if (isset($_POST['logout']) && $_POST['logout'] == "true")
 
 	 if ($conn->query($sql) === TRUE) {
 		 echo 'Signout success';
+		 $signedIn = 'false';
 	 }
 	 
 	 
@@ -705,7 +706,7 @@ if ($result->num_rows > 0) {
 // Logout
 
 echo '
-<FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" name="logout">
+<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="logout">
 <input type="hidden" name="logout" id="logout" value="true">
 <input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
 <input type="hidden" name="session" id="session" value="' . $tokenHash . '">
