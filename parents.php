@@ -206,7 +206,7 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 		// Check session token
 
 
-		$sql = "SELECT * FROM tokens WHERE username = '$forUser' AND type = 'login' ORDER BY TokenID DESC " ;
+		$sql = "SELECT * FROM tokens WHERE username = '$forUser' AND type = 'login' AND status = '0' ORDER BY TokenID DESC " ;
 		$result = $conn->query($sql);
 
 		for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
@@ -442,7 +442,7 @@ $hash = crypt($_POST["password"], (sprintf("$2a$%02d$", 10) . strtr(base64_encod
 // Check session token
 
 
-$sql = "SELECT * FROM tokens WHERE username = '$username' AND type = 'login' ORDER BY TokenID DESC " ;
+$sql = "SELECT * FROM tokens WHERE username = '$username' AND type = 'login' AND status = '0' ORDER BY TokenID DESC " ;
 $result = $conn->query($sql);
 
 for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
