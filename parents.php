@@ -503,7 +503,7 @@ if (isset($_POST['logout']) && $_POST['logout'] == "true")
 	 $sql = "UPDATE tokens SET status = '1' WHERE username = '$username' AND type = 'login'";
 
 	 if ($conn->query($sql) === TRUE) {
-		 echo 'Signout success'
+		 echo 'Signout success';
 	 }
 	 
 	 
