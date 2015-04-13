@@ -286,6 +286,13 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 		$signedIn = 'true';
 		$tokenHash = $tokeHash;
 
+		$sql = "SELECT * FROM users WHERE username = '$username'" ;
+		$result = $conn->query($sql);
+
+
+		for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+
+
 	}
 	else
 	{
@@ -460,6 +467,13 @@ if ($conn->query($sql) === TRUE) {
 
 $signedIn = 'true';
 $tokenHash = $tokeHash;
+
+$sql = "SELECT * FROM users WHERE username = '$username'" ;
+$result = $conn->query($sql);
+
+
+for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+
 
 }
 else
