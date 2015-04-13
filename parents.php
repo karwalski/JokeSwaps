@@ -16,13 +16,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$user = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."));
- $user = mysqli_real_escape_string($conn, $user);
+
+$user = strtolower(mysqli_real_escape_string($conn, substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], ".")));
+
 
 // Verify email address
 if (isset($_GET['v']) && isset($_GET['username']))
 {
-$username = $_GET['username'];
+	$username = strtolower(mysqli_real_escape_string($conn, $_GET["username"]));
+
 $sql = "SELECT * FROM tokens WHERE username = '$username' AND type = 'verify' ORDER BY TokenID DESC " ;
 $result = $conn->query($sql);
 
@@ -76,7 +78,7 @@ echo 'Invalid token.';
 // Verify password reset
 if (isset($_GET['r']) && isset($_GET['username']) && empty($_POST['update']))
 {
-$username = $_GET['username'];
+	$username = strtolower(mysqli_real_escape_string($conn, $_GET["username"]));
 $sql = "SELECT * FROM tokens WHERE username = '$username' AND type = 'reset' ORDER BY TokenID DESC " ;
 $result = $conn->query($sql);
 
@@ -141,8 +143,8 @@ echo 'Invalid token.';
 	if (isset($_POST['forgotPassword']) && $_POST['forgotPassword'] == "true")
 	{
 		
-		$username = $_POST["username"];
-		 $username = mysqli_real_escape_string($conn, $username);
+
+		 $username = strtolower(mysqli_real_escape_string($conn, $_POST["username"]));
 		$email = $_POST["email"];
 		 $email = mysqli_real_escape_string($conn, $email);
 		
@@ -337,14 +339,15 @@ echo 'Error: We think you are a robot! You didn\'t complete the verification';
 else
 {
 
-$username = $_POST["username"];
- $username = mysqli_real_escape_string($conn, $username);
+
+	$username = strtolower(mysqli_real_escape_string($conn, $_POST["username"]));
+
 $email = $_POST["email"];
  $email = mysqli_real_escape_string($conn, $email);
 $bio = $_POST["bio"];
  $bio = mysqli_real_escape_string($conn, $bio);
-$secret = $_POST["secret"];
- $secret = mysqli_real_escape_string($conn, $secret);
+
+ 	$secret = strtolower(mysqli_real_escape_string($conn, $_POST["secret"]));
 
 $theme = $_POST["theme"];
 $avatar = $_POST["avatar"];
@@ -421,6 +424,8 @@ echo 'http://www.jokeswaps.com/parents.php?v=' . $tokenHash . '&username=' . $us
 // Update form submit
 if (isset($_POST['update']) && $_POST['update'] == "true")
 {
+
+
 
 $username = $_POST["username"];
  $username = mysqli_real_escape_string($conn, $username);
@@ -516,9 +521,8 @@ if (isset($_POST['logout']) && $_POST['logout'] == "true")
 if (isset($_POST['login']) && $_POST['login'] == "true")
 {
 
+	$username = strtolower(mysqli_real_escape_string($conn, $_POST["username"]));
 
-$username = $_POST["username"];
- $username = mysqli_real_escape_string($conn, $username);
 
 $sql = "SELECT * FROM users WHERE username = '$username'" ;
 $result = $conn->query($sql);
