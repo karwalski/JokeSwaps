@@ -202,10 +202,12 @@ function showAnswer(jokeID) {
 
 if (document.getElementById("Answer" + jokeID).style.visibility == "visible"){
 	document.getElementById("Answer" + jokeID).style.visibility = "hidden";
+	document.getElementById("AnswerButton" + jokeID).style.visibility = "visibile";
 }
 else
 {
 document.getElementById("Answer" + jokeID).style.visibility = "visible";
+document.getElementById("AnswerButton" + jokeID).style.visibility = "hidden";
 }
 }
 
@@ -354,7 +356,7 @@ function funnyButton(jokeid){
                 <img class="img2" src="images/avatars/<?PHP if (isset($userInfo[0]["avatar"])) { echo $userInfo[0]["avatar"];} else {echo 'avatar';} ?>.png" />
             </div>
             <div id="userName" class="grid_4">
-                <p>Name - <span id="name"><?PHP echo $user; ?></span>
+                <p>Name - <span id="name"><?PHP echo ucfirst($user); ?></span>
                 </p>
             </div>
         </div>
@@ -371,7 +373,7 @@ function funnyButton(jokeid){
 
             </div>
             <div id="bio" class="grid_6">
-                <h4>About <?PHP echo $user; ?>...</h4>
+                <h4>About <?PHP echo ucfirst($user); ?>...</h4>
                 <p class="grid_4"><?PHP echo $userInfo[0]["bio"]; ?></p>
             </div>
         </div>
@@ -548,8 +550,10 @@ $count = 1;
 
 if ($result->num_rows > 0) {
     // output data of each row
+
+	
     while($row = $result->fetch_assoc()) {
-		while ($count < 5) // Temp only show latest 4 until slider is active
+		if ($count < 5) // Temp only show latest 4 until slider is active
 		{
         echo '         <div class=" grid_3 section' . $count . ' inline"';
 				echo '>
@@ -571,16 +575,16 @@ if ($result->num_rows > 0) {
 		echo '</p>
 			                </div>
 			                    <button class="grid_3 btn" id="section' . $count . 'Btn" onClick="showAnswer(' . $row["id"] . ');">
-			                        <h2 class="btn.text">
-									SHOW ANSWER</h2>
-									                    </button>
+			                        <span id="AnswerButton' . $row["id"] . '" style="visibility:visibile;">
+									<h2 class="btn.text">
+									SHOW ANSWER</h2></span>
+			                        <span id="Answer' . $row["id"] . '" style="visibility:hidden;">
+									<h2 class="btn.text">' . $row["answer"] . '</h2></span>
+									                    </button>';
 									          
-			
-		
-<div id="Answer' . $row["id"] . '" style="visibility:hidden;">';
-        echo $row["answer"] . '<BR /></div>';
-		echo '<button onClick="funnyButton(' . $row["id"] . ');" id="funnyButton_' . $row["id"] . '">This is funny</button>';
-		echo '<button onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
+
+		echo '<button class="grid_3 btn" style="width:40%;" onClick="funnyButton(' . $row["id"] . ');" id="funnyButton_' . $row["id"] . '">This is funny</button>';
+		echo '<button class="grid_3 btn" style="width:40%;" onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
 		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;">Select reason for reporting: ';
 		echo '<select name="FlagReason_' . $row["id"] . '" id="FlagReason_' . $row["id"] . '" onChange="setFlag(' . $row["id"] . ')">
 <option value="0"></option>
