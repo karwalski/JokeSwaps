@@ -28,7 +28,7 @@ JokeSwaps - Privacy Policy
 	        <header class="container_16">
 	            <!--Start of Header-->
 	            <div id="logo">
-	                <img src="images/logo.png" class="logo" />
+	                <img src="images/logo_blue.png" class="logo" />
 	            </div>
 	            <div id="hdr_img">
 
