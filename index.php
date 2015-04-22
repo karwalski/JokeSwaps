@@ -579,12 +579,12 @@ if ($result->num_rows > 0) {
 									<h2 class="btn.text">
 									SHOW ANSWER</h2></span>
 			                        <span id="Answer' . $row["id"] . '" style="visibility:hidden;">
-									<h2 class="btn.text">' . $row["answer"] . '</h2></span>
+									<h2 class="btn.text" style="margin-top: -23px;">' . $row["answer"] . '</h2></span>
 									                    </button>';
 									          
 
-		echo '<button class="grid_3 btn" style="width:40%;" onClick="funnyButton(' . $row["id"] . ');" id="funnyButton_' . $row["id"] . '">This is funny</button>';
-		echo '<button class="grid_3 btn" style="width:40%;" onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
+		echo '<button class="grid_3 btn" style="width: 45%; margin-top: 5px;" onClick="funnyButton(' . $row["id"] . ');" id="funnyButton_' . $row["id"] . '">This is funny</button>';
+		echo '<button class="grid_3 btn" style="width: 45%;margin-top: -40px;margin-right: -20px;float: right;" onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
 		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;">Select reason for reporting: ';
 		echo '<select name="FlagReason_' . $row["id"] . '" id="FlagReason_' . $row["id"] . '" onChange="setFlag(' . $row["id"] . ')">
 <option value="0"></option>
