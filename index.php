@@ -202,7 +202,7 @@ function showAnswer(jokeID) {
 
 if (document.getElementById("Answer" + jokeID).style.visibility == "visible"){
 	document.getElementById("Answer" + jokeID).style.visibility = "hidden";
-	document.getElementById("AnswerButton" + jokeID).style.visibility = "visibile";
+	document.getElementById("AnswerButton" + jokeID).style.visibility = "visible";
 }
 else
 {
@@ -306,6 +306,13 @@ function funnyButton(jokeid){
     var queryString = "?jokeid=" + jokeid;
     ajaxRequest.open("GET", "funny.php" + queryString, true);
     ajaxRequest.send(null);
+}
+
+
+function SubmitJoke()
+{
+	document.getElementById("jokeForm").submit();
+	
 }
 
 
@@ -498,7 +505,7 @@ function funnyButton(jokeid){
                 <div class="grid_5" id="titleBg">
                 </div>
                 <h3 class="grid_2" id="logInTitle">Fill Form</h3>
-                <FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" class="grid_6">
+                <FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" class="grid_6" name="jokeForm" id="jokeForm">
                     <input type="hidden" name="new" id="new" value="joke">
 					<input class="grid_5" type="text" name="name" id="name" placeholder="Name..." />
                     <input class="grid_5" type="text" name="secret" id="secret" placeholder="Secret Word..." />
@@ -520,13 +527,13 @@ function funnyButton(jokeid){
 
             </div>
 
-            <div class="grid_4" id="submit">
+            <div class="grid_4" id="submit" onClick="SubmitJoke();">
 
-                <a href="#">
+                
                     <div class="grid_3 omega " id="submitBtn">
                         <img id="submitCheck" src="images/check.png" />
                     </div>
-                </a>
+                
                 <h2 class="grid_5" id="submitTitle">SUBMIT </h2>
 				</form>
 
@@ -537,7 +544,7 @@ function funnyButton(jokeid){
         <div class="container_16" id="questionLine">
 
             <div class="arrow grid_1 alpha" id="upArrow">
-                <a href="#" class="arrow-link"><h1>&#x3008;</h1></a>
+                <h1>&#x3008;</h1>
             </div>
 			
 
@@ -579,7 +586,7 @@ if ($result->num_rows > 0) {
 									<h2 class="btn.text">
 									SHOW ANSWER</h2></span>
 			                        <span id="Answer' . $row["id"] . '" style="visibility:hidden;">
-									<h2 class="btn.text" style="margin-top: -23px;">' . $row["answer"] . '</h2></span>
+									<h2 class="btn.text"style="margin-top: -23px;">' . $row["answer"] . '</h2></span>
 									                    </button>';
 									          
 
@@ -608,7 +615,7 @@ if ($result->num_rows > 0) {
 
 ?>
             <div class="arrow grid_1 omega" id="downArrow">
-                <a href="#" class="arrow-link"><h1>&#x3009;</h1></a>
+                <h1>&#x3009;</h1>
             </div>
         </div>
 
