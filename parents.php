@@ -788,7 +788,32 @@ else
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
 
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio"><br />
-<label for="bio">Choose an avatar for your child: </label><input type="text" name="avatar" id="avatar"><br />
+<label for="bio">Choose an avatar for your child: </label><br />
+
+<table>
+	<TR>
+		<td><label><input type="radio" name="avatar" value="01" /><img src="/images/avatars/01.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="02" /><img src="/images/avatars/02.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="03" /><img src="/images/avatars/03.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="04" /><img src="/images/avatars/04.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="05" /><img src="/images/avatars/05.png" style="width:200px"></label></td>
+	</TR>
+	<TR>
+		<td><label><input type="radio" name="avatar" value="06" /><img src="/images/avatars/06.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="07" /><img src="/images/avatars/07.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="08" /><img src="/images/avatars/08.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="09" /><img src="/images/avatars/09.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="10" /><img src="/images/avatars/10.png" style="width:200px"></label></td>
+	</TR>
+	<TR>
+		<td><label><input type="radio" name="avatar" value="11" /><img src="/images/avatars/11.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="12" /><img src="/images/avatars/12.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="13" /><img src="/images/avatars/13.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="14" /><img src="/images/avatars/14.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="15" /><img src="/images/avatars/15.png" style="width:200px"></label></td>
+		</TR>
+</table>	
+
 <br /><br /><br /><br />
 
 I am a responsible adult, parent or guardian giving permission for this child to receive a JokeSwaps profile page.<br />
