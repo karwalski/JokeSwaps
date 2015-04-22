@@ -393,23 +393,23 @@ function funnyButton(jokeid){
             <div id="friendGrid" class="grid_5">
                 <!--Startof Friend Grid-->
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatar.png" height="35px" width="35px" />
+                    <img src="Images/avatars/06.png" height="35px" width="35px" />
                     <h6 id="friendName"><a href="http://mahni.jokeswaps.com" target="_top">Mahni</a></h6>
                 </div>
 
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatar.png" height="35px" width="35px" />
+                    <img src="Images/avatars/03.png" height="35px" width="35px" />
 
                     <h6 id="friendName"><a href="http://tammi.jokeswaps.com" target="_top">Tammi</a></h6>
                 </div>
 
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatar.png" height="35px" width="35px" />
+                    <img src="Images/avatars/01.png" height="35px" width="35px" />
                     <h6 id="friendName"><a href="http://jack.jokeswaps.com" target="_top">Jack</a></h6>
                 </div>
 
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatar.png" height="35px" width="35px" />
+                    <img src="Images/avatars/default.png" height="35px" width="35px" />
                     <h6 id="friendName">Peter Parker</h6>
                 </div>
             </div>
@@ -549,11 +549,11 @@ $count = 1;
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
+		while ($count > 4) // Temp only show latest 4 until slider is active
+		{
         echo '         <div class=" grid_3 section' . $count . ' inline"';
 		
-		if ($count > 4)
-			{ echo 'style="visibility:hidden;"';}
-		echo '>
+
                 <div class="box1 grid_3"></div>
                 <div class="box2  grid_3">
                     <p class="grid_3 question"><strong>' . $row["fromName"] . ':</strong> ';
@@ -595,6 +595,7 @@ if ($result->num_rows > 0) {
 		echo '  </div>';
 		$count = ++$count;
     }
+}
 } else {
     echo "No jokes yet, send " . $user . " a joke now";
 }
