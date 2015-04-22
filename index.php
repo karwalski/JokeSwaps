@@ -552,7 +552,7 @@ if ($result->num_rows > 0) {
 		while ($count > 4) // Temp only show latest 4 until slider is active
 		{
         echo '         <div class=" grid_3 section' . $count . ' inline"';
-		
+				echo '>
 
                 <div class="box1 grid_3"></div>
                 <div class="box2  grid_3">
