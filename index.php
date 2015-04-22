@@ -581,7 +581,7 @@ if ($result->num_rows > 0) {
         echo '         <div class=" grid_3 section' . $count . ' inline"';
 		
 		if ($count > 4)
-			{ echo 'style="visibility:hidden;"'}
+			{ echo 'style="visibility:hidden;"';}
 		echo '>
                 <div class="box1 grid_3"></div>
                 <div class="box2  grid_3">
