@@ -790,7 +790,7 @@ else
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio"><br />
 <label for="bio">Choose an avatar for your child: </label><br />
 
-<table>
+<table id="avatarSelect">
 	<TR>
 		<td><label><input type="radio" name="avatar" value="01" /><img src="/images/avatars/01.png" style="width:200px"></label></td>
 		<td><label><input type="radio" name="avatar" value="02" /><img src="/images/avatars/02.png" style="width:200px"></label></td>
@@ -814,7 +814,7 @@ else
 		</TR>
 </table>	
 
-<br /><br /><br /><br />
+<br />
 
 I am a responsible adult, parent or guardian giving permission for this child to receive a JokeSwaps profile page.<br />
 I have discussed the site rules with the child, and they understand the rules.<br />
