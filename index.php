@@ -579,7 +579,7 @@ if ($result->num_rows > 0) {
 </select></div>';
 		
 		echo '  </div>';
-		$count = $count++;
+		$count = ++$count;
     }
 } else {
     echo "No jokes yet, send " . $user . " a joke now";
