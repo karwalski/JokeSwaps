@@ -582,48 +582,78 @@ echo 'Incorrect password';
 
 <HTML>
 <HEAD>
+
 <TITLE>
 JokeSwaps - Parents Console
 </TITLE>
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<script>
-function checkPasswdMatch(form)
-{
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-if (form == "signup")
-{
+    <link rel="stylesheet" href="css/960_16_col.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/text.css" />
+    <link rel="stylesheet" href="css/mainstyle.css" />
+	
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<script>
+	function checkPasswdMatch(form)
+	{
 
-	if (signupForm.password.value == signupForm.password2.value)
+	if (form == "signup")
 	{
-		document.getElementById("passwordMisMatch_signup").innerHTML = "";
-	}
-	else
-	{
-		document.getElementById("passwordMisMatch_signup").innerHTML = "Passwords do not match";
-		signup.password.focus();
-	}
-}
-else if (form == "update")
-{
 
-	if (updateForm.password.value == updateForm.password2.value)
-	{
-		document.getElementById("passwordMisMatch_update").innerHTML = "";
+		if (signupForm.password.value == signupForm.password2.value)
+		{
+			document.getElementById("passwordMisMatch_signup").innerHTML = "";
+		}
+		else
+		{
+			document.getElementById("passwordMisMatch_signup").innerHTML = "Passwords do not match";
+			signup.password.focus();
+		}
 	}
-	else
+	else if (form == "update")
 	{
-		document.getElementById("passwordMisMatch_update").innerHTML = "Passwords do not match";
-		update.password.focus();
+
+		if (updateForm.password.value == updateForm.password2.value)
+		{
+			document.getElementById("passwordMisMatch_update").innerHTML = "";
+		}
+		else
+		{
+			document.getElementById("passwordMisMatch_update").innerHTML = "Passwords do not match";
+			update.password.focus();
+		}
 	}
-}
  
 
 
-}
-</script>
-</HEAD>
-<BODY>
+	}
+	</script>
+
+	</head>
+
+
+	<body>
+	    <div id="wrapper" class="container_16">
+	        <!--Start of body wrraper-->
+	        <header class="container_16">
+	            <!--Start of Header-->
+	            <div id="logo">
+	                <img src="images/logo_blue.png" class="logo" />
+	            </div>
+	            <div id="hdr_img">
+
+	                <img src="images/header-img.png" />
+
+	            </div>
+
+	        </header>
+	        <!--End of Header-->
+
+
 <H1>This is the parents Console</H1>
 
 
@@ -761,10 +791,11 @@ else
 <label for="bio">Choose an avatar for your child: </label><input type="text" name="avatar" id="avatar"><br />
 <br /><br /><br /><br />
 
-I declare I am a responsible adult, parent or guardian giving permission for this child to receive a JokeSwaps profile page.<br />
-I declare I have discussed the site rules with the child, and they understand the rules.<br />
-I declare I will be supervising the child when using this website.<br />
-I have read the rules and privacy policy for this website.<br />
+I am a responsible adult, parent or guardian giving permission for this child to receive a JokeSwaps profile page.<br />
+I have discussed the site rules with the child, and they understand the rules.<br />
+I will be supervising the child when using this website.<br />
+I have read, understand and agree with the rules, <a href="tac.php">Terms and Conditions</a> and <a href="privacy.php">Privacy Policy</a> for this website.<br />
+By clicking the 'Signup' button below you are agreeing with these statements.<br />
 
 <div class="g-recaptcha" data-sitekey="6Le44QQTAAAAAEy-cOwETZWZ9cKBNZZAhQP4d91C"></div>
 
@@ -778,5 +809,48 @@ $conn->close();
 ?>
 
 
-</BODY>
-</HTML>
+	    </div>
+	    <!--End of Body wrapper-->
+	    <footer id="footerBg">
+	        <form id="contactForm" class="container_16">
+
+	            <div class="prefix_8 grid_3 alpha label">
+
+	                <label for="name" class="grid_3">Name - </label>
+
+	                <label for="email" class="grid_3">E-mail - </label>
+
+	                <label for="Message" class="grid_3">Message - </label>
+
+	            </div>
+
+
+	            <div class="grid_5 omega inputs">
+
+	                <input type="text" name="name" class="grid_5" id="contactName" />
+
+	                <input type="email" name="email" class="grid_5" id="contactEmail" />
+
+	                <textarea name="message" id="contactMessage" cols="30" rows="8"></textarea>
+	                <a href="#"><h1 class="prefix_3 grid_2" id="contactSubmit">GO!</h1></a>
+
+	            </div>
+
+
+	        </form>
+
+
+	    </footer>
+		
+		<div style="width:100%;">
+		About: When the 7 year old twins Tammi and Mahni created their first web pages, they were quickly dissapointed to discover that only they could add jokes to their personal pages, and not to their sisters page. They needed a 'JokeSpace' or 'JokeTime' - a social media site allowing them to swap jokes, a few tips from dad and they were coding away creating a SQL database and writting up a php script to save and display the jokes. Ofcourse the dinner table discussion that night quickly turned into a discussion of the sites rules and terms and conditions, which will be also written by kids for kids. Visit back regularly to see the site progress as they choose their style for the site and hopefully one day open it for parents to register their kids.<BR />
+
+		<a href="tac.php">Terms and Conditions</a> - <a href="privacy.php">Privacy Policy</a> - <a href="parents.php">Parents Console</a><BR />
+
+
+		<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">JokeSwaps</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/karwalski/jokeswaps" property="cc:attributionName" rel="cc:attributionURL">Karwalski</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+		</div>
+		
+	</body>
+
+	</html>
