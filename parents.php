@@ -649,7 +649,7 @@ Update settings<br />
 <label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"  required="required"><br />
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme" value="<?PHP echo $userInfo[0]["theme"]; ?>"><br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
-Choose an avatar for your child<br />
+<label for="bio">Choose an avatar for your child: </label><input type="text" name="avatar" id="avatar"><br />
 <br /><br /><br /><br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onInput="checkPasswdMatch(update');"><br />
 <label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onInput="checkPasswdMatch('update');"><span id="passwordMisMatch_update" style="color:red;"> </span><br />
@@ -758,7 +758,7 @@ else
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
 
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio"><br />
-Choose an avatar for your child<br />
+<label for="bio">Choose an avatar for your child: </label><input type="text" name="avatar" id="avatar"><br />
 <br /><br /><br /><br />
 
 I declare I am a responsible adult, parent or guardian giving permission for this child to receive a JokeSwaps profile page.<br />
