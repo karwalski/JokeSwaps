@@ -511,8 +511,8 @@ function SubmitJoke()
                     <input type="hidden" name="new" id="new" value="joke">
 					<input class="grid_5" type="text" name="name" id="name" placeholder="Name..." />
                     <input class="grid_5" type="text" name="secret" id="secret" placeholder="Secret Word..." />
-                    <textarea class="grid_5" name="question" placeholder="Question..." contenteditable="true" rows="3" cols="20" name="joke" id="joke" required onChange="jokeChange();" onInput="jokeInput();"></textarea>
-                    <textarea class="grid_5" name="answer" placeholder="Answer..." contenteditable="true" rows="3" cols="20" name="answer" id="answer" required></textarea>
+                    <textarea class="grid_5" placeholder="Question..." contenteditable="true" rows="3" cols="20" name="joke" id="joke" required onChange="jokeChange();" onInput="jokeInput();"></textarea>
+                    <textarea class="grid_5" placeholder="Answer..." contenteditable="true" rows="3" cols="20" name="answer" id="answer" required></textarea>
 
                 
 
@@ -594,7 +594,7 @@ if ($result->num_rows > 0) {
 
 		echo '<button class="grid_3 btn" style="width: 45%; margin-top: 5px;" onClick="funnyButton(' . $row["id"] . ');" id="funnyButton_' . $row["id"] . '">This is funny</button>';
 		echo '<button class="grid_3 btn" style="width: 45%;margin-top: -40px;margin-right: -20px;float: right;" onClick="showFlagSelect(' . $row["id"] . ');" id="FlagButton_' . $row["id"] . '">Report joke</button>';
-		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;">Select reason for reporting: ';
+		echo '<div id="FlagSelect_' . $row["id"] . '" style="visibility:hidden;  display: inline-block; margin-top: 10px; margin-left: 20px; padding: 10px;border-radius: 15px; color: #ffffff; background-color: #d80404;">Select reason for reporting: ';
 		echo '<select name="FlagReason_' . $row["id"] . '" id="FlagReason_' . $row["id"] . '" onChange="setFlag(' . $row["id"] . ')">
 <option value="0"></option>
 <option value="1">Annoying, not interested or you don\'t understand</option>
