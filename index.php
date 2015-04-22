@@ -209,7 +209,7 @@ else
 {
 document.getElementById("Answer" + jokeID).style.visibility = "visible";
 document.getElementById("AnswerButton" + jokeID).style.visibility = "hidden";
-	button.className = "grid_3 btnSelect"; 
+	button.className = "grid_3 btn btnSelect"; 
 }
 }
 
@@ -506,7 +506,7 @@ function SubmitJoke()
             <div class="grid_6 alpha" id="logIn">
                 <div class="grid_5" id="titleBg">
                 </div>
-                <h3 class="grid_2" id="logInTitle">Post a joke to <?PHP echo ucfirst($user); ?></h3>
+                <h3 id="logInTitle">Post a joke to <?PHP echo ucfirst($user); ?></h3>
                 <FORM METHOD="POST" ACTION="<?php echo $_SERVER['REQUEST_URI']?>" class="grid_6" name="jokeForm" id="jokeForm">
                     <input type="hidden" name="new" id="new" value="joke">
 					<input class="grid_5" type="text" name="name" id="name" placeholder="Name..." />
