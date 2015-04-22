@@ -409,7 +409,7 @@ function funnyButton(jokeid){
                 </div>
 
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatars/default.png" height="35px" width="35px" />
+                    <img src="Images/avatars/avatar.png" height="35px" width="35px" />
                     <h6 id="friendName">Peter Parker</h6>
                 </div>
             </div>
@@ -549,7 +549,7 @@ $count = 1;
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-		while ($count > 4) // Temp only show latest 4 until slider is active
+		while ($count < 4) // Temp only show latest 4 until slider is active
 		{
         echo '         <div class=" grid_3 section' . $count . ' inline"';
 				echo '>
