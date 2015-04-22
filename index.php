@@ -198,16 +198,18 @@ function jokeChange()
 
 
 
-function showAnswer(jokeID) {
+function showAnswer(jokeID, button) {
 
 if (document.getElementById("Answer" + jokeID).style.visibility == "visible"){
 	document.getElementById("Answer" + jokeID).style.visibility = "hidden";
 	document.getElementById("AnswerButton" + jokeID).style.visibility = "visible";
+	button.className = "grid_3 btn"; 
 }
 else
 {
 document.getElementById("Answer" + jokeID).style.visibility = "visible";
 document.getElementById("AnswerButton" + jokeID).style.visibility = "hidden";
+	button.className = "grid_3 btnSelect"; 
 }
 }
 
@@ -581,7 +583,7 @@ if ($result->num_rows > 0) {
 		
 		echo '</p>
 			                </div>
-			                    <button class="grid_3 btn" id="section' . $count . 'Btn" onClick="showAnswer(' . $row["id"] . ');">
+			                    <button class="grid_3 btn" id="section' . $count . 'Btn" onClick="showAnswer(' . $row["id"] . ', this);">
 			                        <span id="AnswerButton' . $row["id"] . '" style="visibility:visibile;">
 									<h2 class="btn.text">
 									SHOW ANSWER</h2></span>

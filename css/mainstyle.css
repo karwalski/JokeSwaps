@@ -401,6 +401,11 @@ inline {
 .btn h2:hover {
     color: #eeeeee;
 }
+.btnSelect {
+    background-color: #d80404;
+    color: #eeeeee;
+    border: 2px solid #eeeeee;
+}
 #footerBg {
     background-image: url('../images/footer_bg.png');
     background-size: cover;
