@@ -39,7 +39,7 @@ echo '<TITLE>
 JokeSwaps
 </TITLE>
 <BODY>';
-echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Coming Soon!</H1>';
+echo '<IMG SRC="images/logo_pink.png" width="400px"><BR /><H1>Coming Soon!</H1>';
 
 
 }
@@ -51,7 +51,7 @@ echo '<TITLE>
 JokeSwaps
 </TITLE>
 <BODY>';
-echo '<IMG SRC="js_pink.jpg" width="400px"><BR /><H1>Your parent needs to verify their email address, please click the link in the email we sent out.</H1>" ';
+echo '<IMG SRC="images/logo_pink.png" width="400px"><BR /><H1>Your parent needs to verify their email address, please click the link in the email we sent out.</H1>" ';
 
 
 }
@@ -318,7 +318,7 @@ function funnyButton(jokeid){
         <header class="container_16">
             <!--Start of Header-->
             <div id="logo">
-                <img src="Images/logo_
+                <img src="images/logo_
 				<?PHP 
 				if ($userInfo[0]["theme"] == "blue") {
 					echo 'blue';
@@ -338,7 +338,7 @@ function funnyButton(jokeid){
             </div>
             <div id="hdr_img">
 
-                <img src="Images/header-img.png" />
+                <img src="images/header-img.png" />
 
             </div>
 
@@ -351,7 +351,7 @@ function funnyButton(jokeid){
         <div id="userInfo" class=" grid_4 alpha">
             <!--Start of User Info-->
             <div id="userBg" class="grid_4">
-                <img class="img2" src="Images/avatars/<?PHP if (isset($userInfo[0]["avatar"])) { echo $userInfo[0]["avatar"];} else {echo 'avatar';} ?>.png" />
+                <img class="img2" src="images/avatars/<?PHP if (isset($userInfo[0]["avatar"])) { echo $userInfo[0]["avatar"];} else {echo 'avatar';} ?>.png" />
             </div>
             <div id="userName" class="grid_4">
                 <p>Name - <span id="name"><?PHP echo $user; ?></span>
@@ -393,23 +393,23 @@ function funnyButton(jokeid){
             <div id="friendGrid" class="grid_5">
                 <!--Startof Friend Grid-->
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatars/06.png" height="35px" width="35px" />
+                    <img src="images/avatars/06.png" height="35px" width="35px" />
                     <h6 id="friendName"><a href="http://mahni.jokeswaps.com" target="_top">Mahni</a></h6>
                 </div>
 
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatars/03.png" height="35px" width="35px" />
+                    <img src="images/avatars/03.png" height="35px" width="35px" />
 
                     <h6 id="friendName"><a href="http://tammi.jokeswaps.com" target="_top">Tammi</a></h6>
                 </div>
 
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatars/01.png" height="35px" width="35px" />
+                    <img src="images/avatars/01.png" height="35px" width="35px" />
                     <h6 id="friendName"><a href="http://jack.jokeswaps.com" target="_top">Jack</a></h6>
                 </div>
 
                 <div class="friend-bio grid_2">
-                    <img src="Images/avatars/avatar.png" height="35px" width="35px" />
+                    <img src="images/avatars/avatar.png" height="35px" width="35px" />
                     <h6 id="friendName">Peter Parker</h6>
                 </div>
             </div>
@@ -522,7 +522,7 @@ function funnyButton(jokeid){
 
                 <a href="#">
                     <div class="grid_3 omega " id="submitBtn">
-                        <img id="submitCheck" src="Images/check.png" />
+                        <img id="submitCheck" src="images/check.png" />
                     </div>
                 </a>
                 <h2 class="grid_5" id="submitTitle">SUBMIT </h2>
