@@ -549,7 +549,7 @@ $count = 1;
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-		while ($count < 4) // Temp only show latest 4 until slider is active
+		while ($count < 5) // Temp only show latest 4 until slider is active
 		{
         echo '         <div class=" grid_3 section' . $count . ' inline"';
 				echo '>
