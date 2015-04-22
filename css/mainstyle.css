@@ -34,7 +34,7 @@ body {
 
 #userBg {
     position: relative;
-    background-image: url('../css/box_bg_blue.png');
+    background-image: url('../images/box_bg_blue.png');
     background-size: cover;
     height: 160px;
 }
@@ -136,7 +136,7 @@ body {
     top: -15px;
     margin: 0;
     background-size: cover;
-    background-image: url('../css/bio_bg.png');
+    background-image: url('../images/bio_bg.png');
     height: 100%;
     width: 100%;
 }
@@ -182,9 +182,8 @@ body {
     padding-top: 15px;
 }
 #questionSubmit {
-    background-image: url('../css/capcha_bg.png');
+    background-image: url('../images/capcha_bg.png');
     background-size: cover;
-    height: 100%;
     width: 1110px;
     margin: 0 auto;
     position: relative;
@@ -201,7 +200,7 @@ body {
     margin-left: 40px;
 }
 #titleBg {
-    background-image: url('../css/form-underline.png');
+    background-image: url('../images/form-underline.png');
     background-repeat: no-repeat;
     position: relative;
     height: 40px;
@@ -217,7 +216,7 @@ body {
     border-radius: 3px;
 }
 #captchaBg {
-    background-image: url('../css/box_bg_blue_2.png');
+    background-image: url('../images/box_bg_blue_2.png');
     background-repeat: no-repeat;
     height: 200px;
     position: relative;
@@ -225,7 +224,7 @@ body {
     margin-left: -10px;
 }
 #captchaBtn {
-    background-image: url('../css/capcha_img.png');
+    background-image: url('../images/capcha_img.png');
     background-repeat: no-repeat;
     height: 200px;
     position: relative;
@@ -233,7 +232,7 @@ body {
     left: 15px;
 }
 #submit {
-    background-image: url('../css/box_bg_yellow.png');
+    background-image: url('../images/box_bg_yellow.png');
     background-repeat: no-repeat;
     height: 200px;
     position: relative;
@@ -241,7 +240,7 @@ body {
     margin-left: -10px;
 }
 #submitBtn {
-    background-image: url('../css/submit-bg.png');
+    background-image: url('../images/submit-bg.png');
     background-repeat: no-repeat;
     height: 110px;
     width: 110px;
@@ -262,7 +261,7 @@ body {
     margin: 10px 0 0 50px;
 }
 #questionLine {
-    background-image: url('../css/question_line_bg.png');
+    background-image: url('../images/question_line_bg.png');
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 0px 10px 10px 0;
@@ -389,7 +388,7 @@ inline {
     color: #eeeeee;
 }
 #footerBg {
-    background-image: url('../css/footer_bg.png');
+    background-image: url('../images/footer_bg.png');
     background-size: cover;
     width: 100%;
     height: 650px;
