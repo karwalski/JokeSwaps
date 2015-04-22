@@ -508,7 +508,7 @@ function funnyButton(jokeid){
             </div>
             <div class="grid_5" id="captcha">
                 <div class="grid_5" id="captchaBg">
-                    <div class="grid_4 center" id="captchaBtn">
+                    <div class="grid_4 center captchaBtn" id="captchaBtn">
 						<?php 
 						echo $funcap; 
 						?>
