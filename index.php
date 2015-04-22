@@ -308,32 +308,7 @@ function funnyButton(jokeid){
 
 
 </script>
-<style>
- body {
- background-color:<?PHP echo $userInfo[0]["theme"]; ?>;
- color:<?PHP
 
-if ($userInfo[0]["theme"] == "darkmagenta") {
-echo 'cyan';
-}
-elseif ($userInfo[0]["theme"] == 'magenta;background-image: url("flower.jpg")') {
-echo 'black';
-}
-elseif ($userInfo[0]["theme"] == "lightblue") {
-echo 'black';
-}
-elseif ($userInfo[0]["theme"] == "black") {
-echo 'white';
-}
-else {
-echo 'black';
-}
-
-?>;
- }
- 
-
-</style>
 
 </HEAD>
 <BODY>
@@ -343,25 +318,7 @@ echo 'black';
         <header class="container_16">
             <!--Start of Header-->
             <div id="logo">
-                <img src="Images/js_<?PHP
-
-if ($userInfo[0]["theme"] == "darkmagenta") {
-echo 'pink';
-}
-elseif ($userInfo[0]["theme"] == "black") {
-echo 'pink';
-}
-elseif ($userInfo[0]["theme"] == 'magenta;background-image: url("flower.jpg")') {
-echo 'purple';
-}
-elseif ($userInfo[0]["theme"] == "lightblue") {
-echo 'blue';
-}
-else {
-echo 'blue';
-}
-
-?>.png" class="logo" />
+                <img src="Images/logo.png" class="logo" />
             </div>
             <div id="hdr_img">
 
