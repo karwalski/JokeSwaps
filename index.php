@@ -257,6 +257,7 @@ function setFlag(jokeid){
 			showFlagSelect(jokeid);
 			document.getElementById("FlagButton_" + jokeid).innerHTML = "Reported";
 			document.getElementById("FlagButton_" + jokeid).disabled=true;
+			document.getElementById("FlagButton_" + jokeid).className = "grid_3 btn btnSelect"; 
     }
     }
 
@@ -300,6 +301,7 @@ function funnyButton(jokeid){
     // Some Javascript to change your flag colour image
 			document.getElementById("funnyButton_" + jokeid).innerHTML = "FUNNY!";
 			document.getElementById("funnyButton_" + jokeid).disabled=true;
+			document.getElementById("funnyButton_" + jokeid).className = "grid_3 btn btnSelect"; 
     }
     }
 
