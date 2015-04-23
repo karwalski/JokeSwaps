@@ -502,7 +502,10 @@ background-color:#eeeeee;
 z-index: 9002;
 background-image: url('../images/capcha_bg.png');
 background-size: cover;
-width: 1077px;
-height:835px;
+width: 850px;
+height: 550px;
 margin: 0 auto;
+top: 300px;
+padding: 200px;
+
 }
