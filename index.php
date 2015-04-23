@@ -461,7 +461,7 @@ if ($result->num_rows > 0) {
                 <h1>&#x3009;</h1>
             </div>
         </div>
-<input type="hidden" name="scrollPos" id="scrollPos" value="1"> // Can add $_GET if want to pass joke position in URL
+<input type="hidden" name="scrollPos" id="scrollPos" value="1"> 
     </section>
     <!--End of  question section-->
 
@@ -507,7 +507,7 @@ About: When the 7 year old twins Tammi and Mahni created their first web pages, 
 
 <div id="blanket" style="display:none;"></div>
 <div id="rulesDiv" style="display:none;">
-<button onclick="popup('rulesDiv')">Close (X)</button><BR />
+<button onclick="popup('rulesDiv')" style="float:right;">Close (X)</button><BR />
 <H1>JokeSwaps Rules</H1>
 1. Parents Must signup for the kids<BR />
 2. Jokes only, no comments or messages<BR />

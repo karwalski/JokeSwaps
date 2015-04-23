@@ -223,8 +223,9 @@ function popup(windowname) {
 function jokeScroll(command)
 {
 	alert ('There are ' + numJokes + ' jokes & You are scrolling ' + command);
-	alert ('Scroll position ' + document.getElementById(scrollPos).value);
-	var scrollPos = document.getElementById(scrollPos).value;
+	var scrollPos = document.getElementById("scrollPos").value;
+
+	alert ('Scroll position ' + scrollPos);
 	
 if (numJokes > 4)
 {
