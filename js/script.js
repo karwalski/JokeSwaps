@@ -262,33 +262,38 @@ if (numJokes > 4)
 	
 	if (command == "left")
 	{
-		document.getElementById("jokeSection" + (scrollPos + 3)).style.display="none";
+		
 		if (scrollPos = (numJokes - 2))
 		{
+			document.getElementById("jokeSection" + 1).style.display="none";
 			document.getElementById("scrollPos").value = (numJokes - 3);
 			var newShow = (numJokes - 3);
 			document.getElementById("questionLine").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
 		}	
 		else if (scrollPos = (numJokes - 1))
 		{
+			document.getElementById("jokeSection" + 2).style.display="none";
 			document.getElementById("scrollPos").value = (numJokes - 2);
 			document.getElementById("questionLine").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
 			var newShow = (numJokes - 2);
 		}	
 		else if (scrollPos = numJokes)
 		{	
+			document.getElementById("jokeSection" + 3).style.display="none";
 			document.getElementById("scrollPos").value = (numJokes - 1);
 			document.getElementById("questionLine").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
 			var newShow = (numJokes - 1);
 		}
 		else if (scrollPos = 1)
 		{
+			document.getElementById("jokeSection" + 4).style.display="none";
 			document.getElementById("scrollPos").value = numJokes;
 			var newShow = numJokes;
 			document.getElementById("questionLine").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
 		}			
 		else if (scrollPos > 1)
 		{
+			document.getElementById("jokeSection" + (scrollPos + 3)).style.display="none";
 			document.getElementById("scrollPos").value = scrollPos - 1;
 			var newShow = scrollPos - 1;
 		}	
