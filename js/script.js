@@ -237,53 +237,53 @@ if (numJokes > 4)
 		if (scrollPos < (numJokes - 3))
 		{
 			// hide current one joke
-			document.getElementsByClassName("section" + scrollPos).style="display:none;";
+			document.getElementsById("jokeSection" + scrollPos).style="display:none;";
 			
 			// Update scroll position counter
 			document.getElementById("scrollPos").value = scrollPos + 1;
 			// show New active jokes
 			var newShow = scrollPos + 4;
-			document.getElementsByClassName("section" + newShow).style="";
+			document.getElementsById("jokeSection" + newShow).style="";
 		}	
 		else if (scrollPos = (numJokes - 3))
 		{
 			// hide current one joke
-			document.getElementsByClassName("section" + scrollPos).style="display:none;";
+			document.getElementsById("jokeSection" + scrollPos).style="display:none;";
 			// Update scroll position counter
 			document.getElementById("scrollPos").value = scrollPos + 1;
 			// show New active jokes
 			var newShow = 1;
-			document.getElementsByClassName("section" + newShow).style="";
+			document.getElementsById("jokeSection" + newShow).style="";
 		}
 		else if (scrollPos = (numJokes - 2))
 		{
 			// hide current one joke
-			document.getElementsByClassName("section" + scrollPos).style="display:none;";
+			document.getElementsById("jokeSection" + scrollPos).style="display:none;";
 			// Update scroll position counter
 			document.getElementById("scrollPos").value = scrollPos + 1;
 			// show New active jokes
 			var newShow = 2;
-			document.getElementsByClassName("section" + newShow).style="";
+			document.getElementsById("jokeSection" + newShow).style="";
 		}	
 		else if (scrollPos = (numJokes - 1))
 		{
 			// hide current one joke
-			document.getElementsByClassName("section" + scrollPos).style="display:none;";
+			document.getElementsById("jokeSection" + scrollPos).style="display:none;";
 			// Update scroll position counter
 			document.getElementById("scrollPos").value = scrollPos + 1;
 			// show New active jokes
 			var newShow = 3;
-			document.getElementsByClassName("section" + newShow).style="";
+			document.getElementsById("jokeSection" + newShow).style="";
 		}	
 		else if (scrollPos = numJokes)
 		{	
 			// hide current one joke
-			document.getElementsByClassName("section" + scrollPos).style="display:none;";
+			document.getElementsById("jokeSection" + scrollPos).style="display:none;";
 			// Update scroll position counter
 			document.getElementById("scrollPos").value = 1;
 			// show New active jokes
 			var newShow = 4;
-			document.getElementsByClassName("section" + newShow).style="";
+			document.getElementsById("jokeSection" + newShow).style="";
 		}
 		else
 			{ alert('You are probably insane'); }
