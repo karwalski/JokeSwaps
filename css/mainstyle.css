@@ -412,9 +412,10 @@ inline {
     position: relative;
 }
 .footerblurb {
-	width:80%;
-	text-align:center;
-	padding-top: 200px;
+    width: 60%;
+    text-align: center;
+    padding-top: 200px;
+    padding-left: 20%;
 }
 #contactForm {
     position: relative;
