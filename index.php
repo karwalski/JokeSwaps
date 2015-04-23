@@ -270,7 +270,7 @@ JokeSwaps - <?PHP echo $user; ?>
 	
 	
 	
-	    <!-- Need to add in preset joke menu and associated prefill
+
 	<?PHP
 	// Print jokes on users page.. need to check suitable column
 	$sql = "SELECT * FROM PresetJokes" ;
@@ -308,31 +308,7 @@ JokeSwaps - <?PHP echo $user; ?>
 	document.getElementById("answer").value = answer["id" + selectedJoke];
 	}
 	</SCRIPT>
-	Preset Joke Selection: <SELECT id="preset" name="preset" onChange="loadPreset();">
-	<OPTION value=""></OPTION>
 
-	<?PHP
-
-
-	$sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3','$rand4','$rand5')" ;
-	$result = $conn->query($sql);
-
-	while($row = $result->fetch_assoc()) {
-	echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
-
-	}
-	?>
-	</SELECT>
-	<BR /><BR />
-	-->
-	
-
-    <!-- Need to add back in the knock knock switch and associated labels/autocomplete
-	<label for="name">Is your joke a Knock Knock joke? </label><input type="checkbox" name="knock" id="knock" value="knock" onChange="jokeType()"><BR />
-	<span id="line1"></span><BR />
--->
-
-	
 	
 	
     <section id="questionSubmit" class="container_16">
@@ -347,7 +323,26 @@ JokeSwaps - <?PHP echo $user; ?>
                     <input type="hidden" name="new" id="new" value="joke">
 					<input class="grid_5" type="text" name="name" id="name" placeholder="Name..." />
                     <input class="grid_5" type="text" name="secret" id="secret" placeholder="Secret Word..." />
+					<SELECT id="preset" name="preset" onChange="loadPreset();">
+					<OPTION value="" disabled selected>JokeSwaps Robot's Jokes</OPTION>
+
+					<?PHP
+
+
+					$sql = "SELECT * FROM PresetJokes WHERE PresetID IN ('$rand1','$rand2','$rand3','$rand4','$rand5')" ;
+					$result = $conn->query($sql);
+
+					while($row = $result->fetch_assoc()) {
+					echo '<OPTION value="' . $row['PresetID'] . '">' . $row['joke'] . '</OPTION>';
+
+					}
+					?>
+					</SELECT>
+					<label for="name">Is your joke a Knock Knock joke? </label><input type="checkbox" name="knock" id="knock" value="knock" onChange="jokeType()"><BR />
+					<span id="line1"></span><BR />
+					<span id="line2"></span><BR />
                     <textarea class="grid_5" placeholder="Question..." contenteditable="true" rows="3" cols="20" name="joke" id="joke" required onChange="jokeChange();" onInput="jokeInput();"></textarea>
+					<span id="line3"></span><BR />
                     <textarea class="grid_5" placeholder="Answer..." contenteditable="true" rows="3" cols="20" name="answer" id="answer" required></textarea>
 
                 

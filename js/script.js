@@ -12,8 +12,8 @@ else
 {
 
 	document.getElementById("line1").innerHTML = "";
-	document.getElementById("line2").innerHTML = "Joke Question: ";
-	document.getElementById("line3").innerHTML = "Answer: ";
+	document.getElementById("line2").innerHTML = "";
+	document.getElementById("line3").innerHTML = "";
 	
 }
 }
