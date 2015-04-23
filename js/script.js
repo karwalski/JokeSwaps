@@ -222,15 +222,18 @@ function popup(windowname) {
 
 function jokeScroll(command)
 {
-	alert ('There are ' + numJokes + ' jokes & You are scrolling ' + command);
-	var scrollPos = document.getElementById("scrollPos").value;
 
+	var scrollPos = parseInt(document.getElementById("scrollPos").value);
+	numJokes = parseInt(numJokes);
+	
+	alert ('There are ' + numJokes + ' jokes & You are scrolling ' + command);
 	alert ('Scroll position ' + scrollPos);
 	
 if (numJokes > 4)
 {
 	if (command == "right")
 	{
+		alert('Checkpoint 1');
 		if (scrollPos < (numJokes - 3))
 		{
 			// hide current one joke
@@ -242,7 +245,7 @@ if (numJokes > 4)
 			var newShow = scrollPos + 4;
 			document.getElementsByClassName("section" + newShow).style="";
 		}	
-		if (scrollPos = (numJokes - 3))
+		else if (scrollPos = (numJokes - 3))
 		{
 			// hide current one joke
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
@@ -252,7 +255,7 @@ if (numJokes > 4)
 			var newShow = 1;
 			document.getElementsByClassName("section" + newShow).style="";
 		}
-		if (scrollPos = (numJokes - 2))
+		else if (scrollPos = (numJokes - 2))
 		{
 			// hide current one joke
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
@@ -262,7 +265,7 @@ if (numJokes > 4)
 			var newShow = 2;
 			document.getElementsByClassName("section" + newShow).style="";
 		}	
-		if (scrollPos = (numJokes - 1))
+		else if (scrollPos = (numJokes - 1))
 		{
 			// hide current one joke
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
@@ -272,7 +275,7 @@ if (numJokes > 4)
 			var newShow = 3;
 			document.getElementsByClassName("section" + newShow).style="";
 		}	
-		if (scrollPos = numJokes)
+		else if (scrollPos = numJokes)
 		{	
 			// hide current one joke
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
@@ -282,7 +285,8 @@ if (numJokes > 4)
 			var newShow = 4;
 			document.getElementsByClassName("section" + newShow).style="";
 		}
-				
+		else
+			{ alert('You are probably insane';)}
 	}
 }
 	
