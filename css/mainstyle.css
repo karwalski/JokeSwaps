@@ -502,11 +502,7 @@ padding: 200px;
 #captchaPopDiv {
 position:absolute;
 z-index: 9002;
-background-size: cover;
-width: 400px;
-height: 400px;
-margin: 0 auto;
-top: 300px;
-padding: 20px;
+top: -50px;
+margin-left: -50px;
 
 }
