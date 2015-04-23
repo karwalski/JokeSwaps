@@ -3,18 +3,6 @@ body {
 }
 
 
-#FunCaptcha { width: 193px; height: 181px; padding: 0; overflow: hidden; }
- #frame { width: 302px; height: 290px; border: 1px solid black; }
- #frame {
-     -ms-zoom: 0.5;
-     -moz-transform: scale(0.5);
-     -moz-transform-origin: 0 0;
-     -o-transform: scale(0.5);
-     -o-transform-origin: 0 0;
-     -webkit-transform: scale(0.5);
-     -webkit-transform-origin: 0 0;
- }
-
 
 #wrapper {
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(240, 249, 255, 0.6)), color-stop(1%, rgba(240, 249, 255, 0.59)), color-stop(77%, rgba(129, 223, 237, 0.13)), color-stop(99%, rgba(129, 223, 237, 0)));
@@ -507,5 +495,18 @@ height: 550px;
 margin: 0 auto;
 top: 300px;
 padding: 200px;
+
+}
+
+
+#captchaPopDiv {
+position:absolute;
+z-index: 9002;
+background-size: cover;
+width: 400px;
+height: 400px;
+margin: 0 auto;
+top: 300px;
+padding: 20px;
 
 }
