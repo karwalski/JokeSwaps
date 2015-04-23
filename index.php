@@ -364,7 +364,7 @@ function SubmitJoke()
         <div id="userInfo" class=" grid_4 alpha">
             <!--Start of User Info-->
             <div id="userBg" class="grid_4">
-                <img class="img2" src="images/avatars/<?PHP if (isset($userInfo[0]["avatar"])) { echo $userInfo[0]["avatar"];} else {echo 'avatar';} ?>.png" />
+                <img class="img2" src="images/avatars/<?PHP if (isset($userInfo[0]["avatar"]) && $userInfo[0]["avatar"] != "" && $userInfo[0]["avatar"] != "00") { echo $userInfo[0]["avatar"];} else {echo 'avatar';} ?>.png" />
             </div>
             <div id="userName" class="grid_4">
                 <p>Name - <span id="name"><?PHP echo ucfirst($user); ?></span>

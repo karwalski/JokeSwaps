@@ -704,7 +704,7 @@ Update settings<br />
 		<td><label><input type="radio" name="avatar" value="15" <?PHP if($userInfo[0]["avatar"] == '15') {echo 'checked="checked"';} ?>/><img src="/images/avatars/15.png" style="width:200px"></label></td>
 		</TR>
 		<TR>
-		<td><label><input type="radio" name="avatar" value="00" <?PHP if($userInfo[0]["avatar"] == '' OR $userInfo[0]["avatar"] == '00') {echo 'checked="checked"';} ?>/><img src="/images/avatars/avatar.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="00" <?PHP if($userInfo[0]["avatar"] == '' || $userInfo[0]["avatar"] == '00') {echo 'checked="checked"';} ?>/><img src="/images/avatars/avatar.png" style="width:200px"></label></td>
 		<TR>
 </table>	
 
