@@ -242,7 +242,7 @@ if (numJokes > 4)
 			
 			if (document.getElementById("scrollPos").value == (numJokes - 3))
 			{
-				document.getElementById("downArrow").className = "arrow grid_1 omega inActive"
+				document.getElementById("downArrow").className = "arrow grid_1 omega inactive"
 			}
 			else
 			{
@@ -265,7 +265,7 @@ if (numJokes > 4)
 			
 			if (document.getElementById("scrollPos").value == 1)
 			{
-				document.getElementById("upArrow").className = "arrow grid_1 alpha inActive"
+				document.getElementById("upArrow").className = "arrow grid_1 alpha inactive"
 			}
 			else
 			{
