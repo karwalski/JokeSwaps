@@ -229,12 +229,8 @@ JokeSwaps - <?PHP echo $user; ?>
         <div id="userFriend" class="grid_5 omega">
             <!--Start of Friend-->
             <div id="friendTitle">
-                <h3>FRIEND LIST</h3>
+                <h3>FRIENDS</h3>
             </div>
-            <form>
-                <input id="friendSearch" type="search" name="search" placeholder="Search" />
-
-            </form>
             <!--End of Search form-->
 
             <div id="friendGrid" class="grid_5">
@@ -253,11 +249,6 @@ JokeSwaps - <?PHP echo $user; ?>
                 <div class="friend-bio grid_2">
                     <img src="images/avatars/01.png" height="35px" width="35px" />
                     <h6 id="friendName"><a href="http://jack.jokeswaps.com" target="_top">Jack</a></h6>
-                </div>
-
-                <div class="friend-bio grid_2">
-                    <img src="images/avatars/avatar.png" height="35px" width="35px" />
-                    <h6 id="friendName">Peter Parker</h6>
                 </div>
             </div>
             <!--End of Friend Grid-->
@@ -471,36 +462,11 @@ if ($result->num_rows > 0) {
 
     </div>
     <!--End of Body wrapper-->
-    <footer id="footerBg">
-        <form id="contactForm" class="container_16">
-
-            <div class="prefix_8 grid_3 alpha label">
-
-                <label for="name" class="grid_3">Name - </label>
-
-                <label for="emial" class="grid_3">E-mail - </label>
-
-                <label for="Message" class="grid_3">Message - </label>
-
-            </div>
+    <footer id="footerBg_main">
 
 
-            <div class="grid_5 omega inputs">
 
-                <input type="text" name="name" class="grid_5" id="contactName" />
-
-                <input type="email" name="email" class="grid_5" id="contactEmail" />
-
-                <textarea name="message" id="contactMessage" cols="30" rows="8"></textarea>
-                <a href="#"><h1 class="prefix_3 grid_2" id="contactSubmit">GO!</h1></a>
-
-            </div>
-
-
-        </form>
-		    </footer>
-
-<div style="width:100%;">
+<div style="width:100%;text-align:center;">
 About: When the 7 year old twins Tammi and Mahni created their first web pages, they were quickly dissapointed to discover that only they could add jokes to their personal pages, and not to their sisters page. They needed a 'JokeSpace' or 'JokeTime' - a social media site allowing them to swap jokes, a few tips from dad and they were coding away creating a SQL database and writting up a php script to save and display the jokes. Ofcourse the dinner table discussion that night quickly turned into a discussion of the sites rules and terms and conditions, which will be also written by kids for kids. Visit back regularly to see the site progress as they choose their style for the site and hopefully one day open it for parents to register their kids.<BR />
 
 <a href="#" onclick="popup('rulesDiv')">Rules</a> - <a href="tac.php">Terms and Conditions</a> - <a href="privacy.php">Privacy Policy</a> - <a href="parents.php">Parents Console</a><BR />
@@ -523,6 +489,7 @@ About: When the 7 year old twins Tammi and Mahni created their first web pages, 
 <button onclick="popup('rulesDiv')">Go to JokeSwaps</button><BR />
 </div>
 
+		    </footer>
 </body>
 
 </html>
