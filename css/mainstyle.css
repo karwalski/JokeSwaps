@@ -411,6 +411,11 @@ inline {
     z-index: 0;
     position: relative;
 }
+.footerblurb {
+	width:80%;
+	text-align:center;
+	padding-top: 200px;
+}
 #contactForm {
     position: relative;
     top: 220px;
