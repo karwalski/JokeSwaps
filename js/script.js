@@ -237,7 +237,7 @@ if (numJokes > 4)
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
 			
 			// Update scroll position counter
-			document.getElementById(scrollPos).value = scrollPos + 1;
+			document.getElementById("scrollPos").value = scrollPos + 1;
 			// show New active jokes
 			var newShow = scrollPos + 4;
 			document.getElementsByClassName("section" + newShow).style="";
@@ -247,7 +247,7 @@ if (numJokes > 4)
 			// hide current one joke
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
 			// Update scroll position counter
-			document.getElementById(scrollPos).value = scrollPos + 1;
+			document.getElementById("scrollPos").value = scrollPos + 1;
 			// show New active jokes
 			var newShow = 1;
 			document.getElementsByClassName("section" + newShow).style="";
@@ -257,7 +257,7 @@ if (numJokes > 4)
 			// hide current one joke
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
 			// Update scroll position counter
-			document.getElementById(scrollPos).value = scrollPos + 1;
+			document.getElementById("scrollPos").value = scrollPos + 1;
 			// show New active jokes
 			var newShow = 2;
 			document.getElementsByClassName("section" + newShow).style="";
@@ -267,7 +267,7 @@ if (numJokes > 4)
 			// hide current one joke
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
 			// Update scroll position counter
-			document.getElementById(scrollPos).value = scrollPos + 1;
+			document.getElementById("scrollPos").value = scrollPos + 1;
 			// show New active jokes
 			var newShow = 3;
 			document.getElementsByClassName("section" + newShow).style="";
@@ -277,7 +277,7 @@ if (numJokes > 4)
 			// hide current one joke
 			document.getElementsByClassName("section" + scrollPos).style="display:none;";
 			// Update scroll position counter
-			document.getElementById(scrollPos).value = 1;
+			document.getElementById("scrollPos").value = 1;
 			// show New active jokes
 			var newShow = 4;
 			document.getElementsByClassName("section" + newShow).style="";
