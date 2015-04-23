@@ -316,7 +316,10 @@ body {
 .arrow:hover {
     background-color: #aaa;
 }
-#upArrow, #downArrow .inActive {
+#upArrow .inActive {
+    background-color: #aaa;
+}
+#downArrow .inActive {
     background-color: #aaa;
 }
 #upArrow h1 {
