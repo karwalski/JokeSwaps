@@ -148,179 +148,13 @@ JokeSwaps - <?PHP echo $user; ?>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/text.css" />
     <link rel="stylesheet" href="css/mainstyle.css" />
-
-
-
-<script>
-
-
-function jokeType()
-{
-	if(document.getElementById("knock").checked)
-	{
-	document.getElementById("line1").innerHTML = "Knock Knock";
-	document.getElementById("line2").innerHTML = "Who's there?: ";
-	document.getElementById("line3").innerHTML = ".... who?: ";
-}
-else
-{
-
-	document.getElementById("line1").innerHTML = "";
-	document.getElementById("line2").innerHTML = "Joke Question: ";
-	document.getElementById("line3").innerHTML = "Answer: ";
 	
-}
-}
-
-function jokeInput()
-{
-if(document.getElementById("knock").checked)
-{
-	var who = document.getElementById("joke").value;
-	document.getElementById("line3").innerHTML = who + " who?: ";
 	
-}
-}
-
-function jokeChange()
-{
-	if(document.getElementById("knock").checked)
-	{
-		var who = document.getElementById("joke").value;
-		document.getElementById("line3").innerHTML = who + " who?: ";
-		
-	if(document.getElementById("answer").value == "")
-	{
-		document.getElementById("answer").value = who + " ";
-	}
-}
-}
-
-
-
-function showAnswer(jokeID, button) {
-
-if (document.getElementById("Answer" + jokeID).style.visibility == "visible"){
-	document.getElementById("Answer" + jokeID).style.visibility = "hidden";
-	document.getElementById("AnswerButton" + jokeID).style.visibility = "visible";
-	button.className = "grid_3 btn"; 
-}
-else
-{
-document.getElementById("Answer" + jokeID).style.visibility = "visible";
-document.getElementById("AnswerButton" + jokeID).style.visibility = "hidden";
-	button.className = "grid_3 btn btnSelect"; 
-}
-}
-
-function showFlagSelect(jokeid)
-{
-	if (document.getElementById("FlagSelect_" + jokeid).style.visibility == "visible"){
-		document.getElementById("FlagSelect_" + jokeid).style.visibility = "hidden";
-	}
-	else
-	{
-	document.getElementById("FlagSelect_" + jokeid).style.visibility = "visible";
-	}
-}
+    <script src="js/script.js" ></script>
 
 
 
 
-function setFlag(jokeid){
-    var ajaxRequest;  // The variable that makes Ajax possible!
-    //Set AjaxRequest for all Major browsers, nothing to do here, this is standard
-    try{
-        // Opera 8.0+, Firefox, Safari
-        ajaxRequest = new XMLHttpRequest();
-    } catch (e){
-        // Internet Explorer Browsers
-        try{
-            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try{
-                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e){
-                // Something went wrong
-                alert("Your browser does not support flagging jokes");
-                return false;
-            }
-        }
-    }
-    // When the Ajax Request waits for php you get some status codes, everything is done when it reaches 4. Add your javascript events etc here...
-    ajaxRequest.onreadystatechange = function(){
-        if(ajaxRequest.readyState < 4){
-        document.getElementById("FlagSelect_" + jokeid).innerHTML = "Telling the JokeSwaps Robot...";
-        }
-        if(ajaxRequest.readyState == 4){
-    // Some Javascript to change your flag colour image
-			showFlagSelect(jokeid);
-			document.getElementById("FlagButton_" + jokeid).innerHTML = "Reported";
-			document.getElementById("FlagButton_" + jokeid).disabled=true;
-			document.getElementById("FlagButton_" + jokeid).className = "grid_3 btn btnSelect"; 
-    }
-    }
-
-    // this is here your php happens without page reload. (In the php file)
-	var reason = document.getElementById("FlagReason_" + jokeid).value;
-	
-    var queryString = "?jokeid=" + jokeid + "&reason=" + reason;
-    ajaxRequest.open("GET", "flag.php" + queryString, true);
-    ajaxRequest.send(null);
-}
-
-
-
-function funnyButton(jokeid){
-    var ajaxRequest;  // The variable that makes Ajax possible!
-    //Set AjaxRequest for all Major browsers, nothing to do here, this is standard
-    try{
-        // Opera 8.0+, Firefox, Safari
-        ajaxRequest = new XMLHttpRequest();
-    } catch (e){
-        // Internet Explorer Browsers
-        try{
-            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try{
-                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e){
-                // Something went wrong
-                alert("Your browser does not support voting for funny jokes");
-                return false;
-            }
-        }
-    }
-    // When the Ajax Request waits for php you get some status codes, everything is done when it reaches 4. Add your javascript events etc here...
-    ajaxRequest.onreadystatechange = function(){
-        if(ajaxRequest.readyState < 4){
-			document.getElementById("funnyButton_" + jokeid).innerHTML = "Telling the JokeSwaps Robot...";
-			document.getElementById("funnyButton_" + jokeid).disabled=true;
-        }
-        if(ajaxRequest.readyState == 4){
-    // Some Javascript to change your flag colour image
-			document.getElementById("funnyButton_" + jokeid).innerHTML = "FUNNY!";
-			document.getElementById("funnyButton_" + jokeid).disabled=true;
-			document.getElementById("funnyButton_" + jokeid).className = "grid_3 btn btnSelect"; 
-    }
-    }
-
-    // this is here your php happens without page reload. (In the php file)
-	
-    var queryString = "?jokeid=" + jokeid;
-    ajaxRequest.open("GET", "funny.php" + queryString, true);
-    ajaxRequest.send(null);
-}
-
-
-function SubmitJoke()
-{
-	document.getElementById("jokeForm").submit();
-	
-}
-
-
-</script>
 
 
 </HEAD>
@@ -660,10 +494,21 @@ if ($result->num_rows > 0) {
 <div style="width:100%;">
 About: When the 7 year old twins Tammi and Mahni created their first web pages, they were quickly dissapointed to discover that only they could add jokes to their personal pages, and not to their sisters page. They needed a 'JokeSpace' or 'JokeTime' - a social media site allowing them to swap jokes, a few tips from dad and they were coding away creating a SQL database and writting up a php script to save and display the jokes. Ofcourse the dinner table discussion that night quickly turned into a discussion of the sites rules and terms and conditions, which will be also written by kids for kids. Visit back regularly to see the site progress as they choose their style for the site and hopefully one day open it for parents to register their kids.<BR />
 
-<a href="tac.php">Terms and Conditions</a> - <a href="privacy.php">Privacy Policy</a> - <a href="parents.php">Parents Console</a><BR />
+<a href=”#” onclick=”popup(‘popUpDiv’)”>Rules</a> - <a href="tac.php">Terms and Conditions</a> - <a href="privacy.php">Privacy Policy</a> - <a href="parents.php">Parents Console</a><BR />
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">JokeSwaps</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/karwalski/jokeswaps" property="cc:attributionName" rel="cc:attributionURL">Karwalski</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</div>
+
+<div id=”blanket” style=”display:none;”></div>
+<div id=”popUpDiv” style=”display:none;”>
+<a href=”#” onclick=”popup(‘popUpDiv’)”>Close (X)</a><BR />
+<H1>JokeSwaps Rules</H1>
+1. Parents Must signup for the kids<BR />
+2. Jokes only, no comments or messages<BR />
+3. Don't be rude or offensive<BR />
+4. Don't share personal information<BR />
+5. Don't be a bully 6. Only share your secret word with friends
 </div>
 
 </body>
