@@ -238,7 +238,6 @@ body {
     margin-left: -10px;
 }
 #captchaBtn {
-    background-image: url('../images/capcha_img.png');
     background-repeat: no-repeat;
     height: 200px;
     position: relative;
@@ -498,7 +497,6 @@ width:100%;
 }
 #rulesDiv {
 position:absolute;
-background-color:#eeeeee;
 z-index: 9002;
 background-image: url('../images/capcha_bg.png');
 background-size: cover;
