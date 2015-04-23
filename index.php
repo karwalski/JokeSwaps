@@ -381,7 +381,7 @@ JokeSwaps - <?PHP echo $user; ?>
 
         <div class="container_16" id="questionLine">
 
-            <div class="arrow grid_1 alpha" id="upArrow" onClick="jokeScroll(left);">
+            <div class="arrow grid_1 alpha" id="upArrow" onClick="jokeScroll('left');">
                 <h1>&#x3008;</h1>
             </div>
 			
@@ -457,7 +457,7 @@ if ($result->num_rows > 0) {
 
 
 ?>
-            <div class="arrow grid_1 omega" id="downArrow" onClick="jokeScroll(right);">
+            <div class="arrow grid_1 omega" id="downArrow" onClick="jokeScroll('right');">
                 <h1>&#x3009;</h1>
             </div>
         </div>
