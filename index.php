@@ -381,7 +381,7 @@ JokeSwaps - <?PHP echo $user; ?>
 
         <div class="container_16" id="questionLine">
 
-            <div class="arrow grid_1 alpha" id="upArrow">
+            <div class="arrow grid_1 alpha" id="upArrow" onClick="jokeScroll(left);">
                 <h1>&#x3008;</h1>
             </div>
 			
@@ -393,14 +393,19 @@ $sql = "SELECT * FROM jokes WHERE forUser = '$user' ORDER BY id DESC" ;
 $result = $conn->query($sql);
 $count = 1;
 
+echo '<script> var numJokes = ' . $result->num_rows . '; </script>';
+
 if ($result->num_rows > 0) {
     // output data of each row
 
 	
     while($row = $result->fetch_assoc()) {
-		if ($count < 5) // Temp only show latest 4 until slider is active
-		{
+
         echo '         <div class=" grid_3 section' . $count . ' inline"';
+		if ($count > 4) // Do not display more than 5, however they are built for JS scroll
+		{
+			echo ' style="display:none;"'
+		}
 				echo '>
 
                 <div class="box1 grid_3"></div>
@@ -444,7 +449,7 @@ if ($result->num_rows > 0) {
 		echo '  </div>';
 		$count = ++$count;
     }
-}
+
 } else {
     echo "No jokes yet, send " . $user . " a joke now";
 }
@@ -452,7 +457,7 @@ if ($result->num_rows > 0) {
 
 
 ?>
-            <div class="arrow grid_1 omega" id="downArrow">
+            <div class="arrow grid_1 omega" id="downArrow" onClick="jokeScroll(right);">
                 <h1>&#x3009;</h1>
             </div>
         </div>
@@ -494,15 +499,15 @@ if ($result->num_rows > 0) {
 <div style="width:100%;">
 About: When the 7 year old twins Tammi and Mahni created their first web pages, they were quickly dissapointed to discover that only they could add jokes to their personal pages, and not to their sisters page. They needed a 'JokeSpace' or 'JokeTime' - a social media site allowing them to swap jokes, a few tips from dad and they were coding away creating a SQL database and writting up a php script to save and display the jokes. Ofcourse the dinner table discussion that night quickly turned into a discussion of the sites rules and terms and conditions, which will be also written by kids for kids. Visit back regularly to see the site progress as they choose their style for the site and hopefully one day open it for parents to register their kids.<BR />
 
-<a href=”#” onclick=”popup(‘popUpDiv’)”>Rules</a> - <a href="tac.php">Terms and Conditions</a> - <a href="privacy.php">Privacy Policy</a> - <a href="parents.php">Parents Console</a><BR />
+<a href="#" onclick="popup('popUpDiv')">Rules</a> - <a href="tac.php">Terms and Conditions</a> - <a href="privacy.php">Privacy Policy</a> - <a href="parents.php">Parents Console</a><BR />
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">JokeSwaps</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/karwalski/jokeswaps" property="cc:attributionName" rel="cc:attributionURL">Karwalski</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 </div>
 
-<div id=”blanket” style=”display:none;”></div>
-<div id=”popUpDiv” style=”display:none;”>
-<a href=”#” onclick=”popup(‘popUpDiv’)”>Close (X)</a><BR />
+<div id="blanket" style="display:none;"></div>
+<div id="popUpDiv" style="display:none;">
+<button onclick="popup('popUpDiv')">Close (X)</button><BR />
 <H1>JokeSwaps Rules</H1>
 1. Parents Must signup for the kids<BR />
 2. Jokes only, no comments or messages<BR />

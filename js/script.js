@@ -219,3 +219,10 @@ function popup(windowname) {
 	toggle(windowname);		
 }
 
+
+function jokeScroll(command)
+{
+	alert ('There are ' + numJokes + ' jokes & You are scrolling ' + command);
+	
+	
+}
