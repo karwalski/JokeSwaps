@@ -231,73 +231,28 @@ if (numJokes > 4)
 {
 	if (command == "right")
 	{
-		document.getElementById("jokeSection" + scrollPos).style.display="none";
+		
 		if (scrollPos < (numJokes - 3))
 		{
+			document.getElementById("jokeSection" + scrollPos).style.display="none";
 			document.getElementById("scrollPos").value = scrollPos + 1;
 			var newShow = scrollPos + 4;
+			document.getElementById("jokeSection" + newShow).style.display="inline";
 		}	
-		else if (scrollPos = (numJokes - 3))
-		{
-			document.getElementById("scrollPos").value = scrollPos + 1;
-			var newShow = 1;
-		}
-		else if (scrollPos = (numJokes - 2))
-		{
-			document.getElementById("scrollPos").value = scrollPos + 1;
-			var newShow = 2;
-		}	
-		else if (scrollPos = (numJokes - 1))
-		{
-			document.getElementById("scrollPos").value = scrollPos + 1;
-			var newShow = 3;
-		}	
-		else if (scrollPos = numJokes)
-		{	
-			document.getElementById("scrollPos").value = 1;
-			var newShow = 4;
-		}
-		document.getElementById("jokeSection" + newShow).style.display="inline";
+		
 	}
 	
 	if (command == "left")
 	{
 		
-		if (scrollPos = (numJokes - 2))
-		{
-			document.getElementById("jokeSection" + 1).style.display="none";
-			document.getElementById("scrollPos").value = (numJokes - 3);
-			var newShow = (numJokes - 3);
-			document.getElementById("questionLine").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
-		}	
-		else if (scrollPos = (numJokes - 1))
-		{
-			document.getElementById("jokeSection" + 2).style.display="none";
-			document.getElementById("scrollPos").value = (numJokes - 2);
-			document.getElementById("questionLine").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
-			var newShow = (numJokes - 2);
-		}	
-		else if (scrollPos = numJokes)
-		{	
-			document.getElementById("jokeSection" + 3).style.display="none";
-			document.getElementById("scrollPos").value = (numJokes - 1);
-			document.getElementById("questionLine").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
-			var newShow = (numJokes - 1);
-		}
-		else if (scrollPos = 1)
-		{
-			document.getElementById("jokeSection" + 4).style.display="none";
-			document.getElementById("scrollPos").value = numJokes;
-			var newShow = numJokes;
-			document.getElementById("questionLine").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
-		}			
-		else if (scrollPos > 1)
+		if (scrollPos > 1)
 		{
 			document.getElementById("jokeSection" + (scrollPos + 3)).style.display="none";
 			document.getElementById("scrollPos").value = scrollPos - 1;
 			var newShow = scrollPos - 1;
+			document.getElementById("jokeSection" + newShow).style.display="inline";
 		}	
-		document.getElementById("jokeSection" + newShow).style.display="inline";
+	
 	}
 }
 	
