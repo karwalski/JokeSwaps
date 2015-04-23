@@ -351,9 +351,18 @@ JokeSwaps - <?PHP echo $user; ?>
             <div class="grid_5" id="captcha">
                 <div class="grid_5" id="captchaBg">
                     <div class="grid_4 center captchaBtn" id="captchaBtn">
+                
+		                    <div class="grid_3 omega " id="submitBtn" onClick="popup('captchaPopDiv')">
+		                        <img id="submitCheck" src="images/check.png" />
+		                    </div>
+                
+		                <h2 class="grid_5" id="submitTitle">PLAY </h2>
+						<div id="captchaPopDiv" style="display:none;">
+						<button onclick="popup('captchaPopDiv')" style="float:right;">Close (X)</button><BR />
 						<?php 
 						echo $funcap; 
 						?>
+					</div>
 
                     </div>
                 </div>
