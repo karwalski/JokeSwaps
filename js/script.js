@@ -229,7 +229,7 @@ function jokeScroll(command)
 	
 if (numJokes > 4)
 {
-	if (command == right)
+	if (command == "right")
 	{
 		if (scrollPos < (numJokes - 3))
 		{
