@@ -401,7 +401,7 @@ if ($result->num_rows > 0) {
 	
     while($row = $result->fetch_assoc()) {
 
-        echo '         <div class="grid_3 section' . $count . ' inline"' id="jokeSection' . $count . '";
+        echo '         <div class="grid_3 section' . $count . ' inline"' id="jokeSection' . $count . '"';
 		if ($count > 4) // Do not display more than 5, however they are built for JS scroll
 		{
 			echo ' style="display:none;"';
