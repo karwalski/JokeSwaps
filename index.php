@@ -461,7 +461,7 @@ if ($result->num_rows > 0) {
                 <h1>&#x3009;</h1>
             </div>
         </div>
-
+<input type="hidden" name="scrollPos" id="scrollPos" value="1"> // Can add $_GET if want to pass joke position in URL
     </section>
     <!--End of  question section-->
 
