@@ -5,8 +5,8 @@ function jokeType()
 	if(document.getElementById("knock").checked)
 	{
 	document.getElementById("line1").innerHTML = "Knock Knock";
-	document.getElementById("line2").innerHTML = "Who's there?: ";
-	document.getElementById("line3").innerHTML = ".... who?: ";
+	document.getElementById("line2").innerHTML = "Who's there?";
+	document.getElementById("line3").innerHTML = ".... who?";
 }
 else
 {
@@ -23,7 +23,7 @@ function jokeInput()
 if(document.getElementById("knock").checked)
 {
 	var who = document.getElementById("joke").value;
-	document.getElementById("line3").innerHTML = who + " who?: ";
+	document.getElementById("line3").innerHTML = who + " who?";
 	
 }
 }
@@ -33,7 +33,7 @@ function jokeChange()
 	if(document.getElementById("knock").checked)
 	{
 		var who = document.getElementById("joke").value;
-		document.getElementById("line3").innerHTML = who + " who?: ";
+		document.getElementById("line3").innerHTML = who + " who?";
 		
 	if(document.getElementById("answer").value == "")
 	{

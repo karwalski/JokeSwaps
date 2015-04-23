@@ -323,8 +323,8 @@ JokeSwaps - <?PHP echo $user; ?>
                     <input type="hidden" name="new" id="new" value="joke">
 					<input class="grid_5" type="text" name="name" id="name" placeholder="Name..." />
                     <input class="grid_5" type="text" name="secret" id="secret" placeholder="Secret Word..." />
-					<SELECT id="preset" name="preset" onChange="loadPreset();">
-					<OPTION value="" disabled selected>JokeSwaps Robot's Jokes</OPTION>
+					<SELECT id="preset" name="preset" onChange="loadPreset();" class="grid_5">
+					<OPTION value="" disabled selected >JokeSwaps Robot's Jokes</OPTION>
 
 					<?PHP
 
@@ -338,11 +338,11 @@ JokeSwaps - <?PHP echo $user; ?>
 					}
 					?>
 					</SELECT>
-					<label for="name">Is your joke a Knock Knock joke? </label><input type="checkbox" name="knock" id="knock" value="knock" onChange="jokeType()"><BR />
-					<span id="line1"></span><BR />
-					<span id="line2"></span><BR />
+					<label for="name" class="grid_5">Is your joke a Knock Knock joke? <input type="checkbox" name="knock" id="knock" value="knock" onChange="jokeType()"></label>
+					<span id="line1" class="grid_5"></span>
+					<span id="line2" class="grid_5"></span>
                     <textarea class="grid_5" placeholder="Question..." contenteditable="true" rows="3" cols="20" name="joke" id="joke" required onChange="jokeChange();" onInput="jokeInput();"></textarea>
-					<span id="line3"></span><BR />
+					<span id="line3" class="grid_5"></span>
                     <textarea class="grid_5" placeholder="Answer..." contenteditable="true" rows="3" cols="20" name="answer" id="answer" required></textarea>
 
                 
