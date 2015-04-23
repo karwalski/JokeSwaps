@@ -477,8 +477,10 @@ inline {
 }
 #avatarSelect label > input + img{ /* IMAGE STYLES */
   cursor:pointer;
-  border:2px solid transparent;
+  border:10px solid transparent;
+  border-radius: 150px;
 }
 #avatarSelect label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
+    border: 10px solid #f00;
+    border-radius: 150px;
 }

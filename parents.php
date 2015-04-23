@@ -679,8 +679,36 @@ Update settings<br />
 <label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"  required="required"><br />
 <label for="theme">Page theme: </label><input type="text" name="theme" id="theme" value="<?PHP echo $userInfo[0]["theme"]; ?>"><br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
-<label for="bio">Choose an avatar for your child: </label><input type="text" name="avatar" id="avatar"><br />
-<br /><br /><br /><br />
+<label for="bio">Choose an avatar for your child: </label><br />
+
+<table id="avatarSelect">
+	<TR>
+		<td><label><input type="radio" name="avatar" value="01" <?PHP if($userInfo[0]["avatar"] == '01') {echo 'checked="checked"';} ?>/><img src="/images/avatars/01.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="02" <?PHP if($userInfo[0]["avatar"] == '02') {echo 'checked="checked"';} ?>/><img src="/images/avatars/02.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="03" <?PHP if($userInfo[0]["avatar"] == '03') {echo 'checked="checked"';} ?>/><img src="/images/avatars/03.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="04" <?PHP if($userInfo[0]["avatar"] == '04') {echo 'checked="checked"';} ?>/><img src="/images/avatars/04.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="05" <?PHP if($userInfo[0]["avatar"] == '05') {echo 'checked="checked"';} ?>/><img src="/images/avatars/05.png" style="width:200px"></label></td>
+	</TR>
+	<TR>
+		<td><label><input type="radio" name="avatar" value="06" <?PHP if($userInfo[0]["avatar"] == '06') {echo 'checked="checked"';} ?>/><img src="/images/avatars/06.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="07" <?PHP if($userInfo[0]["avatar"] == '07') {echo 'checked="checked"';} ?>/><img src="/images/avatars/07.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="08" <?PHP if($userInfo[0]["avatar"] == '08') {echo 'checked="checked"';} ?>/><img src="/images/avatars/08.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="09" <?PHP if($userInfo[0]["avatar"] == '09') {echo 'checked="checked"';} ?>/><img src="/images/avatars/09.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="10" <?PHP if($userInfo[0]["avatar"] == '10') {echo 'checked="checked"';} ?>/><img src="/images/avatars/10.png" style="width:200px"></label></td>
+	</TR>
+	<TR>
+		<td><label><input type="radio" name="avatar" value="11" <?PHP if($userInfo[0]["avatar"] == '11') {echo 'checked="checked"';} ?>/><img src="/images/avatars/11.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="12" <?PHP if($userInfo[0]["avatar"] == '12') {echo 'checked="checked"';} ?>/><img src="/images/avatars/12.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="13" <?PHP if($userInfo[0]["avatar"] == '13') {echo 'checked="checked"';} ?>/><img src="/images/avatars/13.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="14" <?PHP if($userInfo[0]["avatar"] == '14') {echo 'checked="checked"';} ?>/><img src="/images/avatars/14.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="avatar" value="15" <?PHP if($userInfo[0]["avatar"] == '15') {echo 'checked="checked"';} ?>/><img src="/images/avatars/15.png" style="width:200px"></label></td>
+		</TR>
+		<TR>
+		<td><label><input type="radio" name="avatar" value="00" <?PHP if($userInfo[0]["avatar"] == '' OR $userInfo[0]["avatar"] == '00') {echo 'checked="checked"';} ?>/><img src="/images/avatars/avatar.png" style="width:200px"></label></td>
+		<TR>
+</table>	
+
+<br />
 <label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onInput="checkPasswdMatch(update');"><br />
 <label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onInput="checkPasswdMatch('update');"><span id="passwordMisMatch_update" style="color:red;"> </span><br />
 
