@@ -291,6 +291,7 @@ body {
     text-align: center;
     float: left;
     margin-top: ;
+	cursor:pointer;
 }
 .arrow-link {
     height: 40px;
@@ -313,6 +314,9 @@ body {
     text-align: center;
 }
 .arrow:hover {
+    background-color: #aaa;
+}
+#upArrow, #downArrow .inActive {
     background-color: #aaa;
 }
 #upArrow h1 {

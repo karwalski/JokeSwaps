@@ -227,6 +227,7 @@ function jokeScroll(command)
 	numJokes = parseInt(numJokes);
 	
 	
+	
 if (numJokes > 4)
 {
 	if (command == "right")
@@ -238,6 +239,15 @@ if (numJokes > 4)
 			document.getElementById("scrollPos").value = scrollPos + 1;
 			var newShow = scrollPos + 4;
 			document.getElementById("jokeSection" + newShow).style.display="inline";
+			
+			if (document.getElementById("scrollPos").value == (numJokes - 3))
+			{
+				document.getElementById("downArrow").className = "arrow grid_1 omega inActive"
+			}
+			else
+			{
+				document.getElementById("downArrow").className = "arrow grid_1 omega"
+			}
 		}	
 		
 	}
@@ -251,9 +261,21 @@ if (numJokes > 4)
 			document.getElementById("scrollPos").value = scrollPos - 1;
 			var newShow = scrollPos - 1;
 			document.getElementById("jokeSection" + newShow).style.display="inline";
+			
+			if (document.getElementById("scrollPos").value == 1)
+			{
+				document.getElementById("upArrow").className = "arrow grid_1 alpha inActive"
+			}
+			else
+			{
+				document.getElementById("upArrow").className = "arrow grid_1 alpha"
+			}
 		}	
 	
 	}
 }
+
+
+
 	
 }

@@ -381,7 +381,7 @@ JokeSwaps - <?PHP echo $user; ?>
 
         <div class="container_16" id="questionLine">
 
-            <div class="arrow grid_1 alpha" id="upArrow" onClick="jokeScroll('left');">
+            <div class="arrow grid_1 alpha inActive" id="upArrow" onClick="jokeScroll('left');">
                 <h1>&#x3008;</h1>
             </div>
 			
