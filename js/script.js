@@ -226,8 +226,6 @@ function jokeScroll(command)
 	var scrollPos = parseInt(document.getElementById("scrollPos").value);
 	numJokes = parseInt(numJokes);
 	
-	alert ('There are ' + numJokes + ' jokes & You are scrolling ' + command);
-	alert ('Scroll position ' + scrollPos);
 	
 if (numJokes > 4)
 {
@@ -264,26 +262,30 @@ if (numJokes > 4)
 	
 	if (command == "left")
 	{
-		document.getElementById("jokeSection" + (scrollPos + 4)).style.display="none";
+		document.getElementById("jokeSection" + (scrollPos + 3)).style.display="none";
 		if (scrollPos = (numJokes - 2))
 		{
 			document.getElementById("scrollPos").value = (numJokes - 3);
 			var newShow = (numJokes - 3);
+			document.getElementById("container_16").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
 		}	
 		else if (scrollPos = (numJokes - 1))
 		{
 			document.getElementById("scrollPos").value = (numJokes - 2);
+			document.getElementById("container_16").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
 			var newShow = (numJokes - 2);
 		}	
 		else if (scrollPos = numJokes)
 		{	
 			document.getElementById("scrollPos").value = (numJokes - 1);
+			document.getElementById("container_16").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
 			var newShow = (numJokes - 1);
 		}
 		else if (scrollPos = 1)
 		{
 			document.getElementById("scrollPos").value = numJokes;
 			var newShow = numJokes;
+			document.getElementById("container_16").insertBefore(document.getElementById("jokeSection" + newShow), document.getElementById("jokeSection" + scrollPos));
 		}			
 		else if (scrollPos > 1)
 		{
