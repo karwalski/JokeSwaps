@@ -248,6 +248,7 @@ if (numJokes > 4)
 			{
 				document.getElementById("downArrow").className = "arrow grid_1 omega"
 			}
+			document.getElementById("upArrow").className = "arrow grid_1 alpha"
 		}	
 		
 	}
@@ -270,6 +271,7 @@ if (numJokes > 4)
 			{
 				document.getElementById("upArrow").className = "arrow grid_1 alpha"
 			}
+			document.getElementById("downArrow").className = "arrow grid_1 omega"
 		}	
 	
 	}
