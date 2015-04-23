@@ -158,7 +158,7 @@ JokeSwaps - <?PHP echo $user; ?>
 
 
 </HEAD>
-<BODY onLoad="popup('rulesDiv')">
+<BODY >
 	
     <div id="wrapper" class="container_16">
         <!--Start of body wrraper-->
@@ -514,7 +514,7 @@ About: When the 7 year old twins Tammi and Mahni created their first web pages, 
 3. Don't be rude or offensive<BR />
 4. Don't share personal information<BR />
 5. Don't be a bully<BR />
-6. Only share your secret word with friends<BR />
+6. Only share your secret word with friends<BR /><BR />
 
 <button onclick="popup('rulesDiv')">Go to JokeSwaps</button><BR />
 </div>

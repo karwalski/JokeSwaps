@@ -240,15 +240,6 @@ if (numJokes > 4)
 			var newShow = scrollPos + 4;
 			document.getElementById("jokeSection" + newShow).style.display="inline";
 			
-			if (document.getElementById("scrollPos").value == (numJokes - 3))
-			{
-				document.getElementById("downArrow").className = "arrow grid_1 omega inactive"
-			}
-			else
-			{
-				document.getElementById("downArrow").className = "arrow grid_1 omega"
-			}
-			document.getElementById("upArrow").className = "arrow grid_1 alpha"
 		}	
 		
 	}
@@ -263,15 +254,6 @@ if (numJokes > 4)
 			var newShow = scrollPos - 1;
 			document.getElementById("jokeSection" + newShow).style.display="inline";
 			
-			if (document.getElementById("scrollPos").value == 1)
-			{
-				document.getElementById("upArrow").className = "arrow grid_1 alpha inactive"
-			}
-			else
-			{
-				document.getElementById("upArrow").className = "arrow grid_1 alpha"
-			}
-			document.getElementById("downArrow").className = "arrow grid_1 omega"
 		}	
 	
 	}
@@ -280,4 +262,52 @@ if (numJokes > 4)
 
 
 	
+}
+
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires + ";domain=.jokeswaps.com;path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+function checkCookie() {
+	if (navigator.cookieEnabled == true)
+	{
+    var cookie = getCookie("rules");
+    if (cookie == "") {
+		popup('rulesDiv');
+            setCookie("rules", "true", 7);
+    }
+}
+else
+{
+	// Randomly show rules 1 in 33 page refreshes if cookies disabled
+	var randVisit = Math.floor((Math.random() * 100) + 1);
+	if (randVisit == 2)
+	{
+		popup('rulesDiv');
+	}
+	else if (randVisit == 42)
+	{
+		popup('rulesDiv');
+	}
+	else if (randVisit == 61)
+	{
+		popup('rulesDiv');
+	}
+	
+}
 }
