@@ -286,7 +286,7 @@ if (numJokes > 4)
 			document.getElementsByClassName("section" + newShow).style="";
 		}
 		else
-			{ alert('You are probably insane';)}
+			{ alert('You are probably insane'); }
 	}
 }
 	
