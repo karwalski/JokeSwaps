@@ -233,63 +233,64 @@ if (numJokes > 4)
 {
 	if (command == "right")
 	{
-		alert('Checkpoint 1');
+		document.getElementById("jokeSection" + scrollPos).style.display="none";
 		if (scrollPos < (numJokes - 3))
 		{
-			alert('Checkpoint 2');
-			// hide current one joke
-			document.getElementById("jokeSection" + scrollPos).style.display="none";
-			
-			// Update scroll position counter
 			document.getElementById("scrollPos").value = scrollPos + 1;
-			// show New active jokes
 			var newShow = scrollPos + 4;
-			document.getElementById("jokeSection" + newShow).style.display="inline";
-			
-			alert('Checkpoint 3');
 		}	
 		else if (scrollPos = (numJokes - 3))
 		{
-			// hide current one joke
-			document.getElementById("jokeSection" + scrollPos).style.display="none";
-			// Update scroll position counter
 			document.getElementById("scrollPos").value = scrollPos + 1;
-			// show New active jokes
 			var newShow = 1;
-			document.getElementById("jokeSection" + newShow).style.display="inline";
 		}
 		else if (scrollPos = (numJokes - 2))
 		{
-			// hide current one joke
-			document.getElementById("jokeSection" + scrollPos).style.display="none";
-			// Update scroll position counter
 			document.getElementById("scrollPos").value = scrollPos + 1;
-			// show New active jokes
 			var newShow = 2;
-			document.getElementById("jokeSection" + newShow).style.display="inline";
 		}	
 		else if (scrollPos = (numJokes - 1))
 		{
-			// hide current one joke
-			document.getElementById("jokeSection" + scrollPos).style.display="none";
-			// Update scroll position counter
 			document.getElementById("scrollPos").value = scrollPos + 1;
-			// show New active jokes
 			var newShow = 3;
-			document.getElementById("jokeSection" + newShow).style.display="inline";
 		}	
 		else if (scrollPos = numJokes)
 		{	
-			// hide current one joke
-			document.getElementById("jokeSection" + scrollPos).style.display="none";
-			// Update scroll position counter
 			document.getElementById("scrollPos").value = 1;
-			// show New active jokes
 			var newShow = 4;
-			document.getElementById("jokeSection" + newShow).style.display="inline";
 		}
-		else
-			{ alert('You are probably insane'); }
+		document.getElementById("jokeSection" + newShow).style.display="inline";
+	}
+	
+	if (command == "left")
+	{
+		document.getElementById("jokeSection" + (scrollPos + 4)).style.display="none";
+		if (scrollPos = (numJokes - 2))
+		{
+			document.getElementById("scrollPos").value = (numJokes - 3);
+			var newShow = (numJokes - 3);
+		}	
+		else if (scrollPos = (numJokes - 1))
+		{
+			document.getElementById("scrollPos").value = (numJokes - 2);
+			var newShow = (numJokes - 2);
+		}	
+		else if (scrollPos = numJokes)
+		{	
+			document.getElementById("scrollPos").value = (numJokes - 1);
+			var newShow = (numJokes - 1);
+		}
+		else if (scrollPos = 1)
+		{
+			document.getElementById("scrollPos").value = numJokes;
+			var newShow = numJokes;
+		}			
+		else if (scrollPos > 1)
+		{
+			document.getElementById("scrollPos").value = scrollPos - 1;
+			var newShow = scrollPos - 1;
+		}	
+		document.getElementById("jokeSection" + newShow).style.display="inline";
 	}
 }
 	
