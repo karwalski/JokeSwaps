@@ -137,7 +137,7 @@ $funcaptcha = new FUNCAPTCHA();
 
 
 <TITLE>
-JokeSwaps - <?PHP echo $user; ?>
+JokeSwaps - <?PHP echo ucfirst($user); ?>
 </TITLE>
 
     <meta charset="utf-8" />
@@ -159,6 +159,20 @@ JokeSwaps - <?PHP echo $user; ?>
 
 </HEAD>
 <BODY >
+	
+	<div id="blanket" style="display:none;"></div>
+	<div id="rulesDiv" style="display:none;">
+	<button onclick="popup('rulesDiv')" style="float:right;">Close (X)</button><BR />
+	<H1>JokeSwaps Rules</H1>
+	1. Parents Must signup for the kids<BR />
+	2. Jokes only, no comments or messages<BR />
+	3. Don't be rude or offensive<BR />
+	4. Don't share personal information<BR />
+	5. Don't be a bully<BR />
+	6. Only share your secret word with friends<BR /><BR />
+
+	<button onclick="popup('rulesDiv')">Go to JokeSwaps</button><BR />
+	</div>
 	
     <div id="wrapper" class="container_16">
         <!--Start of body wrraper-->
@@ -475,19 +489,7 @@ About: When the 7 year old twins Tammi and Mahni created their first web pages, 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">JokeSwaps</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/karwalski/jokeswaps" property="cc:attributionName" rel="cc:attributionURL">Karwalski</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 </div>
 
-<div id="blanket" style="display:none;"></div>
-<div id="rulesDiv" style="display:none;">
-<button onclick="popup('rulesDiv')" style="float:right;">Close (X)</button><BR />
-<H1>JokeSwaps Rules</H1>
-1. Parents Must signup for the kids<BR />
-2. Jokes only, no comments or messages<BR />
-3. Don't be rude or offensive<BR />
-4. Don't share personal information<BR />
-5. Don't be a bully<BR />
-6. Only share your secret word with friends<BR /><BR />
 
-<button onclick="popup('rulesDiv')">Go to JokeSwaps</button><BR />
-</div>
 
 		    </footer>
 </body>
