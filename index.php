@@ -143,6 +143,23 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
     <meta charset="utf-8" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta property="og:image" content="http://jokeswaps.com/images/meta_preview.png"/>
+	<meta property="og:url" content="<?php echo $_SERVER['REQUEST_URI']?>" />
+	<meta property="og:site_name" content="<?PHP echo ucfirst($user); ?>'s JokeSwaps"/>
+	<meta property="og:title" content="<?PHP echo ucfirst($user); ?>'s JokeSwaps" />
+	<meta property="og:description" content="Swap jokes with your friends, the social media site for kids." />
+	<meta property="og:type" content="profile" />
+	<meta property="profile:first_name" content="<?PHP echo ucfirst($user); ?>" />
+	<meta property="profile:username" content="<?PHP echo ucfirst($user); ?>" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="<?PHP echo ucfirst($user); ?>'s JokeSwaps" />
+	<meta name="twitter:description" content="Swap jokes with your friends, the social media site for kids." />
+	<meta name="twitter:image" content="http://jokeswaps.com/images/meta_preview.png" />
+	<meta name="twitter:url" content="<?php echo $_SERVER['REQUEST_URI']?>" />
+	<meta name="twitter:site" content="@JokeSwaps" />
+	<meta name="description" content="Swap jokes with your friends, the social media site for kids.">
+	<meta name="author" content="karwalski">
+	<meta name="fb:profile_id" content="104256666573027">
 
     <link rel="stylesheet" href="css/960_16_col.css" />
     <link rel="stylesheet" href="css/reset.css" />
@@ -486,7 +503,7 @@ About: When the 7 year old twins Tammi and Mahni created their first web pages, 
 <a href="#" onclick="popup('rulesDiv')">Rules</a> - <a href="tac.php">Terms and Conditions</a> - <a href="privacy.php">Privacy Policy</a> - <a href="parents.php">Parents Console</a><BR /><BR /><BR />
 
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">JokeSwaps</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/karwalski/jokeswaps" property="cc:attributionName" rel="cc:attributionURL">Karwalski</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="images/cc.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">JokeSwaps</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/karwalski/jokeswaps" property="cc:attributionName" rel="cc:attributionURL">Karwalski</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 </div>
 
 
