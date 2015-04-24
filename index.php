@@ -158,7 +158,7 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
 
 
 </HEAD>
-<BODY >
+<BODY onLoad="checkCookie();" >
 	
 	<div id="blanket" style="display:none;"></div>
 	<div id="rulesDiv" style="display:none;">
