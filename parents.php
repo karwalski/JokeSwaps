@@ -677,8 +677,16 @@ Update settings<br />
 <input type="hidden" name="username" id="username" value="<?PHP echo $userInfo[0]["username"]; ?>">
 <label for="secret">Secret word: </label><input type="text" name="secret" id="secret" value="<?PHP echo $userInfo[0]["secret"]; ?>"  required="required"><br />
 <label for="email">Parents email: </label><input type="email" name="email" id="email" value="<?PHP echo $userInfo[0]["email"]; ?>"  required="required"><br />
-<label for="theme">Page theme: </label><input type="text" name="theme" id="theme" value="<?PHP echo $userInfo[0]["theme"]; ?>"><br />
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio" value="<?PHP echo $userInfo[0]["bio"]; ?>"><br />
+<label for="theme">Page theme: </label><br />
+<table id="avatarSelect">
+	<TR>
+		<td><label><input type="radio" name="theme" value="blue" <?PHP if($userInfo[0]["theme"] == 'blue') {echo 'checked="checked"';} ?>/><img src="/images/theme_blue.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="theme" value="pink" <?PHP if($userInfo[0]["theme"] == 'pink') {echo 'checked="checked"';} ?>/><img src="/images/theme_pink.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="theme" value="purple" <?PHP if($userInfo[0]["theme"] == 'purple') {echo 'checked="checked"';} ?>/><img src="/images/theme_purple.png" style="width:200px"></label></td>
+		<TR>
+</table>	
+
 <label for="bio">Choose an avatar for your child: </label><br />
 
 <table id="avatarSelect">
@@ -703,9 +711,6 @@ Update settings<br />
 		<td><label><input type="radio" name="avatar" value="14" <?PHP if($userInfo[0]["avatar"] == '14') {echo 'checked="checked"';} ?>/><img src="/images/avatars/14.png" style="width:200px"></label></td>
 		<td><label><input type="radio" name="avatar" value="15" <?PHP if($userInfo[0]["avatar"] == '15') {echo 'checked="checked"';} ?>/><img src="/images/avatars/15.png" style="width:200px"></label></td>
 		</TR>
-		<TR>
-		<td><label><input type="radio" name="avatar" value="00" <?PHP if($userInfo[0]["avatar"] == '' || $userInfo[0]["avatar"] == '00') {echo 'checked="checked"';} ?>/><img src="/images/avatars/avatar.png" style="width:200px"></label></td>
-		<TR>
 </table>	
 
 <br />
@@ -813,9 +818,15 @@ else
 
 <label for="email">Parents email: </label><input type="email" name="email" id="email" required="required"><br />
 
-<label for="theme">Page theme: </label><input type="text" name="theme" id="theme"><br />
-
 <label for="bio">Childs bio: </label><input type="text" name="bio" id="bio"><br />
+<label for="theme">Page theme: </label><br />
+<table id="avatarSelect">
+	<TR>
+		<td><label><input type="radio" name="theme" value="blue" /><img src="/images/theme_blue.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="theme" value="pink" /><img src="/images/theme_pink.png" style="width:200px"></label></td>
+		<td><label><input type="radio" name="theme" value="purple" /><img src="/images/theme_purple.png" style="width:200px"></label></td>
+		<TR>
+</table>	
 <label for="bio">Choose an avatar for your child: </label><br />
 
 <table id="avatarSelect">
