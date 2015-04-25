@@ -814,34 +814,34 @@ while($row = $result->fetch_assoc()) {
 			$ringOwner = "false";
 		}
 	
-    echo '<tr><td><input type="text" name="ringname[' . $ringID . ']" value="' . $ringInfo[0]["name"] . '"'
+    echo '<tr><td><input type="text" name="ringname[' . $ringID . ']" value="' . $ringInfo[0]["name"] . '"';
 		if ($ringOwner == 'false')
 	{
-		echo ' disabled="disabled"'
+		echo ' disabled="disabled"';
 	} 
 	echo '></td>';
-    echo '<td><input type="text" name="ringdesc[' . $ringID . ']" value="' . $ringInfo[0]["shortDesc"] . '"'
+    echo '<td><input type="text" name="ringdesc[' . $ringID . ']" value="' . $ringInfo[0]["shortDesc"] . '"';
 		if ($ringOwner == 'false')
 	{
-		echo ' disabled="disabled"'
+		echo ' disabled="disabled"';
 	} 
 	echo '></td>';
-    echo '<td><input type="text" name="secret[' . $ringID . ']" value="' . $ringInfo[0]["secret"] . '"'
+    echo '<td><input type="text" name="secret[' . $ringID . ']" value="' . $ringInfo[0]["secret"] . '"';
 		if ($ringOwner == 'false')
 	{
-		echo ' disabled="disabled"'
+		echo ' disabled="disabled"';
 	} 
 	echo '></td>';
-    echo '<td><textarea name="users[' . $ringID . ']" value="' . $userList . '"'
+    echo '<td><textarea name="users[' . $ringID . ']" value="' . $userList . '"';
 		if ($ringOwner == 'false')
 	{
-		echo ' disabled="disabled"'
+		echo ' disabled="disabled"';
 	} 
 	echo '></textarea></td>';
-    echo '<td><input type="checkbox" name="delete[' . $ringID . ']" value="true"'
+    echo '<td><input type="checkbox" name="delete[' . $ringID . ']" value="true"';
 		if ($ringOwner == 'false')
 	{
-		echo ' disabled="disabled"'
+		echo ' disabled="disabled"';
 	} 
 	echo '></td></tr>';
 	
