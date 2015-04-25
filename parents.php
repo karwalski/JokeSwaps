@@ -876,7 +876,7 @@ if ($result->num_rows > 0) {
 	<input type="hidden" name="session" id="session" value="' . $tokenHash . '">
 <table>
     <tr>
-      <th>Ring Name/th>
+      <th>Ring Name</th>
       <th>Desc</th> 
       <th>Secret</th>
       <th>Users</th>
@@ -885,11 +885,11 @@ if ($result->num_rows > 0) {
 	
 while($row = $result->fetch_assoc()) {
 	$ringID = $row["RingID"];
-	$sql = "SELECT * FROM ringInfo WHERE ringID = '$ringID'" ;
+	$sql = "SELECT * FROM ringInfo WHERE RingID = '$ringID'" ;
 	$result = $conn->query($sql);
 	for ($ringInfo = array (); $ringInforow = $result->fetch_assoc(); $ringInfo[] = $ringInforow);
 	
-	$sql = "SELECT * FROM rings WHERE ringID = '$ringID'" ;
+	$sql = "SELECT * FROM rings WHERE RingID = '$ringID'" ;
 	$result = $conn->query($sql);
 	$userList = "";
 	while($usersrow = $result->fetch_assoc()) {
@@ -937,7 +937,7 @@ while($row = $result->fetch_assoc()) {
 	
 }
 echo '<tr>
-  <th>Ring Name/th>
+  <th>Ring Name</th>
   <th>Desc</th> 
   <th>Secret</th>
   <th>Users</th>
