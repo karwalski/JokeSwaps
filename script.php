@@ -40,23 +40,31 @@ if ($conn->connect_error) {
 // sql command
 $sql = "";
 
-
-
-
-$sql = "CREATE TABLE funny (
-FunnyID INT AUTO_INCREMENT PRIMARY KEY,
-JokeID INT
-)";
 */
 
-// Print funnys
-$sql = "SELECT * FROM funny" ;
-$result = $conn->query($sql);
 
-echo '<BR />List Funnys<BR />';
-    while($row = $result->fetch_assoc()) {
-		echo $row["JokeID"];
-	}
+$sql = "CREATE TABLE ringInfo (
+RingID INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255),
+shortDesc VARCHAR(255),
+owner VARCHAR(255),
+secret VARCHAR(255)
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "SQL command ran successfully";
+} else {
+    echo "Error running SQL command: " . $conn->error;
+}
+
+
+$sql = "CREATE TABLE rings (
+RingID INT,
+username VARCHAR(255)
+)";
+
+
+
 
 
 if ($conn->query($sql) === TRUE) {
