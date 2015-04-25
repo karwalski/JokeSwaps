@@ -416,6 +416,162 @@ echo 'You are signed in as the parent for user :' . $forUser . '<BR />';
 		}
 }
 
+// Edit rings
+if (isset($_POST['editRing']) && $_POST['editRing'] == "true")
+	{ 
+	
+		$forUser = mysqli_real_escape_string($conn, $_POST['username']);
+	
+		// Check session token
+
+
+		$sql = "SELECT * FROM tokens WHERE username = '$forUser' AND type = 'login' AND status = '0' ORDER BY TokenID DESC " ;
+		$result = $conn->query($sql);
+
+		for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+		$tokeHash = $userInfo[0]["hash"];
+		$tokenExpires = $userInfo[0]["expires"];
+		$tokenStatus = $userInfo[0]["status"];
+	
+
+		$session = $_POST["session"];
+		 $session = mysqli_real_escape_string($conn, $session);
+
+		if ($tokeHash == $session)
+		{
+
+		if ($tokenExpires < date("now"))
+		{
+			
+			foreach ($_POST['ringname'] as $id => $ringname)
+			{
+			 $ringname = mysqli_real_escape_string($conn, $ringname);
+
+			$sql = "UPDATE ringInfo SET name = '$ringname' WHERE RingID = '$id' AND owner = '$forUser'";
+	
+			if ($conn->query($sql) === TRUE) {
+			} else {
+			    echo "Error: " . $sql . "<br>" . $conn->error;
+			}	
+			
+			}
+			foreach ($_POST['ringdesc'] as $id => $ringdesc
+			{
+   			 $ringdesc = mysqli_real_escape_string($conn, $ringdesc);
+
+   			$sql = "UPDATE ringInfo SET shortDesc = '$ringdesc' WHERE RingID = '$id' AND owner = '$forUser'";
+	
+   			if ($conn->query($sql) === TRUE) {
+   			} else {
+   			    echo "Error: " . $sql . "<br>" . $conn->error;
+   			}	
+			}
+			foreach ($_POST['secret'] as $id => $secret)
+			{
+   			 $secret = mysqli_real_escape_string($conn, $secret);
+
+   			$sql = "UPDATE ringInfo SET secret = '$secret' WHERE RingID = '$id' AND owner = '$forUser'";
+	
+   			if ($conn->query($sql) === TRUE) {
+   			} else {
+   			    echo "Error: " . $sql . "<br>" . $conn->error;
+   			}	
+			}
+			foreach ($_POST['users'] as $id => $users)
+			{
+				// Clear all entries for this ring
+				$sql = "DELETE FROM rings WHERE RingID = '$id'";
+				if ($conn->query($sql) === TRUE) {
+				} else {
+				    echo "Error: " . $sql . "<br>" . $conn->error;
+				}
+				
+				// Add owner by default (incase deleted)
+				sql = "INSERT INTO rings (RingID, username)
+							 VALUES ('$id', '$forUser')";
+						 if ($conn->query($sql) === TRUE) {
+						 } else {
+						     echo "Error: " . $sql . "<br>" . $conn->error;
+						 }
+				
+				// Users to array
+				$userList = explode(PHP_EOL, $users);
+				foreach ($userList as $username)
+				{
+					if ($username == $forUser)
+					{
+						// Do nothing as owenr added by default
+					}
+					else
+					{
+						sql = "INSERT INTO rings (RingID, username)
+									 VALUES ('$id', '$username')";
+								 if ($conn->query($sql) === TRUE) {
+								 } else {
+								     echo "Error: " . $sql . "<br>" . $conn->error;
+								 }
+						
+					}
+				}
+				
+				foreach ($_POST['delete'] as $id => $delete)
+				{
+					if (isset($delete) && $delete == 'true')
+					{
+
+					// Delete ring info
+					$sql = "DELETE FROM ringInfo WHERE RingID= '$id' AND owner = '$forUser'";
+		
+					if ($conn->query($sql) === TRUE) {
+
+					
+					// Delete all ring and user pairs - only if aboce delete success
+					$sql = "DELETE FROM rings WHERE RingID= '$id'";
+		
+					if ($conn->query($sql) === TRUE) {
+					} else {
+					    echo "Error: " . $sql . "<br>" . $conn->error;
+					}	
+					} else {
+				    echo "Error: " . $sql . "<br>" . $conn->error;
+					}	
+					
+					}
+					
+					
+				}
+				
+			}
+	
+	
+			// Stay signed in
+			$signedIn = 'true';
+			$tokenHash = $tokeHash;
+
+			$sql = "SELECT * FROM users WHERE username = '$forUser'" ;
+			$result = $conn->query($sql);
+
+
+			for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+
+			echo 'You are signed in as the parent for user :' . $forUser . '<BR />';
+ 
+		
+				}
+					else
+					{
+					echo 'Token expired';
+					}
+
+					}
+					else 
+					{
+					echo 'Invalid token.';
+
+					}
+	
+	
+	}
 
 
 
@@ -877,7 +1033,8 @@ if ($result->num_rows > 0) {
 
 
 echo '
-	<H1>Rings your child belongs to: </H1>';
+	<H1>Rings your child belongs to: </H1>
+<ul>Currently users can be added to a ring without their consent</ul>';
 
 $sql = "SELECT * FROM rings WHERE username = '$username'" ;
 $result = $conn->query($sql);
@@ -969,6 +1126,7 @@ else
 // add to existing ring
 echo '
 	<H1>Request addition to existing ring</H1>
+<ul>This feature has not been enabled yet</ul>
 <FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="requestRing">
 <input type="hidden" name="requestRing" id="requestRing" value="true">
 <input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">

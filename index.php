@@ -257,34 +257,61 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
 	
 	
 
-        <div id="userFriend" class="grid_5 omega">
+        
+
+
+				<?PHP $sql = "SELECT * FROM rings WHERE username = '$username'" ;
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) {
+		            echo '<div id="userFriend" class="grid_5 omega">
             <!--Start of Friend-->
             <div id="friendTitle">
                 <h3>FRIENDS</h3>
             </div>
             <!--End of Search form-->
+			<div id="friendGrid" class="grid_5">
+		                <!--Startof Friend Grid-->';
+					
+					while($row = $result->fetch_assoc()) {
+						$ringID = $row["RingID"];
+						$sql = "SELECT * FROM rings WHERE RingID = '$ringID' ORDER BY RAND() LIMIT 6 " ;
+						$result = $conn->query($sql);
+						while($usersrow = $result->fetch_assoc()) {
+							
+				            
+							
+							$friend = $usersrow["username"];
+							
+							// lookup friends avatar
+							$sql = "SELECT * FROM users WHERE username = '$friend'" ;
+							$result = $conn->query($sql);
 
-            <div id="friendGrid" class="grid_5">
-                <!--Startof Friend Grid-->
-                <div class="friend-bio grid_2">
-                    <img src="images/avatars/06.png" height="35px" width="35px" />
-                    <h6 id="friendName"><a href="http://mahni.jokeswaps.com" target="_top">Mahni</a></h6>
-                </div>
-
-                <div class="friend-bio grid_2">
-                    <img src="images/avatars/03.png" height="35px" width="35px" />
-
-                    <h6 id="friendName"><a href="http://tammi.jokeswaps.com" target="_top">Tammi</a></h6>
-                </div>
-
-                <div class="friend-bio grid_2">
-                    <img src="images/avatars/01.png" height="35px" width="35px" />
-                    <h6 id="friendName"><a href="http://jack.jokeswaps.com" target="_top">Jack</a></h6>
-                </div>
-            </div>
+							for ($friendInfo = array (); $friendrow = $result->fetch_assoc(); $friendInfo[] = $friendrow);
+							if (isset($friendInfo[0]["avatar"]) && $friendInfo[0]["avatar"] != "" && $friendInfo[0]["avatar"] != "00")
+								 { $avatar = $friendInfo[0]["avatar"];}
+							else { $avatar = 'avatar';}
+							 
+							echo '<div class="friend-bio grid_2">
+			                    <img src="images/avatars/' . $avatar . '.png" height="35px" width="35px" />
+			                    <h6 id="friendName"><a href="http://' . $friend . '.jokeswaps.com" target="_top">' . ucfirst($friend) . '</a></h6></div>';
+							
+						}
+					}
+					echo '            </div>
             <!--End of Friend Grid-->
         </div>
-        <!--End of User Friend-->
+        <!--End of User Friend-->';
+				}
+				else
+				{
+					// Do not display friends grid if not part of a ring
+				}
+					
+					?>
+				
+
+
 
     </section>
     <!--End of User Bio-->
