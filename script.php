@@ -63,9 +63,8 @@ username VARCHAR(255)
 )";
 
 */
-
-
-
+$sql = "INSERT INTO rings (RingID, username)
+ VALUES ('1', 'mahni')";
 
 if ($conn->query($sql) === TRUE) {
     echo "SQL command ran successfully";
