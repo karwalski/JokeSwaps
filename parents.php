@@ -504,6 +504,8 @@ if (isset($_POST['editRing']) && $_POST['editRing'] == "true")
 					}
 					else
 					{
+						$username = str_replace(array("\n", "\r", "\r\n", ","), '', $username);
+						
 						$sql = "INSERT INTO rings (RingID, username)
 									 VALUES ('$id', '$username')";
 								 if ($conn->query($sql) === TRUE) {
