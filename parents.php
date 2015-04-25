@@ -198,121 +198,122 @@ echo 'Invalid token.';
 		
 	}
 
-
-	// Edit and delete jokes
-if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
-	{
-
-		$forUser = mysqli_real_escape_string($conn, $_POST['username']);
-		
-		// Check session token
-
-
-		$sql = "SELECT * FROM tokens WHERE username = '$forUser' AND type = 'login' AND status = '0' ORDER BY TokenID DESC " ;
-		$result = $conn->query($sql);
-
-		for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
-		$tokeHash = $userInfo[0]["hash"];
-		$tokenExpires = $userInfo[0]["expires"];
-		$tokenStatus = $userInfo[0]["status"];
-		
-
-		$session = $_POST["session"];
-		 $session = mysqli_real_escape_string($conn, $session);
-
-		if ($tokeHash == $session)
+	// edit and delete jokes
+	if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 		{
 
-		if ($tokenExpires < date("now"))
-		{
+			$forUser = mysqli_real_escape_string($conn, $_POST['username']);
+		
+			// Check session token
+
+
+			$sql = "SELECT * FROM tokens WHERE username = '$forUser' AND type = 'login' AND status = '0' ORDER BY TokenID DESC " ;
+			$result = $conn->query($sql);
+
+			for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+			$tokeHash = $userInfo[0]["hash"];
+			$tokenExpires = $userInfo[0]["expires"];
+			$tokenStatus = $userInfo[0]["status"];
+		
+
+			$session = $_POST["session"];
+			 $session = mysqli_real_escape_string($conn, $session);
+
+			if ($tokeHash == $session)
+			{
+
+				if ($tokenExpires < date("now"))
+				{
 		
 		
-		foreach ($_POST['joke'] as $id => $joke)
-		{
+			foreach ($_POST['joke'] as $id => $joke)
+			{
 			
-			 $joke = mysqli_real_escape_string($conn, $joke);
+				 $joke = mysqli_real_escape_string($conn, $joke);
 
-			// Update joke
-			$sql = "UPDATE jokes SET joke= '$joke' WHERE id= '$id' AND forUser = '$forUser'";
+				// Update joke
+				$sql = "UPDATE jokes SET joke= '$joke' WHERE id= '$id' AND forUser = '$forUser'";
 		
-			if ($conn->query($sql) === TRUE) {
-			} else {
-			    echo "Error: " . $sql . "<br>" . $conn->error;
-			}	
-		}		
+				if ($conn->query($sql) === TRUE) {
+				} else {
+				    echo "Error: " . $sql . "<br>" . $conn->error;
+				}	
+			}		
 		
-		foreach ($_POST['answer'] as $id => $answer)
-		{
+			foreach ($_POST['answer'] as $id => $answer)
+			{
 			
-			 $answer = mysqli_real_escape_string($conn, $answer);
+				 $answer = mysqli_real_escape_string($conn, $answer);
 
-			// Update joke
-			$sql = "UPDATE jokes SET answer= '$answer' WHERE id= '$id' AND forUser = '$forUser'";
+				// Update joke
+				$sql = "UPDATE jokes SET answer= '$answer' WHERE id= '$id' AND forUser = '$forUser'";
 		
-			if ($conn->query($sql) === TRUE) {
-			} else {
-			    echo "Error: " . $sql . "<br>" . $conn->error;
-			}	
+				if ($conn->query($sql) === TRUE) {
+				} else {
+				    echo "Error: " . $sql . "<br>" . $conn->error;
+				}	
+			}
+		
+			foreach ($_POST['type'] as $id => $type)
+			{
+			
+				 $type = mysqli_real_escape_string($conn, $type);
+
+				// Update joke
+				$sql = "UPDATE jokes SET type= '$type' WHERE id= '$id' AND forUser = '$forUser'";
+		
+				if ($conn->query($sql) === TRUE) {
+				} else {
+				    echo "Error: " . $sql . "<br>" . $conn->error;
+				}	
+			}
+		
+			foreach ($_POST['delete'] as $id => $delete)
+			{
+				if (isset($delete) && $delete == 'true')
+				{
+
+				// Update joke
+				$sql = "DELETE FROM jokes WHERE id= '$id' AND forUser = '$forUser'";
+		
+				if ($conn->query($sql) === TRUE) {
+				} else {
+				    echo "Error: " . $sql . "<br>" . $conn->error;
+				}	
+				}
+			}
+			
+		
+			echo 'Jokes updated';
+		
+		
+			$signedIn = 'true';
+			$tokenHash = $tokeHash;
+
+			$sql = "SELECT * FROM users WHERE username = '$forUser'" ;
+			$result = $conn->query($sql);
+
+
+			for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+		
+			echo 'You are signed in as the parent for user :' . $forUser . '<BR />';
+
+
+				}
+				else
+				{
+					echo 'Token expired';
+				}
+
+			}
+			else 
+			{
+				echo 'Invalid token.';
+
+			}
+		
+		
 		}
-		
-		foreach ($_POST['type'] as $id => $type)
-		{
-			
-			 $type = mysqli_real_escape_string($conn, $type);
-
-			// Update joke
-			$sql = "UPDATE jokes SET type= '$type' WHERE id= '$id' AND forUser = '$forUser'";
-		
-			if ($conn->query($sql) === TRUE) {
-			} else {
-			    echo "Error: " . $sql . "<br>" . $conn->error;
-			}	
-		}
-		
-		foreach ($_POST['delete'] as $id => $delete)
-		{
-			if (isset($delete) && $delete == 'true')
-
-			// Update joke
-			$sql = "DELETE FROM jokes WHERE id= '$id' AND forUser = '$forUser'";
-		
-			if ($conn->query($sql) === TRUE) {
-			} else {
-			    echo "Error: " . $sql . "<br>" . $conn->error;
-			}	
-		}	
-		
-		echo 'Jokes updated';
-		
-		
-		$signedIn = 'true';
-		$tokenHash = $tokeHash;
-
-		$sql = "SELECT * FROM users WHERE username = '$forUser'" ;
-		$result = $conn->query($sql);
-
-
-		for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
-		
-		echo 'You are signed in as the parent for user :' . $forUser . '<BR />';
-
-
-	}
-	else
-	{
-	echo 'Token expired';
-	}
-
-	}
-	else 
-	{
-	echo 'Invalid token.';
-
-	}
-		
-		
-	}
-
 
 // Add new ring
 if (isset($_POST['addRing']) && $_POST['addRing'] == "true")
@@ -374,7 +375,7 @@ if (isset($_POST['addRing']) && $_POST['addRing'] == "true")
 		 $RingID = $ringInfo[0]["RingID"];
 		 
 		 $sql = "INSERT INTO rings (RingID, username)
-			 VALUES ('$RingID', '$owner'";
+			 VALUES ('$RingID', '$owner')";
 		 if ($conn->query($sql) === TRUE) {
 			 echo 'User ' . $owner . ' has been added to the ring ' . $ringName . '.';
 		 } else {
