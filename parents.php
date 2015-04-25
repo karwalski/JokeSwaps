@@ -455,7 +455,7 @@ if (isset($_POST['editRing']) && $_POST['editRing'] == "true")
 			}	
 			
 			}
-			foreach ($_POST['ringdesc'] as $id => $ringdesc
+			foreach ($_POST['ringdesc'] as $id => $ringdesc)
 			{
    			 $ringdesc = mysqli_real_escape_string($conn, $ringdesc);
 
