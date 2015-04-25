@@ -1074,7 +1074,7 @@ while($row = $result->fetch_assoc()) {
 		{
 		$userList .= "&#13;&#10;";
 		}
-		$count = $count++;
+		$count = ++$count;
 	}
 	if ($ringInfo[0]["owner"] == $username)
 		{ 
