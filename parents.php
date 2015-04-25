@@ -922,12 +922,12 @@ while($row = $result->fetch_assoc()) {
 		echo ' disabled="disabled"';
 	} 
 	echo '></td>';
-    echo '<td><textarea name="users[' . $ringID . ']" value="' . $userList . '"';
+    echo '<td><textarea name="users[' . $ringID . ']"';
 		if ($ringOwner == 'false')
 	{
 		echo ' disabled="disabled"';
 	} 
-	echo '></textarea></td>';
+	echo '>' . $userList . '</textarea></td>';
     echo '<td><input type="checkbox" name="delete[' . $ringID . ']" value="true"';
 		if ($ringOwner == 'false')
 	{
