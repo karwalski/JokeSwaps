@@ -907,7 +907,7 @@ while($row = $result->fetch_assoc()) {
 	$result = $conn->query($sql);
 	$userList = "";
 	while($usersrow = $result->fetch_assoc()) {
-		$userList .= $usersrow["username"] . "<BR />";
+		$userList .= $usersrow["username"] . "&#13;&#10;";
 	}
 	if ($ringInfo[0]["owner"] == $username)
 		{ 
