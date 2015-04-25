@@ -487,7 +487,7 @@ if (isset($_POST['editRing']) && $_POST['editRing'] == "true")
 				}
 				
 				// Add owner by default (incase deleted)
-				sql = "INSERT INTO rings (RingID, username)
+				$sql = "INSERT INTO rings (RingID, username)
 							 VALUES ('$id', '$forUser')";
 						 if ($conn->query($sql) === TRUE) {
 						 } else {
@@ -504,7 +504,7 @@ if (isset($_POST['editRing']) && $_POST['editRing'] == "true")
 					}
 					else
 					{
-						sql = "INSERT INTO rings (RingID, username)
+						$sql = "INSERT INTO rings (RingID, username)
 									 VALUES ('$id', '$username')";
 								 if ($conn->query($sql) === TRUE) {
 								 } else {
