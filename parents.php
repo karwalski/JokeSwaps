@@ -386,7 +386,6 @@ if (isset($_POST['addRing']) && $_POST['addRing'] == "true")
 	 }
 	 
  }
-	 
 		
 	}
 		else
@@ -403,10 +402,6 @@ if (isset($_POST['addRing']) && $_POST['addRing'] == "true")
 }
 
 
-
-
-
-}
 
 
 // Signup form submit
