@@ -290,7 +290,10 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
 						}
 						
 						$ringID = $row["RingID"];
-						$sql = "SELECT * FROM rings WHERE RingID = '$ringID' ORDER BY RAND() LIMIT $limit " ;
+						
+						// temp removed limit for testing as only 1 result showing LIMIT $limit 
+						
+						$sql = "SELECT * FROM rings WHERE RingID = '$ringID' ORDER BY RAND() " ;
 						$result = $conn->query($sql);
 						while($usersrow = $result->fetch_assoc()) {
 							
