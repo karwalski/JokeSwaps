@@ -729,7 +729,8 @@ $sql = "SELECT * FROM jokes WHERE forUser = '$username' ORDER BY id DESC" ;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo '<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="editJokes">
+    echo '	<H1>Edit Jokes</H1>
+		<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="editJokes">
 		<input type="hidden" name="editJokes" id="editJokes" value="true">
 		<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
 		<input type="hidden" name="session" id="session" value="' . $tokenHash . '">
@@ -768,6 +769,124 @@ if ($result->num_rows > 0) {
 } else {
     echo "No jokes yet";
 }
+
+
+
+echo '
+	<H1>Rings your child belongs to: </H1>';
+
+$sql = "SELECT * FROM rings WHERE username = '$username'" ;
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	
+	echo '<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="editRing">
+	<input type="hidden" name="editRing" id="editRing" value="true">
+	<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
+	<input type="hidden" name="session" id="session" value="' . $tokenHash . '">
+<table>
+    <tr>
+      <th>Ring Name/th>
+      <th>Desc</th> 
+      <th>Secret</th>
+      <th>Users</th>
+      <th>Delete Ring</th>
+    </tr>';
+	
+while($row = $result->fetch_assoc()) {
+	$ringID = $row["RingID"];
+	$sql = "SELECT * FROM ringInfo WHERE ringID = '$ringID'" ;
+	$result = $conn->query($sql);
+	for ($ringInfo = array (); $ringInforow = $result->fetch_assoc(); $ringInfo[] = $ringInforow);
+	
+	$sql = "SELECT * FROM rings WHERE ringID = '$ringID'" ;
+	$result = $conn->query($sql);
+	$userList = "";
+	while($usersrow = $result->fetch_assoc()) {
+		$userList .= $usersrow["username"] . "<BR />";
+	}
+	if ($ringInfo[0]["owner"] == $username)
+		{ 
+			$ringOwner = "true";
+		}
+		else
+		{
+			$ringOwner = "false";
+		}
+	
+    echo '<tr><td><input type="text" name="ringname[' . $ringID . ']" value="' . $ringInfo[0]["name"] . '"'
+		if ($ringOwner == 'false')
+	{
+		echo ' disabled="disabled"'
+	} 
+	echo '></td>';
+    echo '<td><input type="text" name="ringdesc[' . $ringID . ']" value="' . $ringInfo[0]["shortDesc"] . '"'
+		if ($ringOwner == 'false')
+	{
+		echo ' disabled="disabled"'
+	} 
+	echo '></td>';
+    echo '<td><input type="text" name="secret[' . $ringID . ']" value="' . $ringInfo[0]["secret"] . '"'
+		if ($ringOwner == 'false')
+	{
+		echo ' disabled="disabled"'
+	} 
+	echo '></td>';
+    echo '<td><textarea name="users[' . $ringID . ']" value="' . $userList . '"'
+		if ($ringOwner == 'false')
+	{
+		echo ' disabled="disabled"'
+	} 
+	echo '></textarea></td>';
+    echo '<td><input type="checkbox" name="delete[' . $ringID . ']" value="true"'
+		if ($ringOwner == 'false')
+	{
+		echo ' disabled="disabled"'
+	} 
+	echo '></td></tr>';
+	
+}
+echo '<tr>
+  <th>Ring Name/th>
+  <th>Desc</th> 
+  <th>Secret</th>
+  <th>Users</th>
+  <th>Delete Ring</th>
+</tr>
+	  
+</table>
+	  <input type="submit" value="Save">
+	  </form>';
+
+}
+else
+	{ echo 'Your child does not currently belong to any rings';}
+
+// add to existing ring
+echo '
+	<H1>Request addition to existing ring</H1>
+<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="requestRing">
+<input type="hidden" name="requestRing" id="requestRing" value="true">
+<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
+<input type="hidden" name="session" id="session" value="' . $tokenHash . '">
+	<label for="ringname">Ring Name: </label><input type="text" name="ringname" id="ringname" required="required"><br />
+	<input type="submit" value="Request">
+	</FORM>';
+
+
+// create new ring
+echo '
+	<H1>Create a new ring</H1>
+<FORM METHOD="POST" ACTION="' . $_SERVER['REQUEST_URI'] . '" name="addRing">
+		<input type="hidden" name="addRing" id="addRing" value="true">
+		<input type="hidden" name="username" id="username" value="' . $userInfo[0]["username"] . '">
+		<input type="hidden" name="session" id="session" value="' . $tokenHash . '">
+
+			<label for="ringname">Ring Name: </label><input type="text" name="ringname" id="ringname" required="required"><br />
+			<label for="username">Ring Short Description: </label><input type="text" name="ringdesc" id="ringdesc" required="required"><br />
+			<label for="secret">Ring Secret word: </label><input type="text" name="secret" id="secret"><br />
+			<input type="submit" value="Add Ring">
+			</FORM>';
 
 
 // Logout
