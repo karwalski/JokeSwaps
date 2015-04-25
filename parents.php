@@ -314,6 +314,100 @@ if (isset($_POST['editJokes']) && $_POST['editJokes'] == "true")
 	}
 
 
+// Add new ring
+if (isset($_POST['addRing']) && $_POST['addRing'] == "true")
+{
+	
+	$forUser = mysqli_real_escape_string($conn, $_POST['username']);
+	
+	// Check session token
+
+
+	$sql = "SELECT * FROM tokens WHERE username = '$forUser' AND type = 'login' AND status = '0' ORDER BY TokenID DESC " ;
+	$result = $conn->query($sql);
+
+	for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+	$tokeHash = $userInfo[0]["hash"];
+	$tokenExpires = $userInfo[0]["expires"];
+	$tokenStatus = $userInfo[0]["status"];
+	
+
+	$session = $_POST["session"];
+	 $session = mysqli_real_escape_string($conn, $session);
+
+	if ($tokeHash == $session)
+	{
+
+	if ($tokenExpires < date("now"))
+	{
+		
+		$ringName = mysqli_real_escape_string($conn, $_POST['ringname']);
+		$owner = $forUser;
+		$ringDesc = mysqli_real_escape_string($conn, $_POST['ringdesc']);
+		$ringSecret = mysqli_real_escape_string($conn, $_POST['secret']);
+		
+		// Check ring name availability
+		$sql = "SELECT * FROM ringInfo WHERE name = '$ringName'" ;
+		$result = $conn->query($sql);
+		$count = $result->num_rows;
+
+		if ($count > 0)
+		{
+		echo 'Ring name already taken, please try a new ring name';
+
+		//Need to add a prefill with other entered data
+
+		}
+		else
+		{
+		
+	 $sql = "INSERT INTO ringInfo (name, shortDesc, owner, secret)
+		 VALUES ('$ringName', '$ringDesc', '$owner', '$ringSecret')";
+	 if ($conn->query($sql) === TRUE) {
+		 echo 'New ring ' . $ringName . ' has been created.';
+		 
+		 
+	 	$sql = "SELECT * FROM ringInfo WHERE name = '$ringName'" ;
+	 	$result = $conn->query($sql);
+
+	 	for ($ringInfo = array (); $row = $result->fetch_assoc(); $ringInfo[] = $row);
+		 $RingID = $ringInfo[0]["RingID"];
+		 
+		 $sql = "INSERT INTO rings (RingID, username)
+			 VALUES ('$RingID', '$owner'";
+		 if ($conn->query($sql) === TRUE) {
+			 echo 'User ' . $owner . ' has been added to the ring ' . $ringName . '.';
+		 } else {
+		     echo "Error: " . $sql . "<br>" . $conn->error;
+		 }
+		 
+	 } else {
+	     echo "Error: " . $sql . "<br>" . $conn->error;
+	 }
+	 
+ }
+	 
+		
+	}
+		else
+		{
+		echo 'Token expired';
+		}
+
+		}
+		else 
+		{
+		echo 'Invalid token.';
+
+		}
+}
+
+
+
+
+
+}
+
 
 // Signup form submit
 if (isset($_POST['signup']) && $_POST['signup'] == "true")
