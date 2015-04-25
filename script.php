@@ -40,7 +40,6 @@ if ($conn->connect_error) {
 // sql command
 $sql = "";
 
-*/
 
 
 $sql = "CREATE TABLE ringInfo (
@@ -63,6 +62,7 @@ RingID INT,
 username VARCHAR(255)
 )";
 
+*/
 
 
 
