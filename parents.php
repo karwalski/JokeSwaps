@@ -386,7 +386,21 @@ if (isset($_POST['addRing']) && $_POST['addRing'] == "true")
 	     echo "Error: " . $sql . "<br>" . $conn->error;
 	 }
 	 
+
+	 
  }
+	
+$signedIn = 'true';
+$tokenHash = $tokeHash;
+
+$sql = "SELECT * FROM users WHERE username = '$forUser'" ;
+$result = $conn->query($sql);
+
+
+for ($userInfo = array (); $row = $result->fetch_assoc(); $userInfo[] = $row);
+
+echo 'You are signed in as the parent for user :' . $forUser . '<BR />';
+ 
 		
 	}
 		else
