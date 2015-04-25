@@ -299,6 +299,12 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
 							
 							$friend = $usersrow["username"];
 							
+							if ($friend == $user)
+							{
+								// Is self - do nothing
+							}
+							else
+							{
 							// lookup friends avatar
 							$sql = "SELECT * FROM users WHERE username = '$friend'" ;
 							$result = $conn->query($sql);
@@ -312,7 +318,9 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
 			                    <img src="images/avatars/' . $avatar . '.png" height="35px" width="35px" />
 			                    <h6 id="friendName"><a href="http://' . $friend . '.jokeswaps.com" target="_top">' . ucfirst($friend) . '</a></h6></div>';
 							
-								$count = $count++;
+								
+							}
+							$count = $count++;
 						}
 					}
 					echo '            </div>
