@@ -260,7 +260,7 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
         
 
 
-				<?PHP $sql = "SELECT * FROM rings WHERE username = '$username'" ;
+				<?PHP $sql = "SELECT * FROM rings WHERE username = '$user'" ;
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
