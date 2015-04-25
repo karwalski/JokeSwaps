@@ -498,13 +498,14 @@ if (isset($_POST['editRing']) && $_POST['editRing'] == "true")
 				$userList = explode(PHP_EOL, $users);
 				foreach ($userList as $username)
 				{
+					$username = str_replace(array("\n", "\r", "\r\n", ","), '', $username);
+					
 					if ($username == $forUser)
 					{
-						// Do nothing as owenr added by default
+						// Do nothing as owner added by default
 					}
 					else
 					{
-						$username = str_replace(array("\n", "\r", "\r\n", ","), '', $username);
 						
 						$sql = "INSERT INTO rings (RingID, username)
 									 VALUES ('$id', '$username')";
@@ -1063,10 +1064,16 @@ while($row = $result->fetch_assoc()) {
 	for ($ringInfo = array (); $ringInforow = $result->fetch_assoc(); $ringInfo[] = $ringInforow);
 	
 	$sql = "SELECT * FROM rings WHERE RingID = '$ringID'" ;
-	$result = $conn->query($sql);
+	$ringresult = $conn->query($sql);
 	$userList = "";
-	while($usersrow = $result->fetch_assoc()) {
-		$userList .= $usersrow["username"] . "&#13;&#10;";
+	$count = 1;
+	while($usersrow = $ringresult->fetch_assoc()) {
+		$userList .= $usersrow["username"]
+		if ($count != $ringresult->num_rows)
+		{
+		$userList .= "&#13;&#10;";
+		}
+		$count = $count++;
 	}
 	if ($ringInfo[0]["owner"] == $username)
 		{ 
