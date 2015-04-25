@@ -260,8 +260,9 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
         
 
 
-				<?PHP $sql = "SELECT * FROM rings WHERE username = '$user'" ;
+				<?PHP $sql = "SELECT * FROM rings WHERE username = '$user' ORDER BY RAND()" ;
 				$result = $conn->query($sql);
+				$count = 1;
 
 				if ($result->num_rows > 0) {
 		            echo '<div id="userFriend" class="grid_5 omega">
@@ -274,8 +275,22 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
 		                <!--Startof Friend Grid-->';
 					
 					while($row = $result->fetch_assoc()) {
+						//How many friends to list
+						$maxList = 6;
+						//even number of friends from each ring
+						$limit = floor($maxList / $result->num_rows);
+						if ($count == 1)
+						{
+							//Check if remainder in limit not equal to maxList
+							if (($limit * $result->num_rows) != $maxList)
+							{
+								$limit = $limit + ( $maxList - ($limit * $result->num_rows));
+							}
+						
+						}
+						
 						$ringID = $row["RingID"];
-						$sql = "SELECT * FROM rings WHERE RingID = '$ringID' ORDER BY RAND() LIMIT 6 " ;
+						$sql = "SELECT * FROM rings WHERE RingID = '$ringID' ORDER BY RAND() LIMIT $limit " ;
 						$result = $conn->query($sql);
 						while($usersrow = $result->fetch_assoc()) {
 							
@@ -296,6 +311,7 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
 			                    <img src="images/avatars/' . $avatar . '.png" height="35px" width="35px" />
 			                    <h6 id="friendName"><a href="http://' . $friend . '.jokeswaps.com" target="_top">' . ucfirst($friend) . '</a></h6></div>';
 							
+								$count = $count++;
 						}
 					}
 					echo '            </div>
