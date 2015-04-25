@@ -1068,7 +1068,7 @@ while($row = $result->fetch_assoc()) {
 	$userList = "";
 	$count = 1;
 	while($usersrow = $ringresult->fetch_assoc()) {
-		$userList .= $usersrow["username"]
+		$userList .= $usersrow["username"];
 		if ($count != $ringresult->num_rows)
 		{
 		$userList .= "&#13;&#10;";
