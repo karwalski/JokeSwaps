@@ -1067,9 +1067,8 @@ while($row = $result->fetch_assoc()) {
 	$ringresult = $conn->query($sql);
 	$userList = "";
 	$count = 1;
-	echo '<!-- num rows is ' . $ringresult->num_rows . '-->';
 	while($usersrow = $ringresult->fetch_assoc()) {
-		$userList .= $usersrow["username"] . $count;
+		$userList .= $usersrow["username"];
 		if ($count != $ringresult->num_rows)
 		{
 		$userList .= "&#13;&#10;";
