@@ -65,6 +65,8 @@ $verified = $funcaptcha->checkResult("E1A7B6DB-4779-5670-933E-464FB325E22D");
 
 if ($verified)
 {
+	// Need to also check ring secrets
+	
 if ($_POST['secret'] == $userInfo[0]["secret"])
 {
 
@@ -422,11 +424,11 @@ JokeSwaps - <?PHP echo ucfirst($user); ?>
                 
 
             </div>
-            <div class="grid_5" id="captcha">
+            <div class="grid_5" id="captcha" onClick="popup('captchaPopDiv')">
                 <div class="grid_5" id="captchaBg">
                     <div class="grid_4 center captchaBtn" id="captchaBtn">
                 
-		                    <div class="grid_3 omega " id="submitBtn" onClick="popup('captchaPopDiv')">
+		                    <div class="grid_3 omega " id="submitBtn" >
 		                        <img id="submitCheck" src="images/check.png" />
 		                    </div>
                 
