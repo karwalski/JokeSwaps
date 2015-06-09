@@ -1,0 +1,12 @@
+X Start facebook fan page and configure advertising to get initial following (under $100) - https://www.facebook.com/pages/Tiny-Living-Community/1574596246138590
+X Start twitter account and configure advertising (no advertising until in the media cycle, hopefully) - https://twitter.com/TinyLivingComm
+X Start youtube channel https://www.youtube.com/channel/UCsxHX3c9sQy8lzH1SuvG-3A
+0 Setup a mailing list and newsletter template on mailchimp - setup account, needs template
+- Other social media possible, but likely introduce down the track (def instagram or similar once there is some action happening)
+- Prepare a press release
+X Work with graphic designers via freelancer to design a logo ($20)
+- Work with graphic designers on a style guide, and website theme (Can be done for around $50, but might up the price for top quality)
+- Build a website template to run on the wordpress platform (I might hire a coder to speed this up for $20)
+- Register domain name, and hosting ($15 for .com/.net etc, or $30 for .com.au/.org.au which cannot be registered until org is registered -- and then about $5 a month hosting)
+- I will then pump some content into the website, about us, contact, history, etc etc
+- I then need to make a custom crowdfunding script, maybe using eway for credit card processing and paypal to cover most peoples preffered payment methods, I will have it configured to collect the contributors details and sign them up to mailing list etc, and if we decide to have 'rewards' for their contributions, have these allocated etc. (This will be the chunk of the work programming in PHP, javascript and HTML5/CSS - I always underestimate time spent, but a rough guess and doubling it would be about 200 hours of work to get this done, hence the month long guess).
