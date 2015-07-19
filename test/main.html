@@ -12,8 +12,14 @@
 			var source = window.frames[0].document.body.innerHTML;
 			var found = source.search('12345');
 			document.getElementById('results').innerHTML = "found 12345 at "+found;
-			var found = source.search('ABCDEF');
-			document.getElementById('results').innerHTML = document.getElementById('inner').innerHTML + "found ABCDEF at "+found;
+			var d1 = source.charAt(found+11);
+			var d2 = source.charAt(found+12);
+			var d3 = source.charAt(found+13);
+			var d4 = source.charAt(found+14);
+			var d5 = source.charAt(found+15);
+
+			document.getElementById('results').innerHTML = document.getElementById('results').innerHTML + " and the text is "+d1+d2+d3+d4+d5;
+			
 		}
 		
 		function callInner()
