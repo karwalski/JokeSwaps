@@ -7,7 +7,9 @@
 		
 		function searchInner()
 		{
-			var source = window.frames[0].document.getElementsByTagName('html')[0].innerHTML;
+
+			document.getElementById('results').innerHTML = "searching...";
+			var source = window.frames[0].document.body.innerHTML;
 			var found = source.search('12345');
 			document.getElementById('results').innerHTML = "found 12345 at "+found;
 			var found = source.search('ABCDEF');
