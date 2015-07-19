@@ -9,9 +9,9 @@
 		{
 			var source = window.frames[0].document.getElementsByTagName('html')[0].innerHTML;
 			var found = source.search('12345');
-			document.getElementById('inner').innerHTML = "found 12345 at "+found;
+			document.getElementById('results').innerHTML = "found 12345 at "+found;
 			var found = source.search('ABCDEF');
-			document.getElementById('inner').innerHTML = document.getElementById('inner').innerHTML + "found ABCDEF at "+found;
+			document.getElementById('results').innerHTML = document.getElementById('inner').innerHTML + "found ABCDEF at "+found;
 		}
 		
 		function callInner()
