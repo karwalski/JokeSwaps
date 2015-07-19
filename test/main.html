@@ -1,0 +1,31 @@
+<HTML>
+	<HEAD>
+		<TITLE>
+			Test
+		</TITLE>
+		<SCRIPT>
+		
+		function onLoadFunc()
+		{
+			var source = window.frames[0].document.getElementsByTagName('html')[0].innerHTML;
+			var found = source.search('12345');
+			document.getElementById('inner').innerHTML = "found"
+		}
+		
+		function callInner()
+		{
+			document.getElementById('inner').contentWindow.callMe();
+		}
+				
+		</SCRIPT>
+	</HEAD>
+	<BODY onload="onLoadFunc()">
+	<H1>Test page</H1>
+	Results: <div id="results"></div><BR /><BR />
+	<button onClick="callInner();">Call the inner frame</button><BR /><BR />
+	
+	<iframe src="inner.html" id="inner" style="width:60%;height:400px;"></iframe>
+	
+	</BODY>
+	
+</HTML>
