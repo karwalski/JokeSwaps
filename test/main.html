@@ -5,7 +5,7 @@
 		</TITLE>
 		<SCRIPT>
 		
-		function onLoadFunc()
+		function searchInner()
 		{
 			var source = window.frames[0].document.getElementsByTagName('html')[0].innerHTML;
 			var found = source.search('12345');
@@ -19,10 +19,11 @@
 				
 		</SCRIPT>
 	</HEAD>
-	<BODY onload="onLoadFunc()">
+	<BODY >
 	<H1>Test page</H1>
 	Results: <div id="results"></div><BR /><BR />
 	<button onClick="callInner();">Call the inner frame</button><BR /><BR />
+		<button onClick="searchInner();">Get results</button><BR /><BR />
 	
 	<iframe src="inner.html" id="inner" style="width:60%;height:400px;"></iframe>
 	
