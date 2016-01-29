@@ -12,7 +12,8 @@ $conn = new mysqli($servername, $username, $password, $dbname );
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$user = strtolower(mysqli_real_escape_string($conn, substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], "."))));
+
+$user = strtolower(mysqli_real_escape_string($conn, $_GET['user']);
 // Verify email address
 if (isset($_GET['v']) && isset($_GET['username']))
 {
