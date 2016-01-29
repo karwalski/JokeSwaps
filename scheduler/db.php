@@ -9,6 +9,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 echo "Connected successfully";
+
+$sql = "CREATE DATABASE scheduler";
+
+  if ($conn->query($sql) === TRUE) {
+    echo "Database created successfully";
+
+
+
+
 $sql = "CREATE TABLE IF NOT EXISTS `scheduler`.`parent` (
   `id` INT NOT NULL,
   `username` VARCHAR(45) NULL,
@@ -109,4 +118,9 @@ $sql = "CREATE TABLE IF NOT EXISTS `scheduler`.`available` (
 } else {
     echo "Error creating table available: " . $conn->error;
 }
+
+} else {
+    echo "Error creating Database: " . $conn->error;
+}
+
 ?>
