@@ -409,6 +409,10 @@ By clicking the 'Signup' button below you are agreeing with these statements.<br
 <input type="submit" value="Signup"><br />
 </FORM>
 
+<?PHP
+}
+?>
+
 </DIV>
 <DIV NAME="FOOTER" STYLE="height:100px;background:#000;color:#FFF;text-align:center;">Matt Watt 2016 - GPLv3 copyleft</DIV>
 
