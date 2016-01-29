@@ -320,6 +320,41 @@ echo 'Incorrect password';
 <TITLE>
 Scheduler workspace
 </TITLE>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+	<script>
+	function checkPasswdMatch(form)
+	{
+	if (form == "signup")
+	{
+		if (signupForm.password.value == signupForm.password2.value)
+		{
+			document.getElementById("passwordMisMatch_signup").innerHTML = "";
+		}
+		else
+		{
+			document.getElementById("passwordMisMatch_signup").innerHTML = "Passwords do not match";
+			signup.password.focus();
+		}
+	}
+	else if (form == "update")
+	{
+		if (updateForm.password.value == updateForm.password2.value)
+		{
+			document.getElementById("passwordMisMatch_update").innerHTML = "";
+		}
+		else
+		{
+			document.getElementById("passwordMisMatch_update").innerHTML = "Passwords do not match";
+			update.password.focus();
+		}
+	}
+ 
+	}
+	</script>
+
+
+
 </HEAD>
 <BODY>
 <DIV NAME="CONTENT" STYLE="min-height:100%;margin-bottom:-100px;">
