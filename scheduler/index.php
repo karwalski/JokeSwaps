@@ -429,7 +429,7 @@ else
 <STRONG>Signup</STRONG><BR />
 <input type="hidden" name="signup" id="signup" value="true">
 <label for="username">Username: </label><input type="text" name="username" id="username" required="required"><br />
-<label for="password">Parents password: </label><input type="password" name="password" id="password" required="required" onInput="checkPasswdMatch('signup');"><br />
+<label for="password">Password: </label><input type="password" name="password" id="password" required="required" onInput="checkPasswdMatch('signup');"><br />
 <label for="password2">Renter Password: </label><input type="password" name="password2" id="password2" required="required" onInput="checkPasswdMatch('signup');"><span id="passwordMisMatch_signup" style="color:red;"> </span><br />
 <label for="email">Email Address: </label><input type="email" name="email" id="email" required="required"><br />
 
